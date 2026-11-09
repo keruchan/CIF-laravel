@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-04",
+  "scope": "Localhost table-by-table Laravel migrations only",
+  "reference_commit": "71de3fe52d5d28faf0b75071452dfb2c3834ff0d",
+  "runtime": {"php": "8.4.27", "database": "MariaDB 10.4.32"},
+  "structure": {
+    "native_table_migrations": 51,
+    "recruitment_tables": 43,
+    "laravel_infrastructure_tables_excluding_repository": 8,
+    "audit_setup_migrations": 1,
+    "total_migration_files": 52,
+    "tables_including_migration_repository": 52,
+    "foreign_keys": 70,
+    "audit_triggers": 68,
+    "auto_loaded_sql_dump": false,
+    "legacy_fixture": "database/reference/legacy-mysql-schema.sql"
+  },
+  "php_suite": {"tests": 43, "assertions": 344, "result": "passed"},
+  "fresh_install_recheck": {
+    "tests": 2,
+    "assertions": 29,
+    "result": "passed",
+    "path_restricted_to_php_directory": true,
+    "schema_contract_differences": [],
+    "migration_records": 52,
+    "repeat_migration": "Nothing to migrate",
+    "template_customization_preserved": true,
+    "superadmin_credentials_preserved_on_repeat": true,
+    "untracked_existing_tables_force_and_pretend_refused": true
+  },
+  "existing_data_adoption": {
+    "active_isolated_database": "cif_laravel_dev_20261104_90d68738",
+    "original_migration_records_preserved": 4,
+    "native_baseline_records_added": 48,
+    "final_migration_records": 52,
+    "schema_contract_differences": [],
+    "recruitment_tables_compared_read_only": 43,
+    "data_or_definition_differences": 0,
+    "schema_and_triggers_changed": false,
+    "application_records_changed": false,
+    "mismatched_fixture_refused_before_history_write": true,
+    "fixture_row_fingerprints_unchanged": true,
+    "repeat_adoption_idempotent": true,
+    "rollback_guard_preserved_and_tested": true,
+    "future_migrations_excluded_from_adoption": true
+  },
+  "reference_copy": {
+    "disposable_fictional_source": true,
+    "native_target_initialization": "passed",
+    "records_and_audit_triggers_preserved": true,
+    "target_schema_contract_differences": []
+  },
+  "checks": {
+    "pint": "passed",
+    "migration_php_syntax": "52 passed",
+    "temporary_generation_files_removed": true,
+    "temporary_reference_and_test_databases_removed": true,
+    "original_php_worktree_clean": true,
+    "private_environment_unchanged": true,
+    "real_mail_sent": false,
+    "hosting_changes": false,
+    "docker_configuration_added": false,
+    "container_execution_tested": false
+  },
+  "notes": [
+    "Schema validation compares character collations exactly; inherited table-default collation is ignored only for tables without character columns.",
+    "The final audit migration intentionally refuses rollback; reset commands remain unsuitable for populated databases.",
+    "Existing UI and workflow parity evidence remains applicable; no application screen changed in this task."
+  ]
+}

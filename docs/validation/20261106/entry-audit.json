@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-06",
+  "scope": "Current vanilla parity audit excluding email; applicant entry and two-card staff chooser corrected",
+  "source_commit": "e29287871be6e4ec8f079595f0370adbba0b533d",
+  "source_update_manifest_hashes_verified": 51,
+  "source_entry_hashes": {
+    "index.php": "2442ac15831746ed0e57cd428adaf4c5432343aec7a78e36156336da03f51a4b",
+    "pages/portal/index.php": "ef7a8ef37b5c3ff8c25e29a2c8b0d1f837930007eb148accde465b3d591d9fc1",
+    "css/portal.css": "b0266ab82139dfbec126b50520ab95ae51aa669ccd4baa85a202ae0c338ea86c"
+  },
+  "root_destination": "/pages/candidate/",
+  "index_php_destination": "/pages/candidate/",
+  "index_html_destination": "/pages/candidate/",
+  "index_html_note": "Compatibility alias requested by user; vanilla source entry file is index.php",
+  "staff_chooser": [
+    "HR Recruitment",
+    "MRF Requestor"
+  ],
+  "separate_superadmin_login_and_records_preserved": true,
+  "all_original_public_assets_match": 57,
+  "php_suite": {
+    "tests": 45,
+    "assertions": 362,
+    "result": "passed"
+  },
+  "api_comparisons": 12,
+  "visual_comparisons": 40,
+  "maximum_pixel_difference": 0,
+  "page_errors": [],
+  "applicant_entry_checks": [
+    {
+      "implementation": "original",
+      "entry": "/",
+      "destination": "/pages/candidate/"
+    },
+    {
+      "implementation": "original",
+      "entry": "/index.php",
+      "destination": "/pages/candidate/"
+    },
+    {
+      "implementation": "laravel",
+      "entry": "/",
+      "destination": "/pages/candidate/"
+    },
+    {
+      "implementation": "laravel",
+      "entry": "/index.php",
+      "destination": "/pages/candidate/"
+    },
+    {
+      "implementation": "laravel",
+      "entry": "/index.html",
+      "destination": "/pages/candidate/"
+    }
+  ],
+  "styles_and_syntax": "passed",
+  "portal_screenshot_visually_inspected": true,
+  "environment_and_email_files_unchanged": true,
+  "real_email_sent": false,
+  "database_or_schema_changes": false,
+  "disposable_databases_remaining": 0,
+  "source_worktree_clean": true,
+  "evidence": "entry-audit-visual-results.json",
+  "screenshots": "storage/app/migration-validation/20261106-entry-audit/visual"
+}

@@ -1,0 +1,55 @@
+/* REC-REV-24-03 SBR: Legal paper, matching the supplied form, not the web cards. */
+@page cif-sheet{size:8.5in 14in;margin:8mm}
+@media print{
+ :root,html,body{background:#fff!important;color:#000;font-family:Arial,sans-serif}
+ html,body{margin:0;font-size:9pt}
+ .cif-portal-record>:not(#app){display:none!important}.cif-portal-record #app{display:block!important}
+ .cif-portal-record #portal-sidebar,.cif-portal-record main>header,.record-toolbar,.record-screen{display:none!important}
+ .cif-portal-record main{margin:0!important;min-height:0}.cif-portal-record .pg{padding:0}
+ .print-document{display:block}
+ .cif-document{page:cif-sheet;width:199.9mm;font:9pt/1.15 Arial,sans-serif;color:#000}
+ .cif-document *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .cif-document .paper-sheet{display:flex;flex-direction:column;position:relative;min-height:339mm;break-after:page;gap:0}
+ .cif-document .paper-sheet:last-child{break-after:auto}
+ .cif-document .paper-sheet-natural{display:block;min-height:0}
+ .cif-document .paper-sheet-natural .paper-table{flex:0 0 auto;height:auto}
+ .cif-document .paper-sheet.paper-sheet-natural footer{margin:3mm 0 0}
+ .cif-document .paper-header{flex:none;position:relative;min-height:34mm;padding:8mm 36mm 2mm 0;border-bottom:1px solid #888;margin:0 0 4mm}
+ .cif-document .paper-logo{display:block;width:45mm;height:auto;margin:0 0 2mm}
+ .cif-document .paper-header h1{font:bold 20pt/1.1 Arial,sans-serif;white-space:nowrap;letter-spacing:-.25pt;margin:0 0 3mm}
+ .cif-document .paper-id{font:bold 9pt/1.2 Arial,sans-serif;color:#0076b9;margin:0}
+ .cif-document .photo-box{position:absolute;display:grid;place-items:center;top:2mm;right:1mm;width:35mm;height:32mm;font:9pt Arial,sans-serif;border:1px solid #555;background:#fff}
+ .cif-document .photo-box img{max-width:100%;width:100%;height:100%;object-fit:contain}
+ .cif-document .paper-demo{flex:none;color:#775000;font-size:6pt;margin:0 0 1mm}
+ .cif-document .paper-application{display:grid;grid-template-columns:35% 65%;gap:1.8mm 0;flex:none;margin:0 0 2mm;font-size:8pt}
+ .cif-document .paper-application p{margin:0;padding-right:2mm;overflow-wrap:anywhere}
+ .cif-document .paper-application b{font-size:6.5pt;margin-right:1mm}
+ .cif-document .paper-application span{text-decoration:underline}
+ .cif-document .paper-scores{flex:none;display:flex;justify-content:space-between;gap:15mm;margin:0 0 1mm}
+ .cif-document .paper-scores>div{display:flex;width:48%;min-height:6mm;border:1px solid #000;align-items:stretch}
+ .cif-document .paper-scores b{display:flex;align-items:center;background:#7030a0;color:#fff;font-size:6pt;padding:1.4mm;flex:none}
+ .cif-document .paper-scores span{padding:1mm;font-size:8pt;overflow-wrap:anywhere;white-space:pre-wrap;min-width:0}
+ .cif-document .paper-band{flex:none;width:max-content;min-width:42%;max-width:100%;background:#214c7f;border:1px solid #000;color:#fff;font:bold 11pt/1.1 Arial,sans-serif;padding:1.8mm 3mm;margin:1mm 0;white-space:pre-wrap;break-after:avoid}
+ .cif-document .paper-table{flex:1 0 auto;border-collapse:collapse;table-layout:fixed;width:100%;min-width:0;margin:0 0 1mm;font-size:9pt}
+ .cif-document .paper-table.paper-assessment-scores{flex:0 0 auto}
+ .cif-document .paper-assessment-scores th{background:#214c7f;color:#fff;font:bold 7pt Arial,sans-serif}
+ .cif-document .paper-assessment-scores small{display:block;font:6pt Arial,sans-serif;color:#333;margin-top:.5mm}
+ .cif-document .paper-table td,.cif-document .paper-table th{border:1px solid #000;border-radius:0;padding:.9mm 1.3mm;vertical-align:top;overflow-wrap:anywhere;white-space:normal;font-weight:normal;text-align:left}
+ .cif-document .paper-table td>b{display:block;font:bold 7pt/1.15 Arial,sans-serif;text-transform:uppercase;margin:0 0 .8mm}
+ .cif-document .paper-table td>div{font:9pt/1.15 Arial,sans-serif;min-height:3.2mm;white-space:pre-wrap}
+ .cif-document .paper-table tr{break-inside:avoid}
+ .cif-document .paper-employment-status{flex:none;font-size:7pt;margin:0 0 1mm}
+ .cif-document .job-table td>div{min-height:5mm}
+ .cif-document .connections-paper td>b{display:inline;margin-right:1mm}
+ .cif-document .paper-declaration{flex:none;border:1px solid #000;text-align:center;padding:2mm 3mm;margin:0 0 1mm;break-inside:avoid}
+ .cif-document .paper-declaration p{font:9pt/1.15 Arial,sans-serif;margin:0 0 3mm}
+ .cif-document .paper-declaration strong{display:block;font:bold 8.5pt Arial,sans-serif;text-decoration:underline;overflow-wrap:anywhere}
+ .cif-document .paper-declaration>div{font:bold 8pt Arial,sans-serif;color:#0076b9}
+ .cif-document .paper-declaration small{display:block;font:5.5pt Arial,sans-serif;margin-top:.5mm;color:#555}
+ .cif-document .hr-print-divider{flex:none;border-block:1px solid #888;font:bold italic 9pt Arial,sans-serif;overflow-wrap:anywhere;text-align:center;padding:2mm 0;margin:3mm 1mm 2mm}
+ .cif-document .hr-paper-table{flex:0 0 auto;height:auto}
+ .cif-document .hr-paper-table tr{height:7mm}
+ .cif-document .hr-paper-table th{width:28%;vertical-align:middle;background:#4eabc4;color:#fff;font:bold 7pt/1.2 Arial,sans-serif;text-transform:uppercase}
+ .cif-document .hr-paper-table td{width:22%;height:7mm;vertical-align:top}
+ .cif-document .paper-sheet footer{flex:none;margin:auto 0 0;padding:2mm 0 0;text-align:right;color:#333;font:5pt Arial,sans-serif}
+}

@@ -1,0 +1,258 @@
+{
+  "apiComparisons": [
+    "access/candidates",
+    "access/candidate_dashboard",
+    "access/invitations",
+    "access/hr_staff_monitor",
+    "mrf/list",
+    "mrf/list",
+    "mrf/dashboard",
+    "mrf-requestors/list",
+    "email/templates",
+    "email/messages",
+    "superadmin/users",
+    "superadmin/overview"
+  ],
+  "screens": [
+    {
+      "screen": "hr-dashboard",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidates",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "invitations",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "hr-mrfs",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "requestors",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "templates",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "mail",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "kpi",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-record",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-dashboard",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-requests",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-form",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-record",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "hr-mrf-record",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "superadmin-users",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "superadmin-audit",
+      "width": 1440,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "hr-dashboard",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidates",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "invitations",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "hr-mrfs",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "requestors",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "templates",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "mail",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "kpi",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-record",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-dashboard",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-requests",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-form",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "department-record",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "hr-mrf-record",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "superadmin-users",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "superadmin-audit",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-form",
+      "width": 1280,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-form",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-tracker",
+      "width": 1280,
+      "dimensions": true,
+      "pixels": 0
+    },
+    {
+      "screen": "candidate-tracker",
+      "width": 390,
+      "dimensions": true,
+      "pixels": 0
+    }
+  ],
+  "portal": [
+    {
+      "implementation": "original",
+      "width": 1440,
+      "cards": 2
+    },
+    {
+      "implementation": "original",
+      "width": 390,
+      "cards": 2
+    },
+    {
+      "implementation": "laravel",
+      "width": 1440,
+      "cards": 3
+    },
+    {
+      "implementation": "laravel",
+      "width": 390,
+      "cards": 3
+    }
+  ],
+  "portalChange": "User requested a third Superadmin link; latest source chooser has two links.",
+  "errors": []
+}

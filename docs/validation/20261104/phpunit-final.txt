@@ -1,0 +1,7 @@
+PHPUnit 12.5.40 by Sebastian Bergmann and contributors.
+Runtime: PHP 8.4.27
+Configuration: C:\LaravelProjects\cif-laravel\phpunit.xml
+
+Command: php vendor/phpunit/phpunit/phpunit --no-progress
+Time: 02:22.077, Memory: 52.00 MB
+OK (39 tests, 292 assertions)

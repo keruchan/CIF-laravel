@@ -1,0 +1,5 @@
+{
+    "check": "TLS connection and authentication only",
+    "message_sent": false,
+    "gmail_authentication": "passed"
+}

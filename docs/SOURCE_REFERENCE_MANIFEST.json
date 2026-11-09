@@ -1,0 +1,1398 @@
+{
+  "purpose": "Reference file inventory for the Laravel migration; no file contents or credentials are included.",
+  "source_root": "C:\\xampp\\htdocs\\cif",
+  "source_commit": "f708d9d82549985eb345cc35032da8c1819a7fe8",
+  "reference_date": "2026-10-28",
+  "files": [
+    {
+      "path": ".github/workflows/deploy.yaml",
+      "sha256": "041744ca556446f1294fe08607de8cf0ecf48a9178b846866a6ad66e598f3fce",
+      "bytes": 5983
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "5a9383a0351872059192dee3c51aa6ae8e5efff3ef11e9c3ddb0837a85c32e47",
+      "bytes": 178
+    },
+    {
+      "path": "2024-2025 CANDIDATE INFORMATION FORM_e33c9a66-ad7c-4ded-b137-58f4ceaceee2.docx",
+      "sha256": "e14130b95dedc42dbd9323d42421c783afc9d24adb272ea5d68df9329256b1b2",
+      "bytes": 26620
+    },
+    {
+      "path": "2024-2025 CANDIDATE INFORMATION FORM_e33c9a66-ad7c-4ded-b137-58f4ceaceee2.pdf",
+      "sha256": "d08a9081486a2923ec019cc1a6a740160d9f7616e4f9951dd0832aa527b09c29",
+      "bytes": 191034
+    },
+    {
+      "path": "README.md",
+      "sha256": "2859398a10a0a89bbc355f07cb0f965efa72a319dc521b3c533eaf4a89e52e92",
+      "bytes": 71340
+    },
+    {
+      "path": "ajax/README.md",
+      "sha256": "a09a286964f73316699af9dc4f665d416e727c0dd7ddec94a28c26d9f07fe4b7",
+      "bytes": 18218
+    },
+    {
+      "path": "ajax/access.php",
+      "sha256": "64c4cd25b6bbec21fc1dfb1e5e886133bc58dc3e3b35bd5430a402d1dfbd3d0f",
+      "bytes": 46371
+    },
+    {
+      "path": "ajax/department.php",
+      "sha256": "e6f1018c797d809d7aa22516324b7085a3a857e2c3af8cbfd5b1d40aa338ab38",
+      "bytes": 6765
+    },
+    {
+      "path": "ajax/email.php",
+      "sha256": "900d97b872964ae30bacc2faa39ca337f958a03cb4021af3b3130eed9953bed3",
+      "bytes": 12655
+    },
+    {
+      "path": "ajax/mrf-import.php",
+      "sha256": "796eb677eb46ac3d028f3350e1da5946f6c7dd97a062e5bdd90a0bac6f44b71b",
+      "bytes": 6238
+    },
+    {
+      "path": "ajax/mrf-requestors.php",
+      "sha256": "02968c7c959c9d1230216dc04613bcbaaf6caaeffafe14dc67f9358f6e732071",
+      "bytes": 1898
+    },
+    {
+      "path": "ajax/mrf.php",
+      "sha256": "252162b1c914f92b05d152f60c4e2779beb1f8f58be330dfb81877e52a0fe570",
+      "bytes": 19458
+    },
+    {
+      "path": "assets/apec-favicon-small.png",
+      "sha256": "cc23af3e1c8992bebd4893a1d5eaf521d17feb26db0f6f3d14d92e4561a1fe49",
+      "bytes": 1695
+    },
+    {
+      "path": "assets/apec-favicon.png",
+      "sha256": "6380f13f03f7f554e3a7f80cc1e96a32ca5f4707c70737705625d1e41a6f9a46",
+      "bytes": 25762
+    },
+    {
+      "path": "assets/apec-favicon.svg",
+      "sha256": "a809d83e1ba4e01e39f033b9e74f019c8f631e57aed0687732e1a0413444f2dd",
+      "bytes": 34754
+    },
+    {
+      "path": "assets/apec-homes-loading.png",
+      "sha256": "6b90035a703d695425c9d272852399e94268a512cf5787451528cbd2f4e7793f",
+      "bytes": 77089
+    },
+    {
+      "path": "assets/apec-homes-logo.png",
+      "sha256": "8b355222b45881f2e2702bc50e3f68f6cb9873836783091d074c51608d800bef",
+      "bytes": 41787
+    },
+    {
+      "path": "assets/apec-homes-mrf.png",
+      "sha256": "5b338545d588690438b2e151bdf35c2ee58efe0fa4ca0f41476f33699f03527a",
+      "bytes": 19622
+    },
+    {
+      "path": "assets/candidate-photo-example.jpg",
+      "sha256": "77ba40d06a6ffdc43860d74eab3186947d6968b6437f2199567b66401e3f2403",
+      "bytes": 5683
+    },
+    {
+      "path": "config/.htaccess",
+      "sha256": "6d309d0c2913094489e78e501993df9bb763a9f22350559cd1352be9436547d7",
+      "bytes": 18
+    },
+    {
+      "path": "config/EMAIL-SETUP.md",
+      "sha256": "7fde22b3ab2f86e24204fd0c931740c845faf484877f4f915e5cb752fe50223a",
+      "bytes": 3510
+    },
+    {
+      "path": "config/database.local.example.php",
+      "sha256": "42673d73555c8415157ccc78425cf1c2683f575ebf24af16ee45413c356d34eb",
+      "bytes": 218
+    },
+    {
+      "path": "config/database.php",
+      "sha256": "fb5977aeaa8644865f358d17d3e9e1e684765d2bcc26867803ecf1528be23839",
+      "bytes": 4115
+    },
+    {
+      "path": "config/database.production.example.php",
+      "sha256": "824c78acfd8f174fe13eb9f18d89c87d12507172d52bedf72dafc5d6cfde2a42",
+      "bytes": 1278
+    },
+    {
+      "path": "config/mail.production.example.php",
+      "sha256": "758f91ce12ccd364d50cf55e289c8103b27d3acc61cfb36f18e30b01237d52b0",
+      "bytes": 837
+    },
+    {
+      "path": "config/position-inventory.json",
+      "sha256": "3d18143d8b066c9edb6f49b1a946547ad23e6d9fadd6eab4d14e5a4fa299c564",
+      "bytes": 12510
+    },
+    {
+      "path": "css/actions.css",
+      "sha256": "b1963f2d6d449e77089a678028153f72da07f4199f1d79c6617128a449ca56fa",
+      "bytes": 2065
+    },
+    {
+      "path": "css/admin.css",
+      "sha256": "0f9653cdd541d22a2375c1752099f10be2a8e0054bd73f7ffc690148c83d0227",
+      "bytes": 27155
+    },
+    {
+      "path": "css/branding.css",
+      "sha256": "fa0a8b66248d614eeff4041c79222e391320c4b27452ed4a20289955a813cc85",
+      "bytes": 1891
+    },
+    {
+      "path": "css/candidate-tracking.css",
+      "sha256": "93130e3679a12106415d454e033505cdaf5fa65f940863c49d19e0ceb080a65d",
+      "bytes": 13215
+    },
+    {
+      "path": "css/candidate-updates.css",
+      "sha256": "dca5b00dafb4ef6b228d5a17b48f9c08e60c063f760b2cdd58fbab94a91b5911",
+      "bytes": 1620
+    },
+    {
+      "path": "css/candidate-workflow.css",
+      "sha256": "6dc343eb2b3619634c9ae47f01925a61c04cbb9665dd75fdaf851ec982f4d83b",
+      "bytes": 364
+    },
+    {
+      "path": "css/candidate.css",
+      "sha256": "11814e7e09aa419716e4ee03dea6f56cf6847dcc15f63b7ed9fbf5db6ca0aed0",
+      "bytes": 8804
+    },
+    {
+      "path": "css/cif-photo.css",
+      "sha256": "03c0e06166fd765206d30a2a6f15e952b006892bdadff98261c232a2d6229001",
+      "bytes": 1996
+    },
+    {
+      "path": "css/cif-print.css",
+      "sha256": "efda8c1e554c9450865c33413c3bd2c56b86c9aa230e05e2a0ad44bcb90c2b78",
+      "bytes": 5412
+    },
+    {
+      "path": "css/cif-record.css",
+      "sha256": "5fda252ab828a9983f828ef64c6bd28a9c5b1fd982df7ca4b38ddb80b87fcaa6",
+      "bytes": 28718
+    },
+    {
+      "path": "css/department.css",
+      "sha256": "27494d6c7a2526c5179f65b53ecde2e446cb241eba32a9c58da0f61de78a0498",
+      "bytes": 4878
+    },
+    {
+      "path": "css/hr-email.css",
+      "sha256": "d535534e86f09dcc4333195cd8f3364ee111b31d8d5deeaa018f691dfec46556",
+      "bytes": 4936
+    },
+    {
+      "path": "css/hr-staff.css",
+      "sha256": "425ff43c1d8afc7ba592952136a1696ccbe791467b32b133c5cd0590ce1a12be",
+      "bytes": 11712
+    },
+    {
+      "path": "css/mrf-status-palette.css",
+      "sha256": "53ee9769f9043fdbb651c187885acd9e3c459bc094300cd5868c393777223f50",
+      "bytes": 1306
+    },
+    {
+      "path": "css/mrf.css",
+      "sha256": "15b7e30dc3ea992ef8c3fddb66bc7f7e304fb7ca6ce9d6194e5f427089dddb36",
+      "bytes": 15016
+    },
+    {
+      "path": "css/position-picker.css",
+      "sha256": "cff1927d38b647ccb888f46981c1b7914ff5b249e22759893a33c4677bd10f78",
+      "bytes": 1199
+    },
+    {
+      "path": "css/session-loading.css",
+      "sha256": "9cf6d12b4d2c20fec3bb836c3beb4b94ec60e3e7ac803bee8277cf0b2403ff04",
+      "bytes": 1770
+    },
+    {
+      "path": "css/sidebar.css",
+      "sha256": "c4cbcc5b9c5004dd5636d46788af2beb45f834452125c252bb46b338dfc569a0",
+      "bytes": 2349
+    },
+    {
+      "path": "database/.htaccess",
+      "sha256": "6d309d0c2913094489e78e501993df9bb763a9f22350559cd1352be9436547d7",
+      "bytes": 18
+    },
+    {
+      "path": "database/CANDIDATE-UPDATES.md",
+      "sha256": "1815132380c31b9a6c9730a3067e662444318b6396fdf30880e614661b87233a",
+      "bytes": 2150
+    },
+    {
+      "path": "database/EXAM-STAGE.md",
+      "sha256": "2c457dd70098ca3f45c064cadbae1edfa2ba5cc42d945759b878b5f7930c34bd",
+      "bytes": 1237
+    },
+    {
+      "path": "database/FEATURE_DATA.md",
+      "sha256": "ce697e7dc9458e3f1805095bc80e458cdc3aca23a10dfa80e1b1287c25853c16",
+      "bytes": 6291
+    },
+    {
+      "path": "database/HR_KPI.md",
+      "sha256": "b1782090e4b13eaa062fc131e29644f675e64195e09a1da4dcd57bc4e751c1da",
+      "bytes": 8429
+    },
+    {
+      "path": "database/KPI_SAMPLE_DATA.md",
+      "sha256": "48021fdb49ad0adae16640340c770b1709364a4cb62cf2ed8a86441e2031153a",
+      "bytes": 3761
+    },
+    {
+      "path": "database/PRODUCTION.md",
+      "sha256": "2989a2414f514b99f589b28a38301c9f9fe193a196b96b0769880f4bfab27b29",
+      "bytes": 6296
+    },
+    {
+      "path": "database/access.sql",
+      "sha256": "1d884386be8e471b4d7ca9176f2aec9c7d2ba4d72edabbdc0264375f5259ea3f",
+      "bytes": 186
+    },
+    {
+      "path": "database/add-exam-stage.php",
+      "sha256": "b8ebdf6d4341e1bb34c65cdddde2d7b0df88cc65e39f305cb9a6b2b74bce22b1",
+      "bytes": 1282
+    },
+    {
+      "path": "database/background-check.sql",
+      "sha256": "0b0c401f7b5deb15261d2b780735c5482b153c7ba421d289bd28fb9882016170",
+      "bytes": 847
+    },
+    {
+      "path": "database/candidate-interviews.sql",
+      "sha256": "fb1b0c8c4a43b067ca96aa52a1ff95b8ed84c7352a3d5ae16c3a36b9edab8a57",
+      "bytes": 3738
+    },
+    {
+      "path": "database/candidate-mrf.sql",
+      "sha256": "0dc84a026b3b77843a3dc6528099c1f666113ac9825b379113ce5e904a9c6042",
+      "bytes": 635
+    },
+    {
+      "path": "database/check-admin-settings.cjs",
+      "sha256": "594f699090d85dac8880a5c2723813c299ae20b49503aa743bd61d4c71a577b6",
+      "bytes": 3638
+    },
+    {
+      "path": "database/check-applicant-access.cjs",
+      "sha256": "7686b5f20234d9ab4d7de4cd5988b31848d1b2be8cc8a1419bf3618951a768c5",
+      "bytes": 125
+    },
+    {
+      "path": "database/check-archive-tabs.cjs",
+      "sha256": "96bf456e6c2a9a3d6aeabe52bbace9218d9f3cc724cef6fee368e7190e4cf4a3",
+      "bytes": 6780
+    },
+    {
+      "path": "database/check-archived-invitations.cjs",
+      "sha256": "8592f6f8652ea3d84a796ea9efd5ca7665bf333fa9054a635e529ccbbc71d6ac",
+      "bytes": 6380
+    },
+    {
+      "path": "database/check-assessment-requirements.cjs",
+      "sha256": "eda28fc1b04c889fb08168dafd23f33d22055bc2e74e5d40b7125d22f637c5e6",
+      "bytes": 9352
+    },
+    {
+      "path": "database/check-candidate-addresses.cjs",
+      "sha256": "848e7110d610c93e6df2ef7f6ce0108e31f6d34c05ba5f575bb0944c22b4c57f",
+      "bytes": 16180
+    },
+    {
+      "path": "database/check-candidate-mrf.cjs",
+      "sha256": "cfda63285dac360bc9bc20176ee2e5f4cd8e4b320a603262dede6ab6a40ba370",
+      "bytes": 19628
+    },
+    {
+      "path": "database/check-candidate-publication.cjs",
+      "sha256": "d94154238850d05f90cd9fc0c7bdd951df56fd04b77999d1a43e25f4e3943060",
+      "bytes": 9480
+    },
+    {
+      "path": "database/check-candidate-recovery.cjs",
+      "sha256": "f824e9422b805b0845d3f606463e6369543319539667142ed040a986fe8e3ea4",
+      "bytes": 23214
+    },
+    {
+      "path": "database/check-candidate-stages.cjs",
+      "sha256": "6712392ef8a21c7068373ce566a88fd56f75cb7a1529a23746db4143b5bbce5c",
+      "bytes": 18901
+    },
+    {
+      "path": "database/check-cif-editor.cjs",
+      "sha256": "eebb975407dfcfb36a5c52370f722786bf836716dbf4f2932cf99d8a71b68213",
+      "bytes": 10203
+    },
+    {
+      "path": "database/check-cif-education-years.cjs",
+      "sha256": "7c9bcfe695bbad9f572dc834af161c1a295c93120da6c1601a45d4c015d678e2",
+      "bytes": 5961
+    },
+    {
+      "path": "database/check-cif-portal.cjs",
+      "sha256": "f76c7705aef35a1e1b6f4e7bf02baaf02298ac73a222cca55cfde066cc5011b0",
+      "bytes": 4768
+    },
+    {
+      "path": "database/check-cif-print-layout.cjs",
+      "sha256": "07a62cb101e09e4078e1c9475228e3696b98ed36d6559d95bd2dfc91e79bbf2b",
+      "bytes": 6800
+    },
+    {
+      "path": "database/check-cif-print.cjs",
+      "sha256": "3b48b254379420c24660f595fa64cd31d03ee3787ef1a23df936bd39be7fda75",
+      "bytes": 10054
+    },
+    {
+      "path": "database/check-current-feature-data.cjs",
+      "sha256": "30e983b5aeed5155d4655652c3bad3334392319820b9394e456e3965fca3810a",
+      "bytes": 11043
+    },
+    {
+      "path": "database/check-dashboard-pairs.cjs",
+      "sha256": "7224c0f9aff68aa206248a4354c12765c65693f5efc1e4625f64d18940234ede",
+      "bytes": 8951
+    },
+    {
+      "path": "database/check-dashboard.cjs",
+      "sha256": "6d052a7f15ffb0c5880a26b912999c32c29ef9f41f1328bafe2cc858142b7edc",
+      "bytes": 14489
+    },
+    {
+      "path": "database/check-demo-browser.cjs",
+      "sha256": "c22f2378284691ddc0979436b574a797afc39338f61d088239e661927b0dc905",
+      "bytes": 20430
+    },
+    {
+      "path": "database/check-department-mrf.cjs",
+      "sha256": "8338e91b9c7a8887df69a2319abad9d180016b5c8461c2072f1b7efd6a94f43f",
+      "bytes": 10833
+    },
+    {
+      "path": "database/check-department.cjs",
+      "sha256": "a6583d73550dae5121da5a7fc3ff92ac1eec5f46191fc04ff6001ec78123d77a",
+      "bytes": 4973
+    },
+    {
+      "path": "database/check-deployed-readonly.cjs",
+      "sha256": "eb10f2d4dc01bcb47693273f4458e0eeef2a64f70ff1cf470dabca435e5b37ad",
+      "bytes": 6743
+    },
+    {
+      "path": "database/check-deployment-profile.cjs",
+      "sha256": "179c36f69ce36a6733ec0fb16792a8a048986ce3842023f7f5a617ff308d5064",
+      "bytes": 17142
+    },
+    {
+      "path": "database/check-desktop-sidebar.cjs",
+      "sha256": "585684c3b7b6e03fed3d4d4a4e1012a0f1281c74c67422faca5084bc1ffc7c62",
+      "bytes": 4481
+    },
+    {
+      "path": "database/check-email-send.cjs",
+      "sha256": "5d023e1cb50934746f7405129add9c21266223b9c52d43cc29896ed79f96b0ab",
+      "bytes": 13704
+    },
+    {
+      "path": "database/check-exam-stage.cjs",
+      "sha256": "694e151510cd2a28dacc79bf14ac439fccf447865301c989ebdbc7c3a87d1508",
+      "bytes": 8046
+    },
+    {
+      "path": "database/check-feature-data.cjs",
+      "sha256": "64b9187155341e8541a3fa9cc1b0db6da1c58e1a39ad5cfab1847561b024c8a1",
+      "bytes": 8771
+    },
+    {
+      "path": "database/check-hr-email.cjs",
+      "sha256": "1d500536f9a2f12dabae276882369d2bbe156acfa063bf1ad2109556ab23673c",
+      "bytes": 17366
+    },
+    {
+      "path": "database/check-hr-staff.cjs",
+      "sha256": "2a9a912dff9ff51e0df4545c217281b75a7e5f7f2419f0e201f5d1d4ff062ebe",
+      "bytes": 13302
+    },
+    {
+      "path": "database/check-job-offer-deployment.cjs",
+      "sha256": "8baf412450ed001c85cf213c00dfe950337f1a0139a12972dc086f6a7617335e",
+      "bytes": 14856
+    },
+    {
+      "path": "database/check-kpi-samples.cjs",
+      "sha256": "10740e2f456cd1209ba7c3f39830c531d5ed81ee553f8d93533e33b9fe03a866",
+      "bytes": 21776
+    },
+    {
+      "path": "database/check-mobile-sidebar.cjs",
+      "sha256": "cc8489763a6af2b6d241693a2443f47a937adb03ccd88b667aef0536e1204a59",
+      "bytes": 4052
+    },
+    {
+      "path": "database/check-mrf-approval-timing.cjs",
+      "sha256": "ae2db0f5913e1f9f95708cd20ddb32a13f317ab8f1e356394c24586432e2c2a4",
+      "bytes": 38307
+    },
+    {
+      "path": "database/check-mrf-approval.cjs",
+      "sha256": "4d6846aeaf1db8573c4ef06ce2ae3d7c0e1f319b4ba6beba969234642ed3c84c",
+      "bytes": 18301
+    },
+    {
+      "path": "database/check-mrf-headcounts.cjs",
+      "sha256": "4560dc893a7c262ee393a40c3bb632fbc399909d79b3a88ead4051dc50a2da94",
+      "bytes": 604
+    },
+    {
+      "path": "database/check-mrf-import.cjs",
+      "sha256": "9f707e656a3353c74a6aebdd13c5546add8c6d649727b8380e874df71bb6a9e4",
+      "bytes": 13965
+    },
+    {
+      "path": "database/check-mrf-requestors.cjs",
+      "sha256": "b5b3834febfd107908d0b7355337ebaaa2a19edc6a8bb9f3037d335e6c59ad01",
+      "bytes": 20977
+    },
+    {
+      "path": "database/check-mrf.cjs",
+      "sha256": "28ba3305b4cd7b8a830364973b81441c15e3428924ae1cfd806dd5222cc0c14a",
+      "bytes": 36237
+    },
+    {
+      "path": "database/check-personal-fields.cjs",
+      "sha256": "5bc570813c9004473b77b2422a851db1fed210f2e231b036738bcc2068a3394f",
+      "bytes": 22019
+    },
+    {
+      "path": "database/check-position-inventory.cjs",
+      "sha256": "1fd89c9dcd347f63ccdf3817bc36d4755c136912106b83ee6a5e8e0670eb59ff",
+      "bytes": 9382
+    },
+    {
+      "path": "database/check-production.php",
+      "sha256": "861aa78569c2b2a71b9a51b2a09eeabc927e56d372aabbc396db543f22e23db4",
+      "bytes": 4249
+    },
+    {
+      "path": "database/check-record-notifications.cjs",
+      "sha256": "39ba6e090ef36eb33cc1349ea43f73d1fbbc567534a3bad3153d17f17dd23241",
+      "bytes": 2110
+    },
+    {
+      "path": "database/check-refreshed-data.cjs",
+      "sha256": "c466af2c7c99e03c62cd0d4b2cc1d01291f850f14b0cbf1d11aed8d98ba66b87",
+      "bytes": 7396
+    },
+    {
+      "path": "database/check-requestor-edit.cjs",
+      "sha256": "b9211f2fae8671a548c68a3cb74d5ce097c9dd66e08388619aaae85c60b587ff",
+      "bytes": 12493
+    },
+    {
+      "path": "database/check-screening-mrf.cjs",
+      "sha256": "e15a61a47538a0f2650b72a41d06f8bab4bebeead9e97ca2c28febd85e13e2a9",
+      "bytes": 12484
+    },
+    {
+      "path": "database/check-screening-workflow.cjs",
+      "sha256": "c0a515fa923beb136df80e72619d6760c34bf0131e525c40bb7fd97890e6956f",
+      "bytes": 20794
+    },
+    {
+      "path": "database/check-session-loading.cjs",
+      "sha256": "b081e35e3bc24a393d49d77b05ceff1bacefc43846582efe1b628cc2e0a181a2",
+      "bytes": 4558
+    },
+    {
+      "path": "database/check-text-format.cjs",
+      "sha256": "428e7afab295b639927367b9ad27ff3cfe9fb07cacfe423c3a5d405509b2cb05",
+      "bytes": 12972
+    },
+    {
+      "path": "database/department.sql",
+      "sha256": "9099454f44295f8fe6ee17c7cbb56a2ccdee6905b036c00659b079c1b3c36681",
+      "bytes": 610
+    },
+    {
+      "path": "database/exam-stage.sql",
+      "sha256": "03b933c0df26e69ef32e21c37422d78c43eee40fbb9b12879ce2c98827243018",
+      "bytes": 865
+    },
+    {
+      "path": "database/feature-data.php",
+      "sha256": "d0111ca4ffb8e1a00a6fc753dadd0550bd7686ae9374ca9546c9e7dbeebf0978",
+      "bytes": 41605
+    },
+    {
+      "path": "database/hr-email.sql",
+      "sha256": "b5b3f5c988eb7f96100d59be42256fe2857affc55d99c55edd388532070e1d6e",
+      "bytes": 3793
+    },
+    {
+      "path": "database/hr-review.sql",
+      "sha256": "7a52221889eee491c1c583503176fde3543fec85b494e9236505e05bdfd87257",
+      "bytes": 525
+    },
+    {
+      "path": "database/hr-staff.sql",
+      "sha256": "318b1add83c063ae45dab08f9ce382f27aaec95613ab31cd7a2378b00720877b",
+      "bytes": 2200
+    },
+    {
+      "path": "database/inspect-cif-pdf.cjs",
+      "sha256": "ccc03ef96ef9485dd4d6ca970d1ae053d302da702392a73674518dc4756f095e",
+      "bytes": 1190
+    },
+    {
+      "path": "database/migrate-applicant-access.php",
+      "sha256": "5a95e0a6948cf65693ba1621870e95c79416a6bcb7c1c3e5874ec4049571ddc6",
+      "bytes": 672
+    },
+    {
+      "path": "database/migrate-personal-fields.php",
+      "sha256": "48240a19caf304bebfd31716c6f7cf5f544f6b9dc7d5d7650e53997aedb217b5",
+      "bytes": 637
+    },
+    {
+      "path": "database/mrf-approval.sql",
+      "sha256": "b8426c55bac02e4deb6471dd240eb3ee7e23e1572af6072e54696f43371a1677",
+      "bytes": 1659
+    },
+    {
+      "path": "database/mrf-hr-ownership.sql",
+      "sha256": "1063defda527d2d8510470c49560ba332338acb6d4f00866b730811cfbb54d05",
+      "bytes": 1335
+    },
+    {
+      "path": "database/mrf-ownership-checks.cjs",
+      "sha256": "0ce2e0de392a05eeeb08eb5be3caeebe0bc0831062485a5b4b52d101b1e3e87e",
+      "bytes": 8087
+    },
+    {
+      "path": "database/mrf.sql",
+      "sha256": "1c5e04013aaf71f7b3080317bb1316b6cae383b7f2c50d97d82fb35f01c558e4",
+      "bytes": 3031
+    },
+    {
+      "path": "database/portal-filter-reset-checks.cjs",
+      "sha256": "8b94f27d0e455abe36c1f5d3a402279166ade9b53a54c8cdf993bd26ab61c514",
+      "bytes": 9447
+    },
+    {
+      "path": "database/rebuild-feature-data.php",
+      "sha256": "2cdbaea8ab2291743f17d5b2f4476b243b815c382d213f543557b35f0638f2f3",
+      "bytes": 4585
+    },
+    {
+      "path": "database/refresh-demo-data.php",
+      "sha256": "be16eed17d3ebec21746b93ba7b2d03fdb7c64ea81706e5ca13895f1b340a078",
+      "bytes": 9521
+    },
+    {
+      "path": "database/rename-background-check.php",
+      "sha256": "b2ea4eba0a002baad039e0f00c04aa5debf48bd4a299cb6d7923be419af2aea4",
+      "bytes": 1420
+    },
+    {
+      "path": "database/schema.sql",
+      "sha256": "613e6f171ea86031be1a85c006e5f3f6103586bb54cbd3184f9da63994c63302",
+      "bytes": 2858
+    },
+    {
+      "path": "database/seed-demo.php",
+      "sha256": "a86ec3fab23f890ee4b3ee22919d2527eaf9ef5f550b6afa5d7d0ab18d2a60b9",
+      "bytes": 13541
+    },
+    {
+      "path": "database/seed-kpi-samples.php",
+      "sha256": "af9a3a9172ec384d38dcbca8e35843258caa17480c4be5cc9e1c7a13d9504432",
+      "bytes": 22297
+    },
+    {
+      "path": "database/seed-trend-demo.php",
+      "sha256": "62c23cc5a985733c05738b874be8a1dd7edc92a97b22b7dd922d172350ad8f81",
+      "bytes": 14135
+    },
+    {
+      "path": "database/setup-candidate-interviews.php",
+      "sha256": "742f52594ac1b2a0c74b154eff00b593f81147b191a9036726a4d028500e41f7",
+      "bytes": 299
+    },
+    {
+      "path": "database/setup-candidate-publication.php",
+      "sha256": "b3e1ff96fec073bf2b82323d9977b851f7b2a15f157f800e8a4922f619950071",
+      "bytes": 968
+    },
+    {
+      "path": "database/setup-candidate-workflow.php",
+      "sha256": "ac4c44aee7103a64a4c7f1c348ea3a3ba95603988bda842e8179f902465f5b93",
+      "bytes": 375
+    },
+    {
+      "path": "database/setup-department.php",
+      "sha256": "65ba2bcbfa3a452cd331c0d00cc4b97c9ad66a3e0eb051fb44947dbba2fc5a2c",
+      "bytes": 1090
+    },
+    {
+      "path": "database/setup-hr-email.php",
+      "sha256": "9c4078f1072a1188eb1f4dfd9cc5568a404597d02657cd734b107f885b1687ec",
+      "bytes": 374
+    },
+    {
+      "path": "database/setup-hr-staff.php",
+      "sha256": "ce53023d59d6b7f17f39f799957f5919ce73e93185499c5b08d882ae706b4119",
+      "bytes": 849
+    },
+    {
+      "path": "database/setup-mrf-approval.php",
+      "sha256": "76fade45533c037ac9a06f71c6f10063d6f6761c5ecd35fa436ab03e5c69c0c9",
+      "bytes": 336
+    },
+    {
+      "path": "database/setup-mrf-hr-ownership.php",
+      "sha256": "224f40b4a3ad115621aa0b0796edaa8e2e510c9e7f87e84e93e33088b16eb567",
+      "bytes": 341
+    },
+    {
+      "path": "database/setup-mrf.php",
+      "sha256": "eb72692ae3a01c20da6e5a58e7c4eb5170f9a5f0eba2ceff7c01bb1919c91726",
+      "bytes": 596
+    },
+    {
+      "path": "database/setup.php",
+      "sha256": "43a5d27c69677130f09f480d2bd45d6263c3a801194a395365b32137cef401a6",
+      "bytes": 1896
+    },
+    {
+      "path": "database/test-admin-settings.php",
+      "sha256": "8d36cdf8de875f47958f2a8fb46f30ec6884e3d2588c20f7056e4118a911fba4",
+      "bytes": 6576
+    },
+    {
+      "path": "database/test-candidate-default-sort.cjs",
+      "sha256": "68fad8891bb29f8d3d9b7b104cabf0a489ffd5affe1fc553de26385dfddad62b",
+      "bytes": 1457
+    },
+    {
+      "path": "database/test-candidate-mrf-fixture.php",
+      "sha256": "c30b7b752c93abe3881f1fed36e6b2d73f0c7d2cd55e69b262b4af494be0fb95",
+      "bytes": 4041
+    },
+    {
+      "path": "database/test-candidate-publication.php",
+      "sha256": "6bd6a8e8c973567b25d268877eddd0779fc3c0e9b23df642923e965b5268eabe",
+      "bytes": 7751
+    },
+    {
+      "path": "database/test-candidate-release-order.php",
+      "sha256": "e38074ae4860f5b4042fb5ff038b63c958b280cbf6691964b5ac1092928c8280",
+      "bytes": 4495
+    },
+    {
+      "path": "database/test-candidate-roadmap.php",
+      "sha256": "3eb5389b6eb2d1dcacdd2ad4d643212a4e3236bfdaabb888074650363aa5f416",
+      "bytes": 9626
+    },
+    {
+      "path": "database/test-candidate-summary-cards.cjs",
+      "sha256": "0161ad373380d12f81efef977e65469e25272ac913bce355c6fc44a791b2c6d0",
+      "bytes": 2803
+    },
+    {
+      "path": "database/test-cif-education-years.php",
+      "sha256": "03be2b7eb95fd8153b26252a608980976db772b22bde71b4f6f1636612ddce17",
+      "bytes": 4276
+    },
+    {
+      "path": "database/test-cif-print-content.php",
+      "sha256": "07abf511258cc864403c281fa11f78a5301709ca655709dccf6245ba7ef3a258",
+      "bytes": 3614
+    },
+    {
+      "path": "database/test-dashboard-pairs-fixture.php",
+      "sha256": "e6f6bb00a86ab008dc32d45a388fbfd8e8d7abbbae86ac4e4b48f8ade9dc9323",
+      "bytes": 10207
+    },
+    {
+      "path": "database/test-dashboard-summary-cards.cjs",
+      "sha256": "27ba79551116178ba63372b2b007dba851dbe3473673def10272096f290c4d73",
+      "bytes": 2673
+    },
+    {
+      "path": "database/test-database-config.php",
+      "sha256": "ae548aba3405a30a48920a4e5928b513b75abf438e8fda3be9073cb8fb569a70",
+      "bytes": 2104
+    },
+    {
+      "path": "database/test-department-coverage.php",
+      "sha256": "a8ee252c3967b51af4b641dd86d89764b1af834da08f26da0912dc4ee2cd916a",
+      "bytes": 2771
+    },
+    {
+      "path": "database/test-deployment-optional-id.php",
+      "sha256": "31594841a44e479f9b8e7d299dead2747dceb0ad98ee2bcbb403e1fb98fafce4",
+      "bytes": 4358
+    },
+    {
+      "path": "database/test-exam-roadmap.php",
+      "sha256": "c2fc888e3f7e37400340e299dc344cdac1dc1cde208c26f922ca321eed18f4d5",
+      "bytes": 3011
+    },
+    {
+      "path": "database/test-feature-rebuild.php",
+      "sha256": "bf7bf25f326caf4fd07713dd1c290712ed85e538069b2689925b1447dc620a4f",
+      "bytes": 3930
+    },
+    {
+      "path": "database/test-hr-assessment-scores.php",
+      "sha256": "e212884b4a7589a26e457184cf303d0b5b83b386d0d9190e7e97b674c8a6f785",
+      "bytes": 4859
+    },
+    {
+      "path": "database/test-invitation-expiry.php",
+      "sha256": "fc24ce7643a7f1a2a1013c039a66119986af3afc9d0b8991cc52ed1e2ad49bf4",
+      "bytes": 1436
+    },
+    {
+      "path": "database/test-invitation-filter-collation.php",
+      "sha256": "9a26a417f8c341c425f16fb2b01ebf4a15d761d1078d5425fdef06b73b951e4b",
+      "bytes": 3697
+    },
+    {
+      "path": "database/test-invitations.php",
+      "sha256": "b58f21b7341b93643fc41549940dc0a79550b6220a054feb326815fc853a702f",
+      "bytes": 37421
+    },
+    {
+      "path": "database/test-kpi-coverage.php",
+      "sha256": "3a5f45aff88764b72c7b01909c0906be7accfb2a118a418a3d9c3250e7a1ceb4",
+      "bytes": 2407
+    },
+    {
+      "path": "database/test-kpi-day-display.cjs",
+      "sha256": "f605ba63a185afb3985d6ef56720fd8ab031b7bbc0e1d6d7648eaf4225502087",
+      "bytes": 823
+    },
+    {
+      "path": "database/test-kpi-table-controls.php",
+      "sha256": "554499a07e64cd0ea7f748d2e8ef0d771811be99e6ee5ffa66fd3ddbf1670dae",
+      "bytes": 3016
+    },
+    {
+      "path": "database/test-mail-branding.php",
+      "sha256": "aa97a16d2ce71d08ca9fe3214cef46110439dc5fee7786fa314e5ec71b4075c1",
+      "bytes": 1674
+    },
+    {
+      "path": "database/test-mail-origin.php",
+      "sha256": "5745ed117471403fe6d5f5edf5265333fadf5513c6aa751925a4884e1fdaadd1",
+      "bytes": 1245
+    },
+    {
+      "path": "database/test-mail-transport.php",
+      "sha256": "edcec135676bc98bc8ae18614472e82b1c1f3030daadf8063901af27a53bc811",
+      "bytes": 12102
+    },
+    {
+      "path": "database/test-mrf-approval-timing.php",
+      "sha256": "1dcae712487669f2681b45e6700d1136bed299c1057d6109fce0fd2842f95e2b",
+      "bytes": 2160
+    },
+    {
+      "path": "database/test-mrf-document.php",
+      "sha256": "22e746568f233a315bdf92e1982b05645c0b2f88442c8aa144ff52de88b13544",
+      "bytes": 5649
+    },
+    {
+      "path": "database/test-mrf-filter-collation.php",
+      "sha256": "aa54aa60db92752dc69b23ca3fe9ea6572cd231e1091deb2d9370de3ea595b35",
+      "bytes": 2105
+    },
+    {
+      "path": "database/test-mrf-fixture.php",
+      "sha256": "93f34ba1ca513bb539ffd832fda14d662f1e91db17c38db53b5de2d4b9cd7f7d",
+      "bytes": 2376
+    },
+    {
+      "path": "database/test-mrf-headcounts.php",
+      "sha256": "bcb97dffddf138536faacc7577ae662b4b905d9db9db4c43e784eb4ab309055b",
+      "bytes": 8762
+    },
+    {
+      "path": "database/test-mrf-hr-kpi.php",
+      "sha256": "09dabdfa04676f2be191a6c021c3161e0a09971ed53c6975b91ba84fbea93d3c",
+      "bytes": 18031
+    },
+    {
+      "path": "database/test-mrf-status.php",
+      "sha256": "fea2cb9ece9c8891595ca3a245dfbe6d84732e552268d761006e7b692a8ccb8e",
+      "bytes": 1142
+    },
+    {
+      "path": "database/test-mrf-summary-cards.cjs",
+      "sha256": "650dc06144ea1d3e44bf04e7112d50df9000611928ebaf08f7130c9e83ba1691",
+      "bytes": 2444
+    },
+    {
+      "path": "database/test-optional-government-ids.php",
+      "sha256": "9b453abf56734b737346c67260ccb14f50ab3a0bfd488eb7425c3efcb1b57a9c",
+      "bytes": 3580
+    },
+    {
+      "path": "database/test-position-inventory.php",
+      "sha256": "678e1bf74d82098df80c3082c90d21d3b2d5c9d22fed95a6bf8c4029d6fa5726",
+      "bytes": 1223
+    },
+    {
+      "path": "database/test-text-format.php",
+      "sha256": "74e0b2b07a9c3d1c8b1068e8fbf356fd3d6425278bed62e1d99c17f5ea441478",
+      "bytes": 5407
+    },
+    {
+      "path": "database/test-tracker-interview-label.php",
+      "sha256": "87ff68778f590edfdfceca5fbfee526ef65b03884c4ddbbdde27e7e7cc7fde9c",
+      "bytes": 2633
+    },
+    {
+      "path": "database/test-tracker-required-assessments.php",
+      "sha256": "6417f4656ed3a7c0c71710c8830ababd3a0a34d0e7e478e6685cda4f18b54cff",
+      "bytes": 9564
+    },
+    {
+      "path": "database/test-tracker-route-publication.php",
+      "sha256": "0a0b073d538902d957eff56de447f21cbed8c6bdd276b2222e9c70f24eaf3d55",
+      "bytes": 5564
+    },
+    {
+      "path": "database/test-tracker-update-times.php",
+      "sha256": "3247f4cd545d48dce8579169164587a007a9fbcafba1ef35fdd45b9c789cd0d6",
+      "bytes": 4785
+    },
+    {
+      "path": "database/test-trend.php",
+      "sha256": "fefaaf9f652493d3963cf19bb7ab2fc24b725369dad5fc071757defad336aec2",
+      "bytes": 8419
+    },
+    {
+      "path": "database/upgrade-since-7c1c431.sql",
+      "sha256": "e73e040a73d8a270b9d18fd3758621c5244580061c5e6481706515c9a63c6692",
+      "bytes": 8684
+    },
+    {
+      "path": "database/verify-demo-data.php",
+      "sha256": "1a902ac929dd387235ea865499f6b5b24937e40ee0cf3343f88a947c62bd0779",
+      "bytes": 9361
+    },
+    {
+      "path": "database/verify-feature-data.php",
+      "sha256": "8bc86a7f41c29331a55a96e89b0187a3cd76ae8ec5d7b901856dea913eca7eb9",
+      "bytes": 10032
+    },
+    {
+      "path": "deliverables/APEC Homes Recruitment Portal - Revision Checklist.docx",
+      "sha256": "e08742d3f73eebc630d54dcd0a1203f74ff60ec3cb5fddf44b2a162bd01c7b7f",
+      "bytes": 18925
+    },
+    {
+      "path": "includes/.htaccess",
+      "sha256": "6d309d0c2913094489e78e501993df9bb763a9f22350559cd1352be9436547d7",
+      "bytes": 18
+    },
+    {
+      "path": "includes/access-http.php",
+      "sha256": "3c5255e744ffb6df2d742bddcad47f01c5c18717cf4c9d670e4ba05d6a9d07cb",
+      "bytes": 1013
+    },
+    {
+      "path": "includes/applicant-access.php",
+      "sha256": "8fdeaf76b4f6e416ccc1c95845828d94e695857927e982cb131e0656c6c35181",
+      "bytes": 12286
+    },
+    {
+      "path": "includes/assets.php",
+      "sha256": "605b703ef5e4a16244cce135f516bd182c6a6283fe42fefab4159a363699d544",
+      "bytes": 711
+    },
+    {
+      "path": "includes/bootstrap.php",
+      "sha256": "0717adb270be81151c681f4e679c56ef307822c2602e53ce3f3e7073d3f6a28f",
+      "bytes": 133
+    },
+    {
+      "path": "includes/branding.php",
+      "sha256": "e93e36f2ee894431056a6aa912f5b8128744e88d36325944e2737ef86f04cd5a",
+      "bytes": 707
+    },
+    {
+      "path": "includes/candidate-address.php",
+      "sha256": "d1f91d82d48e4838d5dd53bd2140ee58b885bf271acb3df5b28f8cca6edcb85c",
+      "bytes": 2223
+    },
+    {
+      "path": "includes/candidate-analytics.php",
+      "sha256": "40a40278197ffce75ae7b894a47cfe406c82df061bf05c6f988c934f1090ebbf",
+      "bytes": 11220
+    },
+    {
+      "path": "includes/candidate-deployment.php",
+      "sha256": "3eb4e37133d4c41e6aa5dd1b5af10c1abbf316ee320db7e863e02401ee7c5b05",
+      "bytes": 10109
+    },
+    {
+      "path": "includes/candidate-forecast.php",
+      "sha256": "fea6b33f87e17208811a9d93e0d30f5e9c76acf56f1b7ef90b82f3ebec707b5d",
+      "bytes": 3417
+    },
+    {
+      "path": "includes/candidate-interviews.php",
+      "sha256": "0adce3fe5a8af90d0ac40fa8b63242427458e282e2ff74eadd8c2933079ad9e0",
+      "bytes": 12251
+    },
+    {
+      "path": "includes/candidate-mrf.php",
+      "sha256": "8babb43fb369256ce2f9e77e3247a832ab820718d13867afcc2e1e38bc6c38f8",
+      "bytes": 6105
+    },
+    {
+      "path": "includes/candidate-portal.php",
+      "sha256": "a468dedc7e04cc8746656e4cd469b6f023a32532974e0f43152643021b114215",
+      "bytes": 6688
+    },
+    {
+      "path": "includes/candidate-publication.php",
+      "sha256": "028ae493df3abf928c8b2768ad6311a83b329fdd36a0792e2e73126891c5fe40",
+      "bytes": 9870
+    },
+    {
+      "path": "includes/candidate-roadmap.php",
+      "sha256": "4d9feada94e698360d7d877f6c4662c7ffe66b29ce94b7ffda69ae17d8c9ed23",
+      "bytes": 8132
+    },
+    {
+      "path": "includes/candidate-schedule.php",
+      "sha256": "17e3e52a6fd34995d8938fab05938a5bcd559f54539a22bc839cbc836fc9e2dd",
+      "bytes": 2884
+    },
+    {
+      "path": "includes/candidate-statuses.php",
+      "sha256": "d010a4e2c07dc0d3d7da11ae9f6cb292811ef3b3b304cae832893bff9b05ca36",
+      "bytes": 6763
+    },
+    {
+      "path": "includes/candidate-storage.php",
+      "sha256": "2e73ce92b4faa03222274d88db6532901942fafbd44502006b5ae959111edf4d",
+      "bytes": 11468
+    },
+    {
+      "path": "includes/candidate-update-dialog.php",
+      "sha256": "1221667fe75e54c1ce3674b8b68382c3559a37807341dd6500a226207d05121e",
+      "bytes": 1855
+    },
+    {
+      "path": "includes/candidate-update-email.php",
+      "sha256": "584bb0965f38ea335675f0df82e10e085ae9512baa9b55764ab05855e5d69310",
+      "bytes": 9729
+    },
+    {
+      "path": "includes/candidate-view.php",
+      "sha256": "df1ec7137b66e521906fe2fecffdb2e80d9e4d8414c3cdbbc32fba8a42f083ed",
+      "bytes": 8525
+    },
+    {
+      "path": "includes/cif-editor.php",
+      "sha256": "e962f152028cbc4db599aaa41e0ad1218e9be96011b1c3a1290aee3f785f0ebf",
+      "bytes": 21124
+    },
+    {
+      "path": "includes/cif-education.php",
+      "sha256": "7e34aab2f5c2bb33b366e0ea3d4cccf31d24a84a266cd80a74c2dfa1048dbc52",
+      "bytes": 3042
+    },
+    {
+      "path": "includes/cif-fields.php",
+      "sha256": "ba02878b6f4f665d25db83084735a28dd93b695b3d62e8bf7932a01ad939ef35",
+      "bytes": 7144
+    },
+    {
+      "path": "includes/cif-photo.php",
+      "sha256": "457b3477b4cce713417ce7631db4f0729eb7eb8b4a0d5a6c2ec4fd17a2690a85",
+      "bytes": 1949
+    },
+    {
+      "path": "includes/cif-print.php",
+      "sha256": "edd6274cb2e166491adfa448dc6af964b1cb03fab2e13210a0a720abe23cc94e",
+      "bytes": 9670
+    },
+    {
+      "path": "includes/cif-record-content.php",
+      "sha256": "47b6b4bcd6ce30a99536a93fdbc93301a46bc0f1970386768d762e54f8c07c18",
+      "bytes": 1894
+    },
+    {
+      "path": "includes/department-account.php",
+      "sha256": "3f031fdd4b76f11add7fa580dc88f8a75c66636d554f30fac59a8407200cf718",
+      "bytes": 1635
+    },
+    {
+      "path": "includes/hiring-positions.php",
+      "sha256": "dd770a282b83696d0f0ad46a920d28f5528523d8b22f3550580724629dcb3408",
+      "bytes": 2084
+    },
+    {
+      "path": "includes/hr-email-content.php",
+      "sha256": "e96450dd63f875f9a6e094a165e9c5a9f2a34b6eefc2303717e8d42f0f4621d8",
+      "bytes": 7896
+    },
+    {
+      "path": "includes/hr-email.php",
+      "sha256": "1d688d6240bc7a80ec113e046585db0ba63f1ecd75fd0bb0025c38907b73eba8",
+      "bytes": 11889
+    },
+    {
+      "path": "includes/hr-fields.php",
+      "sha256": "c3394207d7610f3edfd407276ce6b07e1506e0b1a2545b9469d157f2ba24cae7",
+      "bytes": 6622
+    },
+    {
+      "path": "includes/hr-kpi.php",
+      "sha256": "2bc2dafbe72dae2e54dee92490bd83365217107e9ae720a3f8e64f145f5ef348",
+      "bytes": 19069
+    },
+    {
+      "path": "includes/hr-profile.php",
+      "sha256": "f8d55ccc9f2baa4a419aa9642bd458785f14a5a5dc11b538f139e8cfca97a22a",
+      "bytes": 1776
+    },
+    {
+      "path": "includes/hr-staff-content.php",
+      "sha256": "495bf6fa6e7e0c0a6f8d11a1be53dc9d8ec947c6ed055d728aca9921c16411ed",
+      "bytes": 12791
+    },
+    {
+      "path": "includes/hr-staff.php",
+      "sha256": "b1f51f2e7e517259ad13b402ef05415a4bbe04b4ad89e38aee2b7f49b4913419",
+      "bytes": 10386
+    },
+    {
+      "path": "includes/mail-branding.php",
+      "sha256": "489fda8a4c15c3999bb64ef572b0deb5b07d6793ab6aaef832c39de11e321d7d",
+      "bytes": 1716
+    },
+    {
+      "path": "includes/mail-config.php",
+      "sha256": "279ea3338d02d220307f61370457c640d9fb9bde7a9f2b54b770d6b3188c2a3d",
+      "bytes": 879
+    },
+    {
+      "path": "includes/mail-management.php",
+      "sha256": "1f13da91e0940f33774b2f2e9b254bb1d51223063f59c3c10c7a21e6bd4d24ca",
+      "bytes": 6581
+    },
+    {
+      "path": "includes/mail-transport.php",
+      "sha256": "b93aee42bb4198547aff643d4f538511f9bf450c6028f8b1cd291a13ebe52c9d",
+      "bytes": 13382
+    },
+    {
+      "path": "includes/mrf-approval.php",
+      "sha256": "96d6cb45d07572715f894248a67cc5dae41b19faf90bd89f340e217c338cbdee",
+      "bytes": 2445
+    },
+    {
+      "path": "includes/mrf-department.php",
+      "sha256": "1d1d136d716ed33806d77c95a9d199bc4553bbeb766a714a3ceaafa4c5f6f5a0",
+      "bytes": 6166
+    },
+    {
+      "path": "includes/mrf-document.php",
+      "sha256": "9aaefdb51554c6b6c6a54c679288cfe26e6e49219d76742419a7ccda75fd58a7",
+      "bytes": 19351
+    },
+    {
+      "path": "includes/mrf-headcounts.php",
+      "sha256": "ef8a12aa28e29e9ed4e161b6a2046ef5ac1b1b31c81e0450feaf20f9d17db277",
+      "bytes": 3323
+    },
+    {
+      "path": "includes/mrf-ownership.php",
+      "sha256": "3ecce5dcda04fcda68fff2e1b2b8b41e690f119aaf38f526131a576c3f32efbe",
+      "bytes": 6059
+    },
+    {
+      "path": "includes/mrf-record-content.php",
+      "sha256": "fa56e0ddeb704ff571c46fc33adca42a758ae3e85e680865da102e8e15d4714e",
+      "bytes": 10832
+    },
+    {
+      "path": "includes/mrf-record.php",
+      "sha256": "ff2d58e58de2f0e98f72691df6897597e7301bda917349dcfeb9434b3147ae47",
+      "bytes": 1313
+    },
+    {
+      "path": "includes/mrf-requestors.php",
+      "sha256": "665ae78d7537394d4e545d3f85ce38b6b90243669a4d643b17c29ceff0d6af86",
+      "bytes": 11385
+    },
+    {
+      "path": "includes/mrf-view.php",
+      "sha256": "0596db8d731e90b16e2a41e8acba14053843a502f62bcb601a354fc547df6f50",
+      "bytes": 20419
+    },
+    {
+      "path": "includes/mrf.php",
+      "sha256": "71816ac01336938afbd11ec2e5278824675f7ecbaa5af2afb37b1ad284f61558",
+      "bytes": 16229
+    },
+    {
+      "path": "includes/portal-icons.php",
+      "sha256": "2bcd1cb7b7c7dc5224422d7771f24ab84da198c0c8d8c42dbb02ad689167ae83",
+      "bytes": 3284
+    },
+    {
+      "path": "includes/recruitment-dashboard.php",
+      "sha256": "5558fb2795529872e4201d7a15f8d123e55e764e8f99acf39f285cffdd9f9c8b",
+      "bytes": 6971
+    },
+    {
+      "path": "includes/session-loading.php",
+      "sha256": "9af1ccb366b08e12df77d7c7a85160505b3ab3552f64e09870ceb36f3a5fd5ea",
+      "bytes": 628
+    },
+    {
+      "path": "includes/session.php",
+      "sha256": "272e175b8a19f6005d8daf37d0985e6ebb652113a78e2b89b0c88e05bdc7fe36",
+      "bytes": 2897
+    },
+    {
+      "path": "includes/text-format.php",
+      "sha256": "b84fe729743c042f9df8fe156a318903e43426df0aa8f0c71a219c20a0c4f635",
+      "bytes": 4334
+    },
+    {
+      "path": "index.php",
+      "sha256": "2442ac15831746ed0e57cd428adaf4c5432343aec7a78e36156336da03f51a4b",
+      "bytes": 53
+    },
+    {
+      "path": "js/access.js",
+      "sha256": "255597b71509df6acf707cc2ec33f75dc753e99dd533f56370e32c9b57c731d1",
+      "bytes": 5136
+    },
+    {
+      "path": "js/admin-shell.js",
+      "sha256": "2f7b44ec2a218ad89bf66b846b783216429be2ccb8e170d055d3017e577d1970",
+      "bytes": 6751
+    },
+    {
+      "path": "js/admin.js",
+      "sha256": "49edf683daef768e9ad96c304da9d7c40b0f5fa8e3b1db7417f9e2af1e1655d2",
+      "bytes": 48662
+    },
+    {
+      "path": "js/candidate-deployment.js",
+      "sha256": "1945a5ce6e97cf7e89aafc0ae307b37d9e13e964e98715f7095c1f65d362f7e1",
+      "bytes": 8942
+    },
+    {
+      "path": "js/candidate-mrf.js",
+      "sha256": "1c27bf93abeec62376b9d63fbe2d6a9d65f02bdfdf9a1e9354ae41cd5698f725",
+      "bytes": 7794
+    },
+    {
+      "path": "js/candidate-stages.js",
+      "sha256": "7add5c165b99aa556ff98998c473992c910282e867b5e84d533a74f6c51aa9a9",
+      "bytes": 7750
+    },
+    {
+      "path": "js/candidate-tracking.js",
+      "sha256": "fbd78ef46bc565bd2e6507264ac65df0242a623a6b21bb34b575486bd2b85049",
+      "bytes": 7656
+    },
+    {
+      "path": "js/candidate-updates.js",
+      "sha256": "7ad47fd38de898f68a5ece7586d4582fe1d9a027f0eea6018e0b95122095e257",
+      "bytes": 5158
+    },
+    {
+      "path": "js/candidate.js",
+      "sha256": "19c0ddddbf0d2461961b748742bd5f121a43401e13f5db3f6e50cbf4ec4d7662",
+      "bytes": 16039
+    },
+    {
+      "path": "js/cif-photo.js",
+      "sha256": "4333d3e9a3d558b5a502028e2b355603d3aa40e6c014cbdbb92793536936d8f1",
+      "bytes": 2573
+    },
+    {
+      "path": "js/cif-record.js",
+      "sha256": "5cf9b12e2f52f909bdff1221d27cadf12802f453f4b912557df3045ae3f6cd9b",
+      "bytes": 19700
+    },
+    {
+      "path": "js/department-coverage.js",
+      "sha256": "79ee2e5ca8421fbb2cc7f878f3291f887c3c6dffbc5f32f60ac47b7346f461af",
+      "bytes": 2797
+    },
+    {
+      "path": "js/department-dashboard.js",
+      "sha256": "f7e93ddf58aa8f07fd9dd7ccc703f8b7696f96de144c04df124d2cddee14a117",
+      "bytes": 5216
+    },
+    {
+      "path": "js/department.js",
+      "sha256": "70fce832f4d23572582eb27a2ace328911841e2f361a7643c99a0c12432b2091",
+      "bytes": 6446
+    },
+    {
+      "path": "js/hr-email.js",
+      "sha256": "94fd2a87e6be68f39d64393eb2a22cbf3961857e990bd3f0669b80582e598ae5",
+      "bytes": 23084
+    },
+    {
+      "path": "js/hr-profile.js",
+      "sha256": "c17942e73eecb5e87e3dda15773f2608e54c7b3d6ad334abcf0b2df40b2d1faa",
+      "bytes": 3846
+    },
+    {
+      "path": "js/hr-scores.js",
+      "sha256": "9daf80c95f181fbcba18f6be3c93d1acb50303315fbd48183ef241cea70b4f82",
+      "bytes": 879
+    },
+    {
+      "path": "js/hr-staff.js",
+      "sha256": "3a2a262821663e9f34a8e778b8c1afd8562a07a781487a6571bbaa405baa935d",
+      "bytes": 23835
+    },
+    {
+      "path": "js/mrf-approval.js",
+      "sha256": "6c62fc368958a8c23c16019acb7ff303c1f76d4211fc4f001e6d7702c853caf6",
+      "bytes": 4794
+    },
+    {
+      "path": "js/mrf-form.js",
+      "sha256": "09e8a6173f622e5f6dfe4ed86e4e2a7c38ae497a1f3b8b5b0183a704d30570bb",
+      "bytes": 7821
+    },
+    {
+      "path": "js/mrf-import.js",
+      "sha256": "0a58d70c1e20acf9891b7dae2ac96a65b9e21a1c4ae1c2298097d99de0456d8d",
+      "bytes": 6987
+    },
+    {
+      "path": "js/mrf-record.js",
+      "sha256": "4fab69dfbd84c83c6c0c55d8b5a1f4126be4c4adcf4069e34f3ba9b020e7b254",
+      "bytes": 7665
+    },
+    {
+      "path": "js/mrf-requestors.js",
+      "sha256": "24c1d3ac670cdf3725a7fb32dc4c47f9cd8bb1e20c5fff6d94168bde734abe40",
+      "bytes": 10048
+    },
+    {
+      "path": "js/mrf.js",
+      "sha256": "33dcd62fcab7d3d1e07d6d2e9ab78c62615d5115243d1d775c404e75ba1c2edf",
+      "bytes": 14292
+    },
+    {
+      "path": "js/position-picker.js",
+      "sha256": "0c9de55ff91dccabbb29e869efd24d2067dc90eb103b6902149aa943e30f355c",
+      "bytes": 4239
+    },
+    {
+      "path": "js/sidebar.js",
+      "sha256": "ea10cff400a4a80ba58a6cc3a81299b011e9230cb2650da43c2b4bacd5fbf0d7",
+      "bytes": 3434
+    },
+    {
+      "path": "pages/admin/index.php",
+      "sha256": "685fc3461de8557dac76681bcdbe24e46c647bd58e4f391bac129e11d67515d9",
+      "bytes": 30714
+    },
+    {
+      "path": "pages/admin/mrf.php",
+      "sha256": "29c9de96e10e280e9e0967ab7284d151915e1e09c2b232bd5118f6b71327c151",
+      "bytes": 115
+    },
+    {
+      "path": "pages/admin/record.php",
+      "sha256": "4385c9e73e5ba3c85edee3f469534af70d77a7a48fd0c7927050a7fb7b04da29",
+      "bytes": 925
+    },
+    {
+      "path": "pages/candidate/index.php",
+      "sha256": "d2d71cf4518036dd7a2fe148b2e26a40d56d30a5262dfc94196edfd0d72094bb",
+      "bytes": 16073
+    },
+    {
+      "path": "pages/department/index.php",
+      "sha256": "20538d3497c3c26789d70cf8b93bf458ae70d1248eb0362c555f7f5e29a6494b",
+      "bytes": 12624
+    },
+    {
+      "path": "pages/department/mrf-form.php",
+      "sha256": "5fdb2b1e2c9892986d2260679e04a769a89a9f13f3e452db3dc2427a72c11b34",
+      "bytes": 398
+    },
+    {
+      "path": "pages/department/mrf.php",
+      "sha256": "8ce872dbc6b5ade28d221e94183626cb6066b84aef52e7b415c8d090fed8e66c",
+      "bytes": 120
+    },
+    {
+      "path": "vendor/.htaccess",
+      "sha256": "feee35c918f64764d1879889df1b6f30de0fb58735bb3d9dd0d94d13f88ac675",
+      "bytes": 20
+    },
+    {
+      "path": "vendor/PHPMailer/COMMITMENT",
+      "sha256": "f78706367e9f16b7fcf137d2ce1b961340ffe7a05d7006583f177d1abbce5d4d",
+      "bytes": 2138
+    },
+    {
+      "path": "vendor/PHPMailer/LICENSE",
+      "sha256": "510ccb0ba9b0a9bf99343901040a8ec42f92310704203d2068cea815cbbabb8f",
+      "bytes": 27030
+    },
+    {
+      "path": "vendor/PHPMailer/SOURCE.md",
+      "sha256": "13480114cf8cdc16c6d302bc68ab2f0b5f6def70702e8c7cf0ec71f56c75fcf3",
+      "bytes": 338
+    },
+    {
+      "path": "vendor/PHPMailer/VERSION",
+      "sha256": "4a0613c323679b3da0d1896411951513e0c9ef017b0de2a1ff449005f0ad2b29",
+      "bytes": 7
+    },
+    {
+      "path": "vendor/PHPMailer/src/Exception.php",
+      "sha256": "eeee4055f266e8370208f8cb6102f5fbf9085a1655ac2b89762ba6123289d580",
+      "bytes": 1296
+    },
+    {
+      "path": "vendor/PHPMailer/src/PHPMailer.php",
+      "sha256": "d2c9d0a0b06d00d472a6d238b4dcdd2d5fc9fac66ec73405db5a7a12d5e551c2",
+      "bytes": 201941
+    },
+    {
+      "path": "vendor/PHPMailer/src/SMTP.php",
+      "sha256": "7b9d165c897518947bfcfb6436544c0b28cbf6b59ce4e32e1799b8e3b89bd421",
+      "bytes": 55246
+    }
+  ]
+}

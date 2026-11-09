@@ -1,0 +1,372 @@
+{
+  "fictional_candidates": 1000,
+  "samples_per_endpoint": 5,
+  "results": [
+    {
+      "runtime": "laravel",
+      "opcache": false,
+      "timings": {
+        "html": {
+          "median_ms": 105.18,
+          "samples_ms": [
+            106.15,
+            104.41,
+            104.97,
+            138.61,
+            105.18
+          ]
+        },
+        "state": {
+          "median_ms": 119.49,
+          "samples_ms": [
+            119.49,
+            108.21,
+            131,
+            106.09,
+            130.46
+          ]
+        },
+        "badges": {
+          "median_ms": 125.47,
+          "samples_ms": [
+            132.08,
+            125.47,
+            125.99,
+            109.29,
+            109.9
+          ]
+        },
+        "dashboard": {
+          "median_ms": 205.18,
+          "samples_ms": [
+            205.18,
+            234.24,
+            195.54,
+            194.43,
+            287.44
+          ]
+        },
+        "candidates": {
+          "median_ms": 117.05,
+          "samples_ms": [
+            117.05,
+            115.34,
+            116.72,
+            140.01,
+            117.71
+          ]
+        },
+        "invitations": {
+          "median_ms": 115.89,
+          "samples_ms": [
+            113.06,
+            116.52,
+            123.82,
+            114.25,
+            115.89
+          ]
+        },
+        "mrfs": {
+          "median_ms": 114.29,
+          "samples_ms": [
+            111.55,
+            112.01,
+            140.18,
+            114.29,
+            130.1
+          ]
+        },
+        "kpi": {
+          "median_ms": 116.15,
+          "samples_ms": [
+            116.15,
+            134.02,
+            111.38,
+            112.51,
+            149.89
+          ]
+        },
+        "templates": {
+          "median_ms": 113.89,
+          "samples_ms": [
+            122.13,
+            115.48,
+            112.36,
+            113.89,
+            113.87
+          ]
+        }
+      },
+      "navigation": {
+        "list": {
+          "median_ms": 282.93,
+          "samples_ms": [
+            220.13,
+            283.01,
+            282.93
+          ]
+        },
+        "gen": {
+          "median_ms": 249.61,
+          "samples_ms": [
+            249.97,
+            233.13,
+            249.61
+          ]
+        },
+        "dash": {
+          "median_ms": 416.24,
+          "samples_ms": [
+            349.75,
+            416.24,
+            416.47
+          ]
+        }
+      }
+    },
+    {
+      "runtime": "laravel",
+      "opcache": true,
+      "timings": {
+        "html": {
+          "median_ms": 24.83,
+          "samples_ms": [
+            46.7,
+            24.83,
+            24.45,
+            23.02,
+            35.25
+          ]
+        },
+        "state": {
+          "median_ms": 24.41,
+          "samples_ms": [
+            24.41,
+            23.73,
+            23.76,
+            45.03,
+            27.47
+          ]
+        },
+        "badges": {
+          "median_ms": 26.02,
+          "samples_ms": [
+            40.05,
+            54.08,
+            26.02,
+            24.73,
+            25.1
+          ]
+        },
+        "dashboard": {
+          "median_ms": 148.56,
+          "samples_ms": [
+            105.12,
+            148.56,
+            178.56,
+            169.57,
+            128.98
+          ]
+        },
+        "candidates": {
+          "median_ms": 29.08,
+          "samples_ms": [
+            36.4,
+            26.81,
+            29.53,
+            29.08,
+            27.15
+          ]
+        },
+        "invitations": {
+          "median_ms": 28.94,
+          "samples_ms": [
+            27.98,
+            34.57,
+            28.94,
+            27.24,
+            52.14
+          ]
+        },
+        "mrfs": {
+          "median_ms": 26.59,
+          "samples_ms": [
+            25.17,
+            36.38,
+            27.12,
+            26.59,
+            24.78
+          ]
+        },
+        "kpi": {
+          "median_ms": 42.76,
+          "samples_ms": [
+            24.23,
+            42.76,
+            47.97,
+            46.83,
+            27.85
+          ]
+        },
+        "templates": {
+          "median_ms": 50.38,
+          "samples_ms": [
+            29.81,
+            50.38,
+            32.49,
+            65.56,
+            63.9
+          ]
+        }
+      },
+      "navigation": {
+        "list": {
+          "median_ms": 136.62,
+          "samples_ms": [
+            136.62,
+            133.2,
+            149.81
+          ]
+        },
+        "gen": {
+          "median_ms": 149.78,
+          "samples_ms": [
+            149.78,
+            149.79,
+            116.39
+          ]
+        },
+        "dash": {
+          "median_ms": 233.11,
+          "samples_ms": [
+            266.08,
+            215.96,
+            233.11
+          ]
+        }
+      }
+    },
+    {
+      "runtime": "vanilla-php",
+      "opcache": true,
+      "timings": {
+        "html": {
+          "median_ms": 3.59,
+          "samples_ms": [
+            4.14,
+            3.73,
+            3.41,
+            3.42,
+            3.59
+          ]
+        },
+        "state": {
+          "median_ms": 6.85,
+          "samples_ms": [
+            29.35,
+            7.01,
+            6.85,
+            4.83,
+            3.26
+          ]
+        },
+        "badges": {
+          "median_ms": 30.33,
+          "samples_ms": [
+            34.95,
+            12.03,
+            32.82,
+            30.33,
+            16.7
+          ]
+        },
+        "dashboard": {
+          "median_ms": 201.66,
+          "samples_ms": [
+            168.85,
+            274.84,
+            212.71,
+            198.17,
+            201.66
+          ]
+        },
+        "candidates": {
+          "median_ms": 13.83,
+          "samples_ms": [
+            26.33,
+            13.83,
+            10.44,
+            39.95,
+            12.81
+          ]
+        },
+        "invitations": {
+          "median_ms": 9.36,
+          "samples_ms": [
+            9.36,
+            5.67,
+            28.71,
+            11.76,
+            7.89
+          ]
+        },
+        "mrfs": {
+          "median_ms": 89.59,
+          "samples_ms": [
+            89.59,
+            105.94,
+            68.87,
+            97.53,
+            88.83
+          ]
+        },
+        "kpi": {
+          "median_ms": 62.32,
+          "samples_ms": [
+            83.28,
+            64.14,
+            49.73,
+            60.97,
+            62.32
+          ]
+        },
+        "templates": {
+          "median_ms": 12.04,
+          "samples_ms": [
+            33.49,
+            11.87,
+            33.13,
+            12.04,
+            11.39
+          ]
+        }
+      },
+      "navigation": {
+        "list": {
+          "median_ms": 99.51,
+          "samples_ms": [
+            93.57,
+            133.52,
+            99.51
+          ]
+        },
+        "gen": {
+          "median_ms": 99.78,
+          "samples_ms": [
+            132.71,
+            82.56,
+            99.78
+          ]
+        },
+        "dash": {
+          "median_ms": 282.98,
+          "samples_ms": [
+            266.84,
+            283.04,
+            282.98
+          ]
+        }
+      }
+    }
+  ]
+}

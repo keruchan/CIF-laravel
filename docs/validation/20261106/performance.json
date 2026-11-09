@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-06",
+  "scope": "Localhost measured performance fixes",
+  "php_runtime": "C:/php84/php.ini",
+  "opcache": {
+    "extension": "php_opcache.dll",
+    "enable": 1,
+    "enable_cli": 1,
+    "validate_timestamps": 1,
+    "revalidate_freq": 0
+  },
+  "composer_classmap": {
+    "before": 6923,
+    "after": 7010,
+    "application_classes_present": true,
+    "dependencies_upgraded": false
+  },
+  "frontend": "Page data is requested before sidebar badge counts; both remain current",
+  "live_before_median_ms": {
+    "portal": 431.9,
+    "session_state": 442.3
+  },
+  "live_after": [
+    {
+      "path": "/pages/portal/",
+      "median_ms": 23.4,
+      "samples_ms": [
+        104.2,
+        23.4,
+        53.99,
+        60.65,
+        22.23,
+        22.84
+      ]
+    },
+    {
+      "path": "/ajax/access.php?action=state",
+      "median_ms": 48.51,
+      "samples_ms": [
+        35.35,
+        45.97,
+        48.51,
+        46.01,
+        64.27,
+        59.95
+      ]
+    }
+  ],
+  "benchmark": "performance-benchmark.json",
+  "visuals": "performance-visual-results.json",
+  "php_suite": {
+    "tests": 45,
+    "assertions": 362,
+    "result": "passed"
+  },
+  "api_comparisons": 12,
+  "desktop_mobile_comparisons": 40,
+  "pixel_difference": 0,
+  "javascript_syntax": "passed",
+  "environment_contents_and_gmail_settings_unchanged": true,
+  "php_ini_backup": "C:\\LaravelProjects\\cif-migration-backups\\20261106-performance-1b31d7a7\\php.ini.before",
+  "source_unchanged": true,
+  "real_email_sent": false,
+  "domain_data_or_schema_changes": false,
+  "disposable_databases_remaining": 0,
+  "limits": "Warm local measurements on fictional data; complex analytics and first cold requests take longer. No stale response caching or removed security checks."
+}

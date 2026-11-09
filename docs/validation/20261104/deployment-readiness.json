@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-04",
+  "target_provider": "Hostinger",
+  "target_plan_type": "Unlimited Web Hosting, identified by Hostinger support in the reply supplied by the user",
+  "status": "Local preparation passed; account trigger permission confirmed by support; hosted staging remains pending",
+  "php_suite": {
+    "tests": 41,
+    "assertions": 319,
+    "result": "passed"
+  },
+  "fresh_install": {
+    "method": "Actual Artisan CLI and MySQL schema loader in a new disposable database",
+    "tables": 52,
+    "migration_records": 4,
+    "audit_triggers": 68,
+    "built_in_templates": 8,
+    "migration_repeat": "no pending migrations",
+    "template_customization_preserved": true,
+    "superadmin_password_and_credentials_file_preserved_on_repeat": true
+  },
+  "migration_guard": {
+    "untracked_existing_records": "preserved",
+    "force_and_pretend_refused": true,
+    "migration_history_created_on_rejection": false
+  },
+  "apache": {
+    "engine": "Installed Apache, isolated loopback process and temporary document root",
+    "portal_checks": 10,
+    "ordinary_redirect_checked": true,
+    "php_execution_in_apache_fixture": false,
+    "existing_server_configuration_changed": false
+  },
+  "checks": {
+    "pint": "passed",
+    "hostinger_front_controller_template_syntax": "passed",
+    "recruitment_tables_compared": 43,
+    "data_or_schema_differences": 0
+  },
+  "handoff": "docs/DEPLOYMENT_HANDOFF.md",
+  "hostinger_template": "docs/deployment/hostinger-public-index.php.example",
+  "pending": [
+    "Enabled SSH/CLI access and actual recruitment.ccsbsis.com document root",
+    "Install and verify all audit triggers in a separate hosted staging database with the selected database user",
+    "Hosted PHP/CLI/extensions, PDF binary and upload limits acceptance",
+    "Separately authorized real SMTP check and hosted cutover"
+  ],
+  "hostinger_source": "https://www.hostinger.com/support/1864324-how-to-upload-and-set-up-your-database-at-hostinger/",
+  "environment_changed": false,
+  "live_email_sent": false,
+  "published": false,
+  "target_account_domain": "ccsbsis.com",
+  "target_portal_url": "https://recruitment.ccsbsis.com",
+  "hostinger_trigger_confirmation": {
+    "source": "Hostinger support reply relayed by the user",
+    "date": "2026-11-04",
+    "account_database_trigger_privilege": "enabled",
+    "verified_on_server_by_agent": false,
+    "mysql_event_scheduler_required_by_app": false
+  },
+  "environment_template": "docs/deployment/hostinger.env.example"
+}

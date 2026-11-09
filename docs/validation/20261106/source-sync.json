@@ -1,0 +1,170 @@
+{
+  "date": "2026-11-06",
+  "scope": "Localhost source feature sync; no deployment or data recopy",
+  "source_commit": "e29287871be6e4ec8f079595f0370adbba0b533d",
+  "previous_sync_commit": "71de3fe52d5d28faf0b75071452dfb2c3834ff0d",
+  "changed_source_files": 51,
+  "source_hashes_verified": true,
+  "source_worktree_clean": true,
+  "implementation_files": [
+    "app\\Services\\Recruitment\\ApplicantAccess.php",
+    "app\\Services\\Recruitment\\CandidatePortal.php",
+    "app\\Services\\Recruitment\\CandidatePublication.php",
+    "app\\Services\\Recruitment\\CifFields.php",
+    "app\\Services\\Recruitment\\HrEmail.php",
+    "app\\Services\\Recruitment\\HrKpi.php",
+    "app\\Services\\Recruitment\\Mrf.php",
+    "app\\Services\\Recruitment\\MrfCandidateFunnel.php",
+    "app\\Services\\Recruitment\\MrfDocument.php",
+    "app\\Services\\Recruitment\\MrfRecordContent.php",
+    "app\\Services\\Recruitment\\MrfView.php",
+    "app\\Services\\Recruitment\\RecruitmentDashboard.php",
+    "app\\Services\\Recruitment\\RecruitmentReports.php",
+    "app\\Services\\Recruitment\\ReportWorkbook.php",
+    "app\\Services\\Recruitment\\Superadmin.php",
+    "app\\Http\\Controllers\\Recruitment\\AccessController.php",
+    "app\\Http\\Controllers\\Recruitment\\EmailController.php",
+    "app\\Http\\Controllers\\Recruitment\\MrfImportController.php",
+    "app\\Http\\Controllers\\Recruitment\\PortalController.php",
+    "app\\Http\\Controllers\\Recruitment\\ReportsController.php",
+    "resources\\views\\recruitment\\admin\\index.php",
+    "resources\\views\\recruitment\\candidate\\index.php",
+    "resources\\views\\recruitment\\mrf-requestor\\index.php",
+    "resources\\views\\recruitment\\partials\\hr-staff-content.php",
+    "resources\\views\\recruitment\\partials\\reports-content.php",
+    "resources\\views\\recruitment\\superadmin\\index.php",
+    "routes\\web.php",
+    "tests\\Browser\\compare-portals.cjs",
+    "tests\\Browser\\run-reference.cjs",
+    "tests\\Fixtures\\seed-email.php",
+    "tests\\Reference\\candidate-release-order.php",
+    "tests\\Reference\\optional-government-ids.php",
+    "tests\\Reference\\tracker-prerequisites.php",
+    "tests\\Reference\\tracker-required-assessments.php",
+    "public\\css\\mrf.css",
+    "public\\css\\reports.css",
+    "public\\js\\admin.js",
+    "public\\js\\candidate-tracking.js",
+    "public\\js\\hr-staff.js",
+    "public\\js\\mrf-import.js",
+    "public\\js\\mrf-record.js",
+    "public\\js\\mrf.js",
+    "public\\js\\reports.js",
+    "tests/Reference/mrf-document.php",
+    "database/seeders/RecruitmentSeeder.php"
+  ],
+  "php_suite": {
+    "tests": 44,
+    "assertions": 346,
+    "result": "passed"
+  },
+  "post_sync_mail_portal_rules_recheck": {
+    "tests": 25,
+    "assertions": 112,
+    "result": "passed"
+  },
+  "after_import_fix_focused_regression": {
+    "tests": 32,
+    "assertions": 216,
+    "result": "passed"
+  },
+  "browser_scenarios": {
+    "check-recruitment-reports": "passed",
+    "check-mrf-candidate-funnel": "passed",
+    "check-tracker-prerequisites": "passed",
+    "check-invitation-first-use-expiry": "passed",
+    "check-mrf-numbering": "passed",
+    "check-dashboard-coverage": "passed",
+    "check-mrf-import": "passed"
+  },
+  "original_laravel_comparison": {
+    "api_responses": 12,
+    "desktop_mobile_screens": 38,
+    "maximum_pixel_difference": 0,
+    "page_errors": [],
+    "details": "visual-results.json",
+    "new_screens_visually_inspected": true,
+    "existing_three_link_chooser_preserved": true
+  },
+  "reports": {
+    "formats": [
+      "xlsx",
+      "print"
+    ],
+    "worksheets": [
+      "Candidates",
+      "MRFs",
+      "KPI summary",
+      "KPI MRF details"
+    ],
+    "all_matching_pages": true,
+    "row_limit": 10000,
+    "ownership_latest_assignment_archive_and_date_boundary_checks": "passed",
+    "workbooks_validated_with": "openpyxl 3.1.5, installed outside application dependencies",
+    "literal_text_and_print_formats": "passed",
+    "hr_access_csrf_audit_and_responsive_checks": "passed"
+  },
+  "mrf_funnel": {
+    "unique_current_linked_applicants": true,
+    "stages": [
+      "Applied",
+      "Interviewed",
+      "Got offers",
+      "Job offer accepted",
+      "Hired"
+    ],
+    "archived_and_sibling_isolation": true,
+    "cleared_assignments_and_deployment_destination": "passed",
+    "optional_parallel_and_outcome_rules": "passed",
+    "requestor_counts_excluded": true,
+    "one_page_mrf_print_preserved": true
+  },
+  "optional_profile_fields": {
+    "fields": [
+      "facebook_account",
+      "height_cm",
+      "weight_kg"
+    ],
+    "blank_omitted_supplied_and_rendering": "passed",
+    "nonblank_measurement_validation_retained": true
+  },
+  "tracker": {
+    "screening_label": "SCREENING",
+    "application_received_wording": true,
+    "sixteen_route_publication_combinations": "passed",
+    "old_history_and_internal_hr_records_unchanged": true
+  },
+  "defaults": {
+    "hr_dashboard": "All dates",
+    "kpi_coverage": "Last 12 months",
+    "kpi_chart": "Hired"
+  },
+  "additional_source_changes": {
+    "first_use_only_expiry": "passed with a 1000-day-old activated invitation",
+    "revoked_or_wrong_code_blocking": true,
+    "untouched_default_template_refresh_and_customization_preservation": "passed",
+    "generated_immutable_mrf_numbers_stale_counters_and_import_conflicts": "passed"
+  },
+  "native_import_fix": "Removed a vanilla source-relative include; phone validation uses the autoloaded CandidateStorage service. Added recognized-DOCX validation regression.",
+  "data_preservation": {
+    "environment_unchanged": true,
+    "migration_files_unchanged": 52,
+    "managed_schema_tables_verified": 52,
+    "audit_triggers_verified": 68,
+    "local_candidates": 1038,
+    "local_invitations": 1061,
+    "local_audit_events": 18691,
+    "recruitment_tables_compared_read_only": 43,
+    "data_differences_from_newer_source": 25,
+    "definition_differences": 0,
+    "original_and_local_data_not_recopied_or_reset": true
+  },
+  "checks": {
+    "pint": "passed",
+    "changed_php_and_javascript_syntax": "passed",
+    "disposable_databases_remaining": 0,
+    "temporary_port_helpers_removed": true,
+    "real_email_sent": false,
+    "hosting_changes": false
+  }
+}

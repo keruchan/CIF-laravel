@@ -1,0 +1,24 @@
+<?php
+
+// Deployment template only. Place this as public_html/index.php when the private
+// Laravel project is its sibling directory named recruitment-app.
+// Never upload the application root, .env or private storage into public_html.
+
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+$applicationRoot = dirname(__DIR__).'/recruitment-app';
+
+if (file_exists($maintenance = $applicationRoot.'/storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+require $applicationRoot.'/vendor/autoload.php';
+
+/** @var Application $app */
+$app = require_once $applicationRoot.'/bootstrap/app.php';
+$app->usePublicPath(__DIR__);
+
+$app->handleRequest(Request::capture());

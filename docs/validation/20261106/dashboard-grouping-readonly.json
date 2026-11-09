@@ -1,0 +1,54 @@
+{
+    "laravel": {
+        "monthly": {
+            "active_candidates": 982,
+            "interval": "monthly",
+            "forecast": {
+                "2026-12": 18.26,
+                "2027-01": 19.26,
+                "2027-02": 18.26
+            },
+            "forecast_available": true,
+            "same_data_original_laravel_calculations_match": true
+        },
+        "daily": {
+            "active_candidates": 982,
+            "interval": "daily",
+            "forecast": {
+                "2026-12": 18.26,
+                "2027-01": 19.26,
+                "2027-02": 18.26
+            },
+            "forecast_available": true,
+            "same_data_original_laravel_calculations_match": true
+        },
+        "pending_invitations": 1,
+        "mrf_pending_batches": 3
+    },
+    "vanilla": {
+        "monthly": {
+            "active_candidates": 983,
+            "interval": "monthly",
+            "forecast": {
+                "2026-12": 18.26,
+                "2027-01": 19.26,
+                "2027-02": 18.26
+            },
+            "forecast_available": true,
+            "same_data_original_laravel_calculations_match": true
+        },
+        "daily": {
+            "active_candidates": 983,
+            "interval": "daily",
+            "forecast": {
+                "2026-12": 18.26,
+                "2027-01": 19.26,
+                "2027-02": 18.26
+            },
+            "forecast_available": true,
+            "same_data_original_laravel_calculations_match": true
+        },
+        "pending_invitations": 2,
+        "mrf_pending_batches": 4
+    }
+}

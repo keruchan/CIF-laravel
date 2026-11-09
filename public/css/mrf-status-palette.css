@@ -1,0 +1,23 @@
+/* Trial MRF status palette. Remove this stylesheet's links to restore the previous badges. */
+.mrf-status[data-status]{
+ display:inline-flex;
+ align-items:center;
+ gap:6px;
+ background:var(--mrf-status-background,#eff6ff);
+ color:var(--mrf-status-text,#1d4ed8);
+}
+.mrf-status[data-status]::before{
+ content:"";
+ width:7px;
+ height:7px;
+ flex:none;
+ border-radius:50%;
+ background:var(--mrf-status-accent,#3b82f6);
+}
+/* Exact requested hues appear in the dots; darker text keeps the labels readable. */
+.mrf-status[data-status="Pending"]{--mrf-status-accent:#EAB308;--mrf-status-background:#fef9c3;--mrf-status-text:#854d0e}
+.mrf-status[data-status="In Progress"]{--mrf-status-accent:#3B82F6;--mrf-status-background:#eff6ff;--mrf-status-text:#1d4ed8}
+/* Purple distinguishes On Hold from yellow Pending. */
+.mrf-status[data-status="On Hold"]{--mrf-status-accent:#8B5CF6;--mrf-status-background:#f5f3ff;--mrf-status-text:#6d28d9}
+.mrf-status[data-status="Completed"],.mrf-status[data-status="Approved"]{--mrf-status-accent:#22C55E;--mrf-status-background:#f0fdf4;--mrf-status-text:#166534}
+.mrf-status[data-status="Cancelled"],.mrf-status[data-status="Rejected"],.mrf-status[data-status="Denied"]{--mrf-status-accent:#EF4444;--mrf-status-background:#fef2f2;--mrf-status-text:#b91c1c}

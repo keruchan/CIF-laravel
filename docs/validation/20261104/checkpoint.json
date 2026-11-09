@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-04",
+  "source_commit": "71de3fe52d5d28faf0b75071452dfb2c3834ff0d",
+  "status": "Stable checkpoint; user requested stopping before remaining acceptance",
+  "php": {
+    "existing_suite": {"tests": 36, "assertions": 228, "result": "passed"},
+    "additional_superadmin_test": {"tests": 1, "assertions": 20, "result": "passed"},
+    "runs_are_separate": true,
+    "syntax": {"files": 89, "failures": 0},
+    "pint": "passed for application, routes, migrations and fixtures"
+  },
+  "browser_passed": [
+    "check-candidate-list-stages",
+    "check-dashboard-coverage",
+    "check-assessment-locks"
+  ],
+  "visual_partial": {
+    "api_comparisons_passed": 12,
+    "desktop_screens_compared": 15,
+    "all_completed_screens_pixel_difference": 0,
+    "screens": ["hr-dashboard", "candidates", "invitations", "hr-mrfs", "requestors", "templates", "mail", "kpi", "candidate-record", "department-dashboard", "department-requests", "department-form", "department-record", "hr-mrf-record", "superadmin-users"],
+    "stopped_at": "Superadmin audit screen: harness needed a navigation click instead of URL hash; corrected, rerun pending",
+    "artifacts": "storage/app/migration-validation/20261104/visual",
+    "manual_review": "Superadmin desktop account directory inspected",
+    "complete": false
+  },
+  "database": {
+    "source": "cif",
+    "active_copy": "cif_laravel_dev_20261104_90d68738",
+    "tables_compared": 43,
+    "differences": 0,
+    "source_triggers_preserved": 68,
+    "copied_audit_rows": 18691,
+    "previous_copies_preserved": true,
+    "disposable_test_databases_remaining": 0
+  },
+  "pending": [
+    "Full Superadmin browser scenario after CSRF adapter correction",
+    "Full Requestor dashboard browser scenario after legacy redirect correction",
+    "Remaining desktop/mobile and candidate/portal visual comparisons",
+    "Broader browser regressions and combined 37-test aggregate"
+  ],
+  "real_email_sent": false,
+  "published": false
+}

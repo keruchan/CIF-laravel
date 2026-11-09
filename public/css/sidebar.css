@@ -1,0 +1,26 @@
+#sidebar-backdrop{display:none}
+.sidebar-desktop-toggle{display:none}
+.portal-icon{display:block;width:20px;height:20px;flex-shrink:0}#portal-sidebar .nv .ic{display:grid;place-items:center;width:22px;height:22px;flex-shrink:0}#portal-sidebar .me #out{display:grid;place-items:center;width:32px;height:36px;flex-shrink:0;border-radius:9px}#portal-sidebar .me #out:hover{background:#ffffff14;color:#fff}
+@media(min-width:901px){
+ #portal-sidebar{transition:transform .25s ease,visibility .25s;overflow-y:auto}
+ #portal-sidebar .logo{padding-right:0;gap:8px;white-space:nowrap}
+ #portal-sidebar .logo i{flex-shrink:0}
+ .sidebar-desktop-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;flex-shrink:0;width:36px;height:36px;margin-left:auto;padding:8px;border:0;border-radius:9px;background:transparent;color:#c9d9f5;cursor:pointer}
+ .sidebar-desktop-toggle:hover{background:#ffffff14;color:#fff}
+ .sidebar-desktop-toggle .portal-icon path{transition:stroke-dasharray .18s;stroke-dasharray:16 16}
+ .sidebar-desktop-toggle:hover .portal-icon path:nth-child(2){stroke-dasharray:10 16}
+ main{transition:margin-left .25s ease}
+ body.sidebar-collapsed #portal-sidebar{transform:translateX(-100%);visibility:hidden}
+ body.sidebar-collapsed main{margin-left:0}
+ body.sidebar-collapsed #burger{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:10px;color:var(--navy);background:#edf4fc}
+ body.sidebar-collapsed #burger:hover{background:#dceaf9}
+}
+@media(max-width:900px){
+ body.nav{overflow:hidden}
+ #portal-sidebar{top:var(--mobile-header-height,70px);width:min(280px,85vw);overflow-y:auto;overscroll-behavior:contain;padding-bottom:max(24px,env(safe-area-inset-bottom));visibility:hidden;transition:transform .25s,visibility .25s}
+ body.nav #portal-sidebar{visibility:visible}
+ #sidebar-backdrop:not([hidden]){display:block;position:fixed;inset:var(--mobile-header-height,70px) 0 0;border:0;border-radius:0;background:#08143270;z-index:19;cursor:pointer}
+ #burger{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:10px;color:var(--navy);background:#edf4fc}
+ #burger:hover,#burger[aria-expanded="true"]{background:#dceaf9}
+}
+@media(prefers-reduced-motion:reduce){#portal-sidebar,main,.sidebar-desktop-toggle .portal-icon path{transition:none}}

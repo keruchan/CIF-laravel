@@ -1,0 +1,18 @@
+.brand-logo{display:block;width:100%;height:auto;object-fit:contain}
+.brand-login-logo{max-width:265px;margin:0 auto 24px}
+.portal-return{margin:18px 0 0;text-align:center}.portal-return a{display:inline-block;color:#082e82;font-size:12px;line-height:1.7;text-underline-offset:3px}.portal-return a:hover{color:#147dbb}
+#portal-sidebar .logo.portal-sidebar-brand{gap:10px;padding:0 2px 22px;align-items:center;white-space:normal}
+.portal-brand-identity{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.portal-brand-logo{display:block;background:transparent;padding:0}
+.portal-brand-identity .brand-logo{max-width:174px;margin:auto;filter:grayscale(1) invert(1) brightness(3);mix-blend-mode:screen}
+.portal-brand-identity strong{display:block;font-size:12px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:#fff;padding-left:3px}
+.candidate-header-brand{display:flex;align-items:center;gap:18px;min-width:0}
+.candidate-header-brand .brand-logo{width:190px;flex-shrink:0}
+.candidate-header-brand>span{border-left:1px solid #d9e0ee;padding-left:18px;color:#082e82;font-size:14px;font-weight:700;line-height:1.5}
+.tracking-page-heading .brand-tracker-logo{width:160px;max-width:100%;margin-bottom:8px}
+.mail-brand-signature{padding-top:12px;margin-top:16px;border-top:1px solid #e3e8f2;color:#65758c;font-size:12px;line-height:1.6}
+.mail-brand-signature strong{display:block;color:#082e82}
+.mail-preview .brand-logo,.mail-dialog>.brand-logo,#candidate-update-dialog>.brand-logo{width:205px;max-width:100%;margin:0 0 18px}
+.mrf-paper-logo img.brand-logo{display:inline-block;width:250px;max-width:100%;height:auto;position:static;top:auto;vertical-align:top}
+@media(max-width:560px){.brand-login-logo{max-width:235px;margin-bottom:20px}.candidate-header-brand{gap:12px}.candidate-header-brand .brand-logo{width:155px}.candidate-header-brand>span{padding-left:12px;font-size:11px}.tracking-page-heading .brand-tracker-logo{width:135px}.mrf-paper-logo img.brand-logo{max-width:65%}}
+@media print{.brand-login-logo,.candidate-header-brand{display:none}}

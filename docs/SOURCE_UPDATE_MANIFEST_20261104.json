@@ -1,0 +1,268 @@
+{
+  "source_root": "C:\\xampp\\htdocs\\cif",
+  "baseline_commit": "f708d9d82549985eb345cc35032da8c1819a7fe8",
+  "source_commit": "71de3fe52d5d28faf0b75071452dfb2c3834ff0d",
+  "date": "2026-11-04",
+  "changes": [
+    {
+      "path": "ajax/README.md",
+      "sha256": "51aaf30e2ff67f23ba0e64c6937c27e6a207ac33d64ada45d130d566e5b7fc43"
+    },
+    {
+      "path": "ajax/access.php",
+      "sha256": "2fb849caa68d65e4dfd4507ffb8b7b0005cc9853d41c4dd83d0df67ffd48d646"
+    },
+    {
+      "path": "ajax/department.php",
+      "sha256": "e4273256be57da9bd579e4cdf0899d8daa9c859a107371107260aeb8438199f7"
+    },
+    {
+      "path": "ajax/mrf-import.php",
+      "sha256": "0fd3cdf097612e77377fc9cf420a678b189b12c6e755f664bb66c144ec4a6fb4"
+    },
+    {
+      "path": "ajax/mrf-requestor.php",
+      "sha256": "fd5a157efc06ae4363f7c970c2ef9fb29c7185ae1398425872fa661c33a2374f"
+    },
+    {
+      "path": "ajax/mrf-requestors.php",
+      "sha256": "851825859aaa789cbafa97cc0b98031c5d6eac6bb172b747522c8d585eb4952b"
+    },
+    {
+      "path": "ajax/mrf.php",
+      "sha256": "fd64de077850b6aeead4776b4cdcf07820416d42c884a379400186aa010ca413"
+    },
+    {
+      "path": "ajax/superadmin.php",
+      "sha256": "f5754452fb852da367b5cbd396e687c61d73983a416af3f2ac6575f116a9ac99"
+    },
+    {
+      "path": "css/admin.css",
+      "sha256": "9cc337e4909b1e19281a0b85ba087533ad4e9abf378b94b215cb390e7655fd33"
+    },
+    {
+      "path": "css/branding.css",
+      "sha256": "c823aa030cff4efb82bc10477ce3fb54df087822d797cda2052f6203f19059c7"
+    },
+    {
+      "path": "css/candidate-tracking.css",
+      "sha256": "baf98dd31d600df7a00eaa95004c3d18da31f91bff1e45464a3b33365f3e7e22"
+    },
+    {
+      "path": "css/candidate.css",
+      "sha256": "afb93dea7ce8810dc1664dcef844a7349e00380c65fef28d89205a5105b24644"
+    },
+    {
+      "path": "css/mrf-requestor.css",
+      "sha256": "a5365264d49ebc2aa7a9f1bb2df5f6b286dc730311e7ee23a74814e361ddae79"
+    },
+    {
+      "path": "css/portal.css",
+      "sha256": "b0266ab82139dfbec126b50520ab95ae51aa669ccd4baa85a202ae0c338ea86c"
+    },
+    {
+      "path": "css/superadmin.css",
+      "sha256": "c15f403c8a2c3fc91710f1a7a9f21fdeb484a94d58d05b1c0bd3a48f9501fd23"
+    },
+    {
+      "path": "includes/access-http.php",
+      "sha256": "4d5841654d8ac79793b3eba9b6add69cf98e2e126940ea85ea296fb0f8b03ece"
+    },
+    {
+      "path": "includes/audit-references.php",
+      "sha256": "f47a4f8c3552396c7bc7e644dbcfbe75ac45e2b9131e040c6e2781000bb69b49"
+    },
+    {
+      "path": "includes/audit-setup.php",
+      "sha256": "2a1bd387056863eb301868a222527bea6079bddca9ce1be95a71b75a78619a46"
+    },
+    {
+      "path": "includes/candidate-analytics.php",
+      "sha256": "04ac4a0fa2eced824183e7f4f2f9807ece0a520a957a5a40b1a9d078746035d8"
+    },
+    {
+      "path": "includes/candidate-interviews.php",
+      "sha256": "5ea5d0684ac466afd9799cff929511597edb118faa30e042eeecc4af33d5c77a"
+    },
+    {
+      "path": "includes/candidate-list-stages.php",
+      "sha256": "3d493d9b6b60d7fc550b396914e2586ce1b07bee131050901236411b06565d5b"
+    },
+    {
+      "path": "includes/candidate-portal.php",
+      "sha256": "7a98922b80d05aa3c024190e9774aa82d4372d42df933c800b9db7bdcad84b2e"
+    },
+    {
+      "path": "includes/candidate-statuses.php",
+      "sha256": "b9770fb9b89e0c7f06875619ea00254755a3ca2e1ec9a0705b8504bf1329d389"
+    },
+    {
+      "path": "includes/candidate-view.php",
+      "sha256": "5c9da5937e490085fb01fe390bdf4402e933f2f79aeb05b4349a570b02c0c09f"
+    },
+    {
+      "path": "includes/cif-editor.php",
+      "sha256": "b9831b7c3496e6294c6d5ed5c2afcc34ff96c252a5efcb3e3d58f49e50ecaf57"
+    },
+    {
+      "path": "includes/dashboard-coverage.php",
+      "sha256": "eb4387b99ec3e9a315f411a8596d0e57b16bb3e40e4aabce4160dccae8a2157e"
+    },
+    {
+      "path": "includes/hr-kpi.php",
+      "sha256": "2a8b7fd8b8ebfbbd0a0043c7fca2bd42a027220df498afb3fd15ca2128cb773b"
+    },
+    {
+      "path": "includes/hr-staff-content.php",
+      "sha256": "cd4b6bf42b01cca2851b2026e0058ee0ad22c59bfc44f50f9c883be18b3c1175"
+    },
+    {
+      "path": "includes/hr-staff.php",
+      "sha256": "af7ee223d9a8a67262c05f993f6eaa1942cff46274a30933227f0a7c349842af"
+    },
+    {
+      "path": "includes/mrf-ownership.php",
+      "sha256": "4949bcf812ee4e7c9dfe1c22e97c2fbaf3731c843221c5410408b84cd9889e2d"
+    },
+    {
+      "path": "includes/mrf-record-content.php",
+      "sha256": "4c1937ee8fd32633b13ede6b84f44e749d7b030b235010bcf37051af97a18d2c"
+    },
+    {
+      "path": "includes/mrf-record.php",
+      "sha256": "9c3b4b782d5a86f9a3a61dd13da9c136a32b109d2d75721b583b56ca4c86c2b3"
+    },
+    {
+      "path": "includes/mrf-requestor-account.php",
+      "sha256": "7b202222648c376b633891a24a71e16d0c90ebe601284dff127aff81dac9b639"
+    },
+    {
+      "path": "includes/mrf-requestor.php",
+      "sha256": "31fdbea656d7423ca2161e15abffd84e781290fe9d97f02fc2746e551a971a15"
+    },
+    {
+      "path": "includes/mrf-requestors.php",
+      "sha256": "13c9636f526b6024a516fa4304c073a1189d58af91637ad6aa551834d6cae999"
+    },
+    {
+      "path": "includes/mrf-view.php",
+      "sha256": "5b9b1b4013325550c1dd146e1d167539a74b7708946fe81f1da2f50ef422af09"
+    },
+    {
+      "path": "includes/mrf.php",
+      "sha256": "a4168d369299b8141201151b651800ec7f162271c3a6bcb3726d98275b1c4bd8"
+    },
+    {
+      "path": "includes/recruitment-dashboard.php",
+      "sha256": "91b1afb050c1ebf5f6ca1f4213621c7272caa9a238f0b27137a4ab316ba1e604"
+    },
+    {
+      "path": "includes/security.php",
+      "sha256": "3b74ecdc7ab4522d01adde9f7a916953976ae2f698e401973b07986fb0c00a86"
+    },
+    {
+      "path": "includes/session.php",
+      "sha256": "c0627864429e7bb6f72f73c1be45be7e0c0f109523ebd5d009732cd5c5f68e8d"
+    },
+    {
+      "path": "includes/superadmin.php",
+      "sha256": "81acaec758ba4f7f013b03209f088bca43421f672af0b5dd4f72c53b3d643bf6"
+    },
+    {
+      "path": "js/admin-shell.js",
+      "sha256": "e3a772de930255061c4ea4aeda9be65d6e825266327e25158ea293692607b562"
+    },
+    {
+      "path": "js/admin.js",
+      "sha256": "26135eccfa78dddc28eaade53921e9c24b04d9d403fabde24b335e0bd04fdb0b"
+    },
+    {
+      "path": "js/candidate-stages.js",
+      "sha256": "6ead4c583109e66f55627ff15be28d7314454a90922767e603a791406f6cdcca"
+    },
+    {
+      "path": "js/candidate.js",
+      "sha256": "4bbaf1b54d01d9bae2d87f74f7fee0247d890abacd70fe18f59d2ec44de223a3"
+    },
+    {
+      "path": "js/cif-record.js",
+      "sha256": "ffc8b56f044ada32b359d643b65c1eb2fd9c7c91dd2d5e83d60d7ccabdd27eae"
+    },
+    {
+      "path": "js/department.js",
+      "sha256": null
+    },
+    {
+      "path": "js/hr-staff.js",
+      "sha256": "5fd8cc63241ea695facf1bf45113af3eeb0c6c80a486e0498149512bfc7ff6de"
+    },
+    {
+      "path": "js/mrf-form.js",
+      "sha256": "afcafbe5a41f8ed12e9a29e861d159c2d48a0d5ce3371a8e9ab6f9a3ccfc34e4"
+    },
+    {
+      "path": "js/mrf-requestor-coverage.js",
+      "sha256": "79ee2e5ca8421fbb2cc7f878f3291f887c3c6dffbc5f32f60ac47b7346f461af"
+    },
+    {
+      "path": "js/mrf-requestor-dashboard.js",
+      "sha256": "e47a43fd48ab3f83c1e9c324db8489e288772e0e48ebd003ad8c00cede5faeca"
+    },
+    {
+      "path": "js/mrf-requestor.js",
+      "sha256": "fda75391e58f0c0bfddc1cdaafe85d73403aac84eb1503d5f986022afc6f080f"
+    },
+    {
+      "path": "js/mrf.js",
+      "sha256": "068d3ba4ea231935349a546cd604f64ca4d83904bdad274740ec750b1ddeef84"
+    },
+    {
+      "path": "js/recruitment-dashboard-filters.js",
+      "sha256": "95f579bfdbc6249a2eef93721e7ee1ce6a4ce0d48f4cf7a267dcc77c9cd11796"
+    },
+    {
+      "path": "js/superadmin.js",
+      "sha256": "34103a696f43557831cda6b02c9229bb0541d4cfae86fa9e5f2e9151ca97a6d0"
+    },
+    {
+      "path": "pages/admin/index.php",
+      "sha256": "7d4f30c84d3f30f1394584739bf386e31b3282d67704356f97813dbe6aca1a45"
+    },
+    {
+      "path": "pages/candidate/index.php",
+      "sha256": "8f23a15bcf6fae2ccc1f756543a172c6aec52449df698e24051a57799513198d"
+    },
+    {
+      "path": "pages/department/index.php",
+      "sha256": "e8a680fde623adb46319563c2187b8ada0d93a272115b3507b5a36d6a935e4f8"
+    },
+    {
+      "path": "pages/department/mrf-form.php",
+      "sha256": "a506ae95b7c95193de539e717cb33b417099d6b70947afec35fec28155055448"
+    },
+    {
+      "path": "pages/department/mrf.php",
+      "sha256": "36c26157c3a542d7ec3250686dee573eae02834980bb0c0e229bd708c48fb6ae"
+    },
+    {
+      "path": "pages/mrf-requestor/index.php",
+      "sha256": "e85e9768a5e57a1e55e9ec23afdc5aa5618b32386608dd0406ac8c27886e67e2"
+    },
+    {
+      "path": "pages/mrf-requestor/mrf-form.php",
+      "sha256": "d14d406f471a8e49ba4dfb6154c7aa8e0ee1363cbb3b7586d83a09a165f9374a"
+    },
+    {
+      "path": "pages/mrf-requestor/mrf.php",
+      "sha256": "b11209523c16cf6c87d180d895f8c537a7efdb99616f4a1640f45dd24a3344ac"
+    },
+    {
+      "path": "pages/portal/index.php",
+      "sha256": "ef7a8ef37b5c3ff8c25e29a2c8b0d1f837930007eb148accde465b3d591d9fc1"
+    },
+    {
+      "path": "pages/superadmin/index.php",
+      "sha256": "4e3152ee528a1ef6d70e3f1c37e3087d2c74002b54772b6a91750aa236b1fc6b"
+    }
+  ]
+}

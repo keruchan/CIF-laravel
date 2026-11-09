@@ -1,0 +1,26 @@
+Validation date: 28 October 2026 (Asia/Singapore client context)
+Source commit: f708d9d82549985eb345cc35032da8c1819a7fe8
+Source manifest: 278 files, 0 differences
+Recruitment data/schema comparison: 41 tables, 0 differences, read-only
+Private environment changed keys: DB_DATABASE only (user selected fresh copy)
+Active isolated database: cif_laravel_dev_20261028_031cfcb6
+Original cif and older cif_laravel_dev: preserved
+PHP: 8.4.27
+Laravel: 13.38.0
+PHPUnit: 36 tests, 219 assertions, passed
+PHP syntax: all application and recruitment-view files passed
+Laravel Pint: application, feature/fixture tests and modified runtime/config routes passed
+Browser API comparisons: 9 passed
+Browser visual comparisons: 32 passed, all final pixel differences 0
+Visual conditions: identical blocked external fonts, disabled-mail presentation, loaded results and normalized scroll
+Browser page errors: 0
+Additional browser regressions: dashboard pairs, requestor edits, deployed read-only, archived invitations, MRF import passed
+MRF source document downloads: byte-for-byte comparisons passed
+Mixed connection collations: utf8mb4_general_ci and utf8mb4_unicode_ci passed with native prepares
+Large temporary upload staging: 2 MB binary content, JSON metadata round trip and actor binding passed
+Disposable test databases remaining: 0
+Private temporary import files remaining: 0
+Local HTTP session-state check: 200
+Real email messages sent: 0
+Hosted publication/cutover: not performed
+Outstanding external acceptance: controlled SMTP service acceptance and production hosting/configuration

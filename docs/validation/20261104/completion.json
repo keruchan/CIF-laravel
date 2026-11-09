@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-04",
+  "source_commit": "71de3fe52d5d28faf0b75071452dfb2c3834ff0d",
+  "status": "Current vanilla updates locally verified",
+  "php": {"tests": 39, "assertions": 292, "result": "passed"},
+  "browser_passed_this_resume": [
+    "check-superadmin",
+    "check-department-dashboard",
+    "check-mrf-import",
+    "check-deployed-readonly",
+    "check-requestor-edit",
+    "check-archived-invitations"
+  ],
+  "browser_passed_before_checkpoint": [
+    "check-candidate-list-stages",
+    "check-dashboard-coverage",
+    "check-assessment-locks"
+  ],
+  "visual": {
+    "api_comparisons": 12,
+    "screen_comparisons": 36,
+    "pixel_difference_each": 0,
+    "page_errors": [],
+    "additional_chooser_captures": 4,
+    "intentional_difference": "Three staff portal links requested; latest source chooser has two",
+    "manual_review": ["chooser desktop", "chooser mobile", "Superadmin audit mobile"],
+    "aggregate": "docs/validation/20261104/visual-results.json",
+    "images": "storage/app/migration-validation/20261104/visual"
+  },
+  "source_assets": {"checked": 55, "intentional_css_difference": "css/portal.css", "other_differences": 0, "missing": 0},
+  "source_manifest": {"entries": 65, "differences_since_checkpoint": 0},
+  "syntax": {"php_files": 96, "failures": 0, "javascript_harnesses": "passed"},
+  "style": "Pint passed; generated bootstrap cache excluded",
+  "database": {
+    "source": "cif",
+    "active_copy": "cif_laravel_dev_20261104_90d68738",
+    "tables_compared": 43,
+    "differences": 0,
+    "preserved_triggers": 68,
+    "migrations_ran": 4,
+    "replaced_or_reset_during_resume": false
+  },
+  "running_portal": {"url": "http://127.0.0.1:8000/", "status": 200, "arrived_at": "/pages/portal/"},
+  "fixed_during_resume": [
+    "Directory redirects preserve trailing slashes and legacy query strings",
+    "Rejected CSRF requests use Laravel's converted exception path and retain friendly text and validated audit actors",
+    "Visual harness opens the mobile audit drawer and checks root chooser destinations"
+  ],
+  "remaining_external_acceptance": ["Controlled real SMTP acceptance", "Production hosting and cutover"],
+  "environment_changed_during_resume": false,
+  "real_email_sent": false,
+  "published": false
+}
