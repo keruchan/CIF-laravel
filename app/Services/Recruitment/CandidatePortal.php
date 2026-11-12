@@ -120,9 +120,14 @@ final class CandidatePortal
             return ['mode' => 'tracking', 'email' => $row['email'], 'progress' => CandidatePortal::cifPublicApplicationProgress(RecruitmentDatabase::pdo(), (int) $row['candidate_id'])];
         }
 
+        $privacy = ApplicantPrivacy::fromDraft($row['draft_form']);
+        $accepted = ApplicantPrivacy::accepted($privacy);
+
         return ['mode' => 'form', 'email' => $row['email'], 'position' => $row['position'], 'expires_at' => $row['expires_at'],
-            'privacy_accepted' => ApplicantPrivacy::accepted(ApplicantPrivacy::fromDraft($row['draft_form'])),
-            'privacy_choices' => ApplicantPrivacy::choices(ApplicantPrivacy::fromDraft($row['draft_form'])),
-            'draft' => ['form' => $row['draft_form'] === null ? null : json_decode($row['draft_form'], true, 32, JSON_THROW_ON_ERROR), 'step' => (int) $row['draft_step'], 'revision' => (int) $row['draft_revision'], 'saved_at' => $row['draft_saved_at']]];
+            'privacy_accepted' => $accepted, 'privacy_required' => ! $accepted,
+            'privacy_choices' => ApplicantPrivacy::choices($privacy),
+            // Keep the saved answers in the database, but never restore them into
+            // an editable client form until this invitation has both consents.
+            'draft' => ['form' => ! $accepted || $row['draft_form'] === null ? null : json_decode($row['draft_form'], true, 32, JSON_THROW_ON_ERROR), 'step' => $accepted ? (int) $row['draft_step'] : 0, 'revision' => (int) $row['draft_revision'], 'saved_at' => $row['draft_saved_at']]];
     }
 }

@@ -2,6 +2,7 @@ const $=s=>document.querySelector(s),S=[...document.querySelectorAll('.step')],l
 let i=0,submitting=false,exiting=false,activeCandidate=null,formDirty=false;
 let privacyAccepted=false,acceptingPrivacy=false,privacyReadToEnd=false;
 let privacyChoices={data_privacy:false,background:false};
+let savingPrivacy=null,privacyWithdrawalPending=false,checkingPrivacy=null;
 let separatePermanentAddress={};
 let draftRevision=0,draftGeneration=0,savedDraftGeneration=0,draftTimer=null,savingDraft=null,draftConflict=false,draftActive=false,restoringDraft=false,lastSavedPhoto='',progressTimer=null;
 function formatContactInput(field){
@@ -80,7 +81,7 @@ function hydrateForm(form){
   preview.hidden=!value;if(value)preview.src=value;else preview.removeAttribute('src');remove.hidden=!value;remove.disabled=!value;
  });
 }
-window.addEventListener('beforeunload',event=>{if(formDirty||window.cifPhotoPending||submitting){event.preventDefault();event.returnValue='';}});
+window.addEventListener('beforeunload',event=>{if(formDirty||window.cifPhotoPending||submitting||acceptingPrivacy||privacyWithdrawalPending){event.preventDefault();event.returnValue='';}});
 function openCandidate(candidate){
  clearTimeout(draftTimer);clearInterval(progressTimer);activeCandidate=candidate;formDirty=false;draftActive=false;draftConflict=false;
  privacyAccepted=candidate.privacy_accepted===true;privacyChoices=candidate.privacy_choices||{data_privacy:false,background:false};refreshPrivacyStatus();
@@ -105,6 +106,7 @@ function showIntroduction(){
 }
 function refreshPrivacyStatus(){
  $('#start-cif').disabled=!privacyAccepted;
+ $('#cf').inert=!privacyAccepted;
  $('#privacy-status').textContent=privacyAccepted?'Privacy consent and background authorization recorded. You can now start your CIF.':'Please read the notice and select both consent and authorization checkboxes before starting your CIF.';
  $('#privacy-status').classList.toggle('accepted',privacyAccepted);
 }
@@ -125,22 +127,75 @@ $('#read-privacy').onclick=()=>{
  $('#privacy-dialog').showModal();$('.privacy-dialog-body').scrollTop=0;$('#privacy-title').focus();
  refreshPrivacyReadGate();
 };
-$('#close-privacy').onclick=()=>$('#privacy-dialog').close();
+$('#close-privacy').onclick=()=>{if(!privacyWithdrawalPending)$('#privacy-dialog').close();};
 $('#privacy-dialog').addEventListener('close',()=>$('#read-privacy').focus());
-$('#accept-privacy').onclick=async()=>{
- if(acceptingPrivacy||!privacyReadToEnd)return;
- const agreed=$('#privacy-agree').checked;
- const background=$('#privacy-background-agree').checked;
- if(privacyChoices.data_privacy===agreed&&privacyChoices.background===background){$('#privacy-dialog').close();return;}
+function persistPrivacyChoices(agreed,background,closeAfterSave){
+ if(savingPrivacy)return savingPrivacy;
  acceptingPrivacy=true;$('#accept-privacy').disabled=true;$('#close-privacy').disabled=true;$('#privacy-agree').disabled=true;$('#privacy-background-agree').disabled=true;$('#privacy-error').hidden=true;
- try{
-  const result=await cifRequest('candidate_privacy_accept',{accepted:agreed,background_authorized:background,version:$('#privacy-dialog').dataset.version,revision:draftRevision});
-  draftRevision=result.revision;privacyChoices={data_privacy:agreed,background};privacyAccepted=agreed&&background;refreshPrivacyStatus();$('#privacy-dialog').close();
- }catch(error){$('#privacy-error').textContent=error.message;$('#privacy-error').hidden=false;}
- finally{acceptingPrivacy=false;$('#close-privacy').disabled=false;refreshPrivacyReadGate();}
+ savingPrivacy=(async()=>{
+  try{
+   const state=await cifReady;
+   const response=await fetch(cifAccessEndpoint.href+'?action=candidate_privacy_accept',{method:'POST',credentials:'same-origin',keepalive:true,
+    headers:{'Content-Type':'application/json','X-CSRF-Token':state.csrf},body:JSON.stringify({accepted:agreed,background_authorized:background,version:$('#privacy-dialog').dataset.version,revision:draftRevision})});
+   const result=await response.json();if(!response.ok)throw new Error(result.error||'Unable to save your privacy choices.');
+   draftRevision=result.revision;privacyChoices={data_privacy:agreed,background};privacyAccepted=agreed&&background;privacyWithdrawalPending=false;refreshPrivacyStatus();
+   if(closeAfterSave)$('#privacy-dialog').close();
+  }catch(error){
+   $('#privacy-error').textContent=error.message+(privacyWithdrawalPending?' Your withdrawal has not been saved. Keep this page open and select Continue to retry before leaving.':'');$('#privacy-error').hidden=false;
+  }finally{savingPrivacy=null;acceptingPrivacy=false;$('#close-privacy').disabled=privacyWithdrawalPending;refreshPrivacyReadGate();}
+ })();return savingPrivacy;
+}
+$('#accept-privacy').onclick=()=>{
+ if(acceptingPrivacy||!privacyReadToEnd)return;
+ const agreed=$('#privacy-agree').checked,background=$('#privacy-background-agree').checked;
+ if(!privacyWithdrawalPending&&privacyChoices.data_privacy===agreed&&privacyChoices.background===background){$('#privacy-dialog').close();return;}
+ return persistPrivacyChoices(agreed,background,true);
 };
-$('#privacy-dialog').addEventListener('cancel',event=>{if(acceptingPrivacy)event.preventDefault();});
-$('#start-cif').onclick=()=>{if(!privacyAccepted)return;show(0);markDraftChanged();const title=S[0].querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});};
+for(const selector of ['#privacy-agree','#privacy-background-agree'])$(selector).addEventListener('change',()=>{
+ if($(selector).checked)return;
+ // Withdrawal takes effect immediately; a later Continue is not required.
+ privacyAccepted=false;refreshPrivacyStatus();clearTimeout(draftTimer);
+ const agreed=privacyChoices.data_privacy&&$('#privacy-agree').checked,background=privacyChoices.background&&$('#privacy-background-agree').checked;
+ if(agreed!==privacyChoices.data_privacy||background!==privacyChoices.background){privacyWithdrawalPending=true;persistPrivacyChoices(agreed,background,false);}
+});
+$('#privacy-dialog').addEventListener('cancel',event=>{if(acceptingPrivacy||privacyWithdrawalPending)event.preventDefault();});
+async function currentCandidate(){
+ const response=await fetch(cifAccessEndpoint.href+'?action=state',{credentials:'same-origin',cache:'no-store'});
+ const state=await response.json();if(!response.ok)throw new Error(state.error||'Unable to check your privacy consent.');return state.candidate;
+}
+$('#start-cif').onclick=async()=>{
+ if(!privacyAccepted||acceptingPrivacy||privacyWithdrawalPending)return;
+ $('#start-cif').disabled=true;
+ try{
+  const candidate=await currentCandidate();
+  if(!candidate){privacyAccepted=false;refreshPrivacyStatus();showIntroduction();throw new Error('Your session ended. Exit and sign in again.');}
+  openCandidate(candidate);
+  if(candidate.mode!=='form'||!candidate.privacy_accepted)return;
+  show(candidate.draft.saved_at===null?0:Math.min(S.length-1,Math.max(0,candidate.draft.step)));markDraftChanged();
+  const title=S[i].querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});
+ }catch(error){$('#privacy-status').textContent=error.message;}
+ finally{refreshPrivacyStatus();}
+};
+function recheckPrivacy(){
+ if(checkingPrivacy||acceptingPrivacy||privacyWithdrawalPending||activeCandidate?.mode!=='form')return;
+ checkingPrivacy=(async()=>{
+  try{
+   const candidate=await currentCandidate();
+   if(candidate?.mode==='form'&&candidate.email===activeCandidate.email&&!$('#candidate-intro').classList.contains('hide')&&!$('#privacy-dialog').open&&!formDirty)draftRevision=candidate.draft.revision;
+   if(!candidate||candidate.mode!=='form'||candidate.email!==activeCandidate.email||!candidate.privacy_accepted){
+    privacyAccepted=false;privacyChoices=candidate?.privacy_choices||{data_privacy:false,background:false};
+    if(candidate?.mode==='form'&&candidate.email===activeCandidate.email)draftRevision=candidate.draft.revision;
+    clearTimeout(draftTimer);refreshPrivacyStatus();showIntroduction();
+    if(candidate?.mode==='tracking')openCandidate(candidate);
+   }
+  }catch(error){privacyAccepted=false;refreshPrivacyStatus();showIntroduction();$('#privacy-status').textContent='Unable to verify your consent. Refresh to reconnect before continuing.';}
+  finally{checkingPrivacy=null;}
+ })();
+ return checkingPrivacy;
+}
+window.addEventListener('focus',recheckPrivacy);
+window.addEventListener('pageshow',event=>{if(event.persisted)recheckPrivacy();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')recheckPrivacy();});
 $('#lf').onsubmit=async e=>{
  e.preventDefault();const button=e.submitter||$('#lf button');button.disabled=true;
  try{const result=await cifRequest('verify',{email:$('#em').value,code:$('#cd').value});$('#lerr').classList.add('hide');openCandidate(result.candidate);}
@@ -165,7 +220,7 @@ function markDraftChanged(){
 }
 async function saveDraft(){
  clearTimeout(draftTimer);if(savingDraft)return savingDraft;
- if(!draftActive||draftConflict||submitting||activeCandidate?.mode!=='form'||draftGeneration===savedDraftGeneration)return;
+ if(!privacyAccepted||!draftActive||draftConflict||submitting||activeCandidate?.mode!=='form'||draftGeneration===savedDraftGeneration)return;
  if(window.cifPhotoPending){draftTimer=setTimeout(()=>saveDraft(),500);return;}
  const generation=draftGeneration,form=formValues(),photo=form.id_photo||'',preservePhoto=photo===lastSavedPhoto;if(preservePhoto)delete form.id_photo;
  const body=JSON.stringify({revision:draftRevision,step:i,form,preserve_photo:preservePhoto});setDraftStatus('Saving your progress…');

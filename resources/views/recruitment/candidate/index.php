@@ -48,7 +48,7 @@ $definition = \App\Services\Recruitment\CifFields::cifDefinition();
   <div class="intro-actions"><p>Your progress saves automatically while you fill out the form. Return with the same email and code to continue your saved answers.</p><button class="btn pri" id="start-cif" type="button" disabled>Start filling out the CIF</button></div>
  </section>
  <div class="steps hide" id="steps"></div>
- <form class="panel hide" id="cf" novalidate>
+ <form class="panel hide" id="cf" novalidate inert>
  <?php foreach ($definition['sections'] as $section => $fields): ?>
   <div class="step hide" data-label="<?= \App\Services\Recruitment\CandidateForm::escaped($section) ?>"><h3><?= \App\Services\Recruitment\CandidateForm::escaped($section) ?></h3>
    <?php if ($section === 'Personal Information'): ?>

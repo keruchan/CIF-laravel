@@ -278,6 +278,25 @@ class RecruitmentWorkflowTest extends TestCase
         $this->assertArrayNotHasKey('future_opportunities', ApplicantPrivacy::declarations());
     }
 
+    public function test_unsigned_applicant_is_still_gated_after_logout_and_existing_draft_cannot_restore_the_form(): void
+    {
+        $this->hr();
+        $invite = $this->postJson('/ajax/access.php?action=generate', ['email' => 'no-consent@example.test', 'position' => 'Engineering Support Staff'])->assertOk()->json();
+        DB::table('invitations')->where('id', $invite['id'])->update([
+            'draft_form' => json_encode(['fn' => 'Keep saved answer', 'consent' => true, 'background_consent' => true]),
+            'draft_step' => 3, 'draft_saved_at' => gmdate('Y-m-d H:i:s'),
+        ]);
+        for ($attempt = 0; $attempt < 2; $attempt++) {
+            $this->postJson('/ajax/access.php?action=verify', ['email' => 'no-consent@example.test', 'code' => $invite['code']])->assertOk()
+                ->assertJsonPath('candidate.privacy_accepted', false)->assertJsonPath('candidate.privacy_required', true)
+                ->assertJsonPath('candidate.draft.form', null)->assertJsonPath('candidate.draft.step', 0);
+            $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 0, 'step' => 0, 'form' => []])->assertForbidden();
+            $this->postJson('/ajax/access.php?action=submit', ['draft_revision' => 0])->assertForbidden();
+            $this->postJson('/ajax/access.php?action=candidate_logout', [])->assertOk();
+        }
+        $this->assertSame('Keep saved answer', json_decode(DB::table('invitations')->where('id', $invite['id'])->value('draft_form'), true)['fn']);
+    }
+
     public function test_mail_snapshots_templates_cancellation_and_duplicate_preparation(): void
     {
         $this->hr();

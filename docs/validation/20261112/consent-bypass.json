@@ -1,0 +1,96 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "checkbox and Continue disabled until bottom; Start requires acceptance",
+    "partial scroll stays locked; keyboard scroll to end unlocks",
+    "read gate resets on every reopening",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "Continue without agreement keeps Start disabled",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "reload after acceptance stays on welcome until Start",
+    "uncheck and Continue revokes acceptance across reload",
+    "reaccept enables Start",
+    "draft and acceptance survive reload",
+    "both authorizations in opening notice; final step only original certification",
+    "future opportunities removed",
+    "fresh unsigned applicant stays gated after reload/logout and in a separate browser",
+    "unchecking persists without Continue",
+    "existing editing tab locks after withdrawal; confirmed answers survive reacceptance",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-12",
+  "before_fix_regression": {
+    "passed": false,
+    "message": "Unchecking must lock Start immediately, even before Continue or reload. false !== true"
+  },
+  "root_cause": "Unchecked saved authorizations were not withdrawn until Continue; previous saved acceptance could be restored.",
+  "php_suite": {
+    "tests": 49,
+    "assertions": 452,
+    "passed": true
+  },
+  "checks_added": [
+    "Unsigned saved draft is not exposed to client and cannot bypass gate",
+    "Logout and independent browser sessions preserve per-invitation gate",
+    "Uncheck immediately locks and saves withdrawal without Continue",
+    "Start and returning tabs check current server consent",
+    "Confirmed saved answers survive reacceptance"
+  ],
+  "hosted_changes": false,
+  "schema_changes": false,
+  "mail_sent": false,
+  "production_files": [
+    "app/Services/Recruitment/CandidatePortal.php",
+    "resources/views/recruitment/candidate/index.php",
+    "public/js/candidate.js"
+  ],
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/dialog-1440.png",
+      "sha256": "44a570e98ab34fe254d41de3f6ad0e8aac70aa17ea1fd632516d854dcf349bd1"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/dialog-390.png",
+      "sha256": "c9057a5bbdb34575bbfcbbf73011aaabc51a21d7d89f999e0e33c1584c35a52f"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/final-certification-1440.png",
+      "sha256": "18c4cb4d7525da47714b7fd6079ca9b52c887767d6f654e043c098f6be018fca"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/final-certification-390.png",
+      "sha256": "2682c35824b20c4328a95a00abfce05918ca7b02ec2f949334cb6b52621fb214"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/intro-1440.png",
+      "sha256": "e547512cb21a0f945f1cc91eb8603a25f95dc3dab763c9e127135c90da200bbc"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/intro-390.png",
+      "sha256": "bba56e4c8816b42fa61cba08e7f3f88561b06ace5b491d34337b388a37d71842"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/notice-middle-1440.png",
+      "sha256": "65ebba34f324ff24494942b8be6afef9f26764b0b975294f54ce2d749737aa2e"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/notice-middle-390.png",
+      "sha256": "a0d0ddce27e7ff5242155270e548cf0755f796ecc7083ce5cfd16ecd1bdead84"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/opening-authorizations-1440.png",
+      "sha256": "0fa6e68a0585ee325677a97fd075c4fdf1a452c4547d0d18d45ebc7c5e05730d"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-consent-bypass-fixed/opening-authorizations-390.png",
+      "sha256": "af01691d69c5f485642c7c16834fbb32372985f738f594f54682d4d432a82e99"
+    }
+  ]
+}

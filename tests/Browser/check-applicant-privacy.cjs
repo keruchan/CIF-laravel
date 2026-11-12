@@ -56,6 +56,28 @@ const fixture = action => cp.execFileSync(php, [path.join(target, 'tests/Fixture
       await page.locator('#candidate-intro').waitFor({ state: 'visible' });
       assert.equal(await page.locator('#start-cif').isDisabled(), true);
       assert.equal(await page.locator('#cf').isVisible(), false);
+      const assertBlockedInFreshBrowser = async () => {
+        const otherContext = await browser.newContext({ viewport: { width, height: 950 } });
+        await otherContext.route('https://fonts.googleapis.com/**', route => route.abort());
+        const otherPage = await otherContext.newPage();
+        try {
+          await otherPage.goto(base + '/pages/candidate/');
+          await otherPage.locator('#em').fill(email); await otherPage.locator('#cd').fill(invite.body.code);
+          await otherPage.locator('#lf button').click();
+          await otherPage.locator('#candidate-intro').waitFor({ state: 'visible' });
+          assert.equal(await otherPage.locator('#start-cif').isDisabled(), true);
+          assert.equal(await otherPage.locator('#cf').isVisible(), false);
+          assert.equal(await otherPage.locator('#cf').evaluate(el => el.inert), true);
+        } finally { await otherContext.close(); }
+      };
+      await page.reload(); await page.locator('#candidate-intro').waitFor({ state: 'visible' });
+      assert.equal(await page.locator('#start-cif').isDisabled(), true);
+      await assertBlockedInFreshBrowser();
+      await page.locator('#candidate-exit').click();
+      await page.locator('#login').waitFor({ state: 'visible' });
+      await page.locator('#em').fill(email); await page.locator('#cd').fill(invite.body.code);
+      await page.locator('#lf button').click(); await page.locator('#candidate-intro').waitFor({ state: 'visible' });
+      assert.equal(await page.locator('#start-cif').isDisabled(), true);
       await page.screenshot({ path: path.join(output, 'intro-' + width + '.png'), fullPage: true });
       const readToEnd = async () => {
         assert.equal(await page.locator('#privacy-agree').isDisabled(), true);
@@ -119,12 +141,30 @@ const fixture = action => cp.execFileSync(php, [path.join(target, 'tests/Fixture
       // Accepting the notice alone must not count as starting the form on reload.
       await page.reload(); await page.locator('#candidate-intro').waitFor({ state: 'visible' });
       assert.equal(await page.locator('#cf').isVisible(), false);
+      // A second page already editing this applicant must lock when consent is
+      // withdrawn elsewhere; its confirmed saved answers must remain intact.
+      const siblingPage = await context.newPage();
+      await siblingPage.goto(base + '/pages/candidate/');
+      await siblingPage.locator('#start-cif').click();
+      await siblingPage.locator('#cf').waitFor({ state: 'visible' });
+      await siblingPage.locator('[name="fn"]').fill('Sibling');
+      await siblingPage.waitForFunction(() => document.querySelector('#draft-save-status').textContent.startsWith('All progress saved'));
+      await page.bringToFront(); await page.evaluate(() => recheckPrivacy());
       await page.locator('#read-privacy').click();
       await readToEnd();
       assert.equal(await page.locator('#privacy-agree').isChecked(), true);
+      const withdrawal = page.waitForResponse(response => response.url().includes('action=candidate_privacy_accept') && response.request().method() === 'POST');
       await page.locator('#privacy-agree').uncheck();
-      await page.locator('#accept-privacy').click();
-      await page.locator('#privacy-dialog').waitFor({ state: 'hidden' });
+      assert.equal(await page.locator('#start-cif').isDisabled(), true, 'Unchecking must lock Start immediately, even before Continue or reload.');
+      assert.equal((await withdrawal).status(), 200);
+      await siblingPage.evaluate(() => window.dispatchEvent(new Event('focus')));
+      await siblingPage.locator('#candidate-intro').waitFor({ state: 'visible' });
+      assert.equal(await siblingPage.locator('#cf').isVisible(), false);
+      assert.equal(await siblingPage.locator('#cf').evaluate(el => el.inert), true);
+      await siblingPage.close();
+      // Do not click Continue: a clean browser must still see the withdrawal.
+      await page.reload(); await page.locator('#candidate-intro').waitFor({ state: 'visible' });
+      await assertBlockedInFreshBrowser();
       assert.equal(await page.locator('#start-cif').isDisabled(), true);
       await page.reload(); await page.locator('#candidate-intro').waitFor({ state: 'visible' });
       assert.equal(await page.locator('#start-cif').isDisabled(), true);
@@ -135,6 +175,7 @@ const fixture = action => cp.execFileSync(php, [path.join(target, 'tests/Fixture
       await page.locator('#privacy-dialog').waitFor({ state: 'hidden' });
       await page.locator('#start-cif').click();
       await page.locator('#cf').waitFor({ state: 'visible' });
+      assert.equal(await page.locator('[name="fn"]').inputValue(), 'SIBLING');
       await page.locator('[name="fn"]').fill('Privacy');
       await page.waitForFunction(() => document.querySelector('#draft-save-status').textContent.startsWith('All progress saved'));
       await page.reload();
@@ -163,6 +204,8 @@ const fixture = action => cp.execFileSync(php, [path.join(target, 'tests/Fixture
         'Continue without agreement keeps Start disabled', 'failed acceptance stays gated', 'retry saves acceptance',
         'reload after acceptance stays on welcome until Start', 'uncheck and Continue revokes acceptance across reload', 'reaccept enables Start',
         'draft and acceptance survive reload', 'both authorizations in opening notice; final step only original certification', 'future opportunities removed',
+        'fresh unsigned applicant stays gated after reload/logout and in a separate browser', 'unchecking persists without Continue',
+        'existing editing tab locks after withdrawal; confirmed answers survive reacceptance',
         'no cross-applicant consent', 'no horizontal overflow'], errors,
     }, null, 2));
     console.log('PASS: desktop/mobile applicant privacy consent, cancellation, retry, persistence and applicant isolation.');

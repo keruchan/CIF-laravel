@@ -2,6 +2,51 @@
 
 Updated: 12 November 2026 (Asia/Singapore).
 
+## Consent bypass after refresh or another page (12 November)
+
+The user reported the issue locally and on Hostinger. Reproduced a concrete gap:
+after acceptance had previously been saved, unchecking a box did not revoke that
+record until Continue. The browser regression failed before the fix because
+Start remained enabled immediately after unchecking. A refresh could restore the
+previous acceptance rather than the applicant's unchecked choice.
+
+- [x] Unchecking a saved choice immediately locks Start/form and persists the
+  withdrawal with a keepalive request. A new positive acceptance still requires
+  Continue after reading the notice. Failed withdrawal saves keep the form locked,
+  show retry guidance, and prevent silently closing the dialog; pending saves
+  participate in the existing navigation warning.
+- [x] Candidate state only returns saved CIF answers when this invitation has
+  both current authorizations. Without them, answers stay in the database, the
+  response reports privacy required and returns no editable draft/step. Original
+  certification flags and an existing saved draft do not establish privacy consent.
+- [x] Form starts inert and is enabled only after confirmed consent. Start checks
+  current server state before opening/resuming. Returning to a tab through focus,
+  visibility or browser back/forward rechecks consent; withdrawal elsewhere locks
+  an already open form. Unsigned clients cannot save drafts or submit.
+- [x] Full PHP suite passed: **49 tests, 452 assertions**. New regression covers
+  legacy saved answers without consent, repeated login/logout, hidden draft data
+  and rejected draft/submit requests while preserving stored answers.
+- [x] Desktop/mobile browser checks passed: fresh unsigned applicant after reload,
+  Exit/logout/relogin and a separate clean browser context; uncheck without
+  Continue followed by reload/another browser; an existing second editing page
+  locks on revalidation; confirmed answers survive reacceptance; prior privacy
+  scroll/retry/notice/identity checks continue to pass.
+- [x] JavaScript syntax and diff checks passed; disposable fixtures removed.
+  No actual applicant records, Gmail settings, printable CIF or hosted files changed.
+
+Evidence: `docs/validation/20261112/consent-bypass.json`; screenshots/results in
+`storage/app/migration-validation/20261112-consent-bypass-fixed/`. The failing
+pre-fix run is documented in that evidence. Repeat the browser runner with
+`CIF_VALIDATION_LABEL=20261112-consent-bypass-fixed`.
+
+Hostinger needs the updated `app/Services/Recruitment/CandidatePortal.php`,
+`resources/views/recruitment/candidate/index.php` and `public/js/candidate.js`.
+For its split layout, copy JavaScript to both private app/public and the served
+`public_html/recruitment-portal/js/` directory. Preserve private environment and
+custom public entry file; no migrations/data refresh are needed. This task did
+not push or deploy. Next: apply this release to hosting when requested, then
+repeat the same unsigned-applicant checks there.
+
 ## Privacy approval wording and introductory authorizations (12 November)
 
 Typography follow-up: all privacy dialog text now inherits one **13px** size on
