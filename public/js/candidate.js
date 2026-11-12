@@ -1,5 +1,7 @@
 const $=s=>document.querySelector(s),S=[...document.querySelectorAll('.step')],labels=S.map(section=>section.dataset.label);
 let i=0,submitting=false,exiting=false,activeCandidate=null,formDirty=false;
+let privacyAccepted=false,acceptingPrivacy=false,privacyReadToEnd=false;
+let privacyChoices={data_privacy:false,background:false};
 let separatePermanentAddress={};
 let draftRevision=0,draftGeneration=0,savedDraftGeneration=0,draftTimer=null,savingDraft=null,draftConflict=false,draftActive=false,restoringDraft=false,lastSavedPhoto='',progressTimer=null;
 function formatContactInput(field){
@@ -52,7 +54,8 @@ function formValues(){
  const form={};
  const phones=new Set([...$('#cf').querySelectorAll('[data-contact-number]')].map(field=>field.name));
  for(const [name,value] of new FormData($('#cf'))){const saved=phones.has(name)&&value?'+63-'+value:value;const match=name.match(/^(\w+)\[(\d+)\]\[(\w+)\]$/);if(match){const [,group,index,key]=match;form[group]??=[];form[group][Number(index)]??={};form[group][Number(index)][key]=saved;}else form[name]=saved;}
- form.consent=$('#ok').checked;form.background_consent=$('#background-ok').checked;
+ form.consent=$('#ok').checked;form.background_consent=privacyChoices.background;
+ form.data_privacy_consent=privacyChoices.data_privacy;
  form.same_as_present_address=$('#same-address').checked;
  form.separate_permanent_address=separatePermanentAddress;
  return form;
@@ -66,7 +69,7 @@ function hydrateForm(form){
   if(typeof value==='string')field.value=value;
  });
  cifRefreshEducationYearRanges($('#cf'));
- $('#ok').checked=form.consent===true;$('#background-ok').checked=form.background_consent===true;
+ $('#ok').checked=form.consent===true;
  $('#same-address').checked=form.same_as_present_address===true;
  addressParts.forEach(part=>{separatePermanentAddress[part]=form.separate_permanent_address?.[part]||addressInput('permanent',part).value;addressInput('permanent',part).readOnly=$('#same-address').checked;});
  if($('#same-address').checked)copyPresentAddress();
@@ -80,6 +83,7 @@ function hydrateForm(form){
 window.addEventListener('beforeunload',event=>{if(formDirty||window.cifPhotoPending||submitting){event.preventDefault();event.returnValue='';}});
 function openCandidate(candidate){
  clearTimeout(draftTimer);clearInterval(progressTimer);activeCandidate=candidate;formDirty=false;draftActive=false;draftConflict=false;
+ privacyAccepted=candidate.privacy_accepted===true;privacyChoices=candidate.privacy_choices||{data_privacy:false,background:false};refreshPrivacyStatus();
  $('#login').classList.add('hide');$('#app').classList.remove('hide');
  if(candidate.mode==='tracking'){showApplicationProgress(candidate.progress);return;}
  $('#app>.top').append($('.candidate-exit-actions'));
@@ -91,15 +95,52 @@ function openCandidate(candidate){
  const position=$('[name="desired_position"]'),available=JSON.parse(position.dataset.positionOptions);position.value=available.includes(candidate.position)?candidate.position:position.value;position.readOnly=available.includes(candidate.position);window.cifPositionPickers.set(position,position.value);
  if(!position.readOnly)$('#applied-position').textContent='Choose an available applied position in Personal Information';
  $('#login').classList.add('hide');$('#app').classList.remove('hide');
- $('#fin').classList.add('hide');draftActive=candidate.draft.form!==null;
- if(draftActive)show(Math.min(S.length-1,Math.max(0,candidate.draft.step)));else showIntroduction();
+ $('#fin').classList.add('hide');draftActive=candidate.draft.saved_at!==null;
+ if(draftActive&&privacyAccepted)show(Math.min(S.length-1,Math.max(0,candidate.draft.step)));else showIntroduction();
  setDraftStatus(candidate.draft.saved_at?'Progress restored · Saved '+candidateDate(candidate.draft.saved_at):'Progress saves automatically as you type.');restoringDraft=false;
 }
 function showIntroduction(){
  $('#candidate-intro').classList.remove('hide');$('#cf').classList.add('hide');$('#steps').classList.add('hide');
  $('#intro-title').focus({preventScroll:true});scrollTo({top:0,behavior:'smooth'});
 }
-$('#start-cif').onclick=()=>{show(0);markDraftChanged();const title=S[0].querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});};
+function refreshPrivacyStatus(){
+ $('#start-cif').disabled=!privacyAccepted;
+ $('#privacy-status').textContent=privacyAccepted?'Privacy consent and background authorization recorded. You can now start your CIF.':'Please read the notice and select both consent and authorization checkboxes before starting your CIF.';
+ $('#privacy-status').classList.toggle('accepted',privacyAccepted);
+}
+function refreshPrivacyReadGate(){
+ if(!$('#privacy-dialog').open)return;
+ const body=$('.privacy-dialog-body');
+ if(body.clientHeight>0&&body.scrollHeight-body.scrollTop-body.clientHeight<=4)privacyReadToEnd=true;
+ $('#privacy-agree').disabled=!privacyReadToEnd||acceptingPrivacy;
+ $('#privacy-background-agree').disabled=!privacyReadToEnd||acceptingPrivacy;
+ $('#accept-privacy').disabled=!privacyReadToEnd||acceptingPrivacy;
+ $('#privacy-read-hint').textContent=privacyReadToEnd?'You have reached the end. Choose your consent and authorization, then select Continue. Both are required to start your CIF.':'Scroll to the bottom of the notice to enable the checkboxes and Continue.';
+}
+$('.privacy-dialog-body').addEventListener('scroll',refreshPrivacyReadGate,{passive:true});
+new ResizeObserver(refreshPrivacyReadGate).observe($('.privacy-dialog-body'));
+$('#read-privacy').onclick=()=>{
+ privacyReadToEnd=false;$('#privacy-agree').checked=privacyChoices.data_privacy;$('#privacy-background-agree').checked=privacyChoices.background;
+ $('#privacy-agree').disabled=true;$('#privacy-background-agree').disabled=true;$('#accept-privacy').disabled=true;$('#privacy-error').hidden=true;
+ $('#privacy-dialog').showModal();$('.privacy-dialog-body').scrollTop=0;$('#privacy-title').focus();
+ refreshPrivacyReadGate();
+};
+$('#close-privacy').onclick=()=>$('#privacy-dialog').close();
+$('#privacy-dialog').addEventListener('close',()=>$('#read-privacy').focus());
+$('#accept-privacy').onclick=async()=>{
+ if(acceptingPrivacy||!privacyReadToEnd)return;
+ const agreed=$('#privacy-agree').checked;
+ const background=$('#privacy-background-agree').checked;
+ if(privacyChoices.data_privacy===agreed&&privacyChoices.background===background){$('#privacy-dialog').close();return;}
+ acceptingPrivacy=true;$('#accept-privacy').disabled=true;$('#close-privacy').disabled=true;$('#privacy-agree').disabled=true;$('#privacy-background-agree').disabled=true;$('#privacy-error').hidden=true;
+ try{
+  const result=await cifRequest('candidate_privacy_accept',{accepted:agreed,background_authorized:background,version:$('#privacy-dialog').dataset.version,revision:draftRevision});
+  draftRevision=result.revision;privacyChoices={data_privacy:agreed,background};privacyAccepted=agreed&&background;refreshPrivacyStatus();$('#privacy-dialog').close();
+ }catch(error){$('#privacy-error').textContent=error.message;$('#privacy-error').hidden=false;}
+ finally{acceptingPrivacy=false;$('#close-privacy').disabled=false;refreshPrivacyReadGate();}
+};
+$('#privacy-dialog').addEventListener('cancel',event=>{if(acceptingPrivacy)event.preventDefault();});
+$('#start-cif').onclick=()=>{if(!privacyAccepted)return;show(0);markDraftChanged();const title=S[0].querySelector('h3');title.tabIndex=-1;title.focus({preventScroll:true});};
 $('#lf').onsubmit=async e=>{
  e.preventDefault();const button=e.submitter||$('#lf button');button.disabled=true;
  try{const result=await cifRequest('verify',{email:$('#em').value,code:$('#cd').value});$('#lerr').classList.add('hide');openCandidate(result.candidate);}
@@ -108,6 +149,7 @@ $('#lf').onsubmit=async e=>{
 };
 cifReady.then(state=>{if(state.candidate)openCandidate(state.candidate);}).catch(error=>{$('#lerr').textContent=error.message+' Please refresh the page to retry.';$('#lerr').classList.remove('hide');}).finally(cifFinishSessionCheck);
 function show(n){
+ if(!privacyAccepted){showIntroduction();return;}
  const previousStep=i;
  $('#candidate-intro').classList.add('hide');$('#cf').classList.remove('hide');$('#steps').classList.remove('hide');
  i=n;S.forEach((section,index)=>section.classList.toggle('hide',index!==n));
@@ -118,7 +160,7 @@ function show(n){
 function candidateDate(value){return new Date(value.replace(' ','T')+'Z').toLocaleString('en-US',{timeZone:'Asia/Shanghai',month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});}
 function setDraftStatus(text,retry=false){$('#draft-save-status').textContent=text;$('#draft-save-retry').hidden=!retry;$('#draft-save-retry').textContent=draftConflict?'Reload saved progress':'Retry save';}
 function markDraftChanged(){
- if(restoringDraft||submitting||activeCandidate?.mode!=='form')return;draftActive=true;draftGeneration++;formDirty=true;
+ if(restoringDraft||submitting||!privacyAccepted||activeCandidate?.mode!=='form')return;draftActive=true;draftGeneration++;formDirty=true;
  clearTimeout(draftTimer);if(draftConflict)return;setDraftStatus('Saving your progress…');draftTimer=setTimeout(()=>saveDraft(),500);
 }
 async function saveDraft(){

@@ -1,0 +1,47 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "unchecked by default; Continue enabled but Start disabled",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "Continue without agreement keeps Start disabled",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "reload after acceptance stays on welcome until Start",
+    "uncheck and Continue revokes acceptance across reload",
+    "reaccept enables Start",
+    "draft and acceptance survive reload",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-10",
+  "workflow_suite": {
+    "tests": 13,
+    "assertions": 215,
+    "passed": true
+  },
+  "scope": "Continue is separate from agreement; consent can be unchecked and saved before Start. Reload without a saved CIF stays on welcome.",
+  "hosted_changes": false,
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-1440.png",
+      "sha256": "9f0677cedbc291d33e69b7af360ca44b9cbb7e8c49d225fe707002dbb7ddb1e3"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-390.png",
+      "sha256": "dda78e9ba474777ca2aa6857ed006db4cb5b2bc20de074b682b5eab8180caf93"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-1440.png",
+      "sha256": "3b2f5ccb31d8f02c462623910168ee07dc134b01ab6e665e114dae4f7901d014"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-390.png",
+      "sha256": "0be1c649576305f4f9aa9592752d55a166b96aed82413e2eff69109e797f4dbe"
+    }
+  ]
+}

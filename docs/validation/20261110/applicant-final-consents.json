@@ -1,0 +1,68 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "checkbox and Continue disabled until bottom; Start requires acceptance",
+    "partial scroll stays locked; keyboard scroll to end unlocks",
+    "read gate resets on every reopening",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "Continue without agreement keeps Start disabled",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "reload after acceptance stays on welcome until Start",
+    "uncheck and Continue revokes acceptance across reload",
+    "reaccept enables Start",
+    "draft and acceptance survive reload",
+    "three final declarations; only two required",
+    "future opportunities defaults unchecked; opt in/out survives reload",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-10",
+  "php_suite": {
+    "tests": 47,
+    "assertions": 413,
+    "passed": true
+  },
+  "company": "APEC Homes",
+  "talent_pool_retention_years": 2,
+  "required": [
+    "Data Privacy Consent",
+    "Background and Reference Check Authorization"
+  ],
+  "optional": "Future Career Opportunities",
+  "automatic_deletion_implemented": false,
+  "hosted_changes": false,
+  "schema_changes": false,
+  "mail_sent": false,
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-1440.png",
+      "sha256": "b709bd7d098b394aa824e33d9ca9864937bb147a68ca416df4ee74b336117fff"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-390.png",
+      "sha256": "13f17ab30d5f89104ad2a0da25922abc0a586920c7959de4c70fab5dedad9e69"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/final-consents-1440.png",
+      "sha256": "7b8ee651300ecf8072e054d49b5f5f6817a5025bb0445ad5102632241680dd56"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/final-consents-390.png",
+      "sha256": "29e0e68e38fec3a1fdbf220a4153b3ff6a7bf3c6a922157678f3d6e8829e2d6e"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-1440.png",
+      "sha256": "3b2f5ccb31d8f02c462623910168ee07dc134b01ab6e665e114dae4f7901d014"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-390.png",
+      "sha256": "0be1c649576305f4f9aa9592752d55a166b96aed82413e2eff69109e797f4dbe"
+    }
+  ]
+}

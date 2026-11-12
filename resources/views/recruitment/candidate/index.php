@@ -41,7 +41,11 @@ $definition = \App\Services\Recruitment\CifFields::cifDefinition();
    <p>Have your numbers or supporting documents ready so you can enter the correct details:</p>
    <ul><li>SSS number</li><li>PhilHealth number</li><li>TIN</li><li>Pag-IBIG number</li></ul>
   </aside>
-  <div class="intro-actions"><p>Your progress saves automatically while you fill out the form. Return with the same email and code to continue your saved answers.</p><button class="btn pri" id="start-cif" type="button">Start filling out the CIF</button></div>
+  <div class="intro-privacy">
+   <button class="privacy-link" id="read-privacy" type="button" aria-haspopup="dialog">Read data privacy notice and consent form</button>
+   <p id="privacy-status" role="status">Please read and accept the data privacy notice before starting your CIF.</p>
+  </div>
+  <div class="intro-actions"><p>Your progress saves automatically while you fill out the form. Return with the same email and code to continue your saved answers.</p><button class="btn pri" id="start-cif" type="button" disabled>Start filling out the CIF</button></div>
  </section>
  <div class="steps hide" id="steps"></div>
  <form class="panel hide" id="cf" novalidate>
@@ -53,8 +57,7 @@ $definition = \App\Services\Recruitment\CifFields::cifDefinition();
    <?php if ($section === 'Certification & consent'): ?>
     <div class="consent-copy"><h4>Certification of information</h4><p>I further certify that the information I have indicated in this Candidate Information Form are true, accurate and complete and contains no false or misleading statements or no omission of any material facts that should have been stated therein. I am fully aware that any misrepresentation thereof shall be sufficient cause for the company to immediately terminate my service and/or application.</p></div>
     <label class="chk"><input type="checkbox" id="ok" required><span>I certify that my information is true, accurate and complete.</span></label>
-    <div class="consent-copy"><h4>Background check consent</h4><p>In compliance with RA 10173, otherwise known as the Data Privacy Act of 2012, I hereby authorize APEC Homes and its designated representatives to collect and process information relating to my current and previous employment. I also expressly give my consent to current and previous employers to release and disclose information that APEC Homes may find significant to my application. I acknowledge that the processing of my information is necessary and is related to the fulfillment of or prior to entering into a contract with APEC Homes.</p></div>
-    <label class="chk"><input type="checkbox" id="background-ok" required><span>I authorize the background check and information processing described above.</span></label>
+    <p class="signature-note">Your data privacy consent and background and reference check authorization were recorded before you started this form. Background checks remain subject to your prior approval of their timing.</p>
     <p class="signature-note">Type your full name for each declaration. These names and the acceptance time will be saved; handwritten signatures are not collected here.</p>
    <?php endif; ?>
    <?php if ($section === 'Residential Information'): ?>
@@ -104,4 +107,13 @@ $definition = \App\Services\Recruitment\CifFields::cifDefinition();
  <template id="candidate-tracking-icons"><?php foreach (['cif'=>'cif','initial_interview'=>'interview','department_interview'=>'candidates','lie_detection'=>'screening','job_offer'=>'job-offer','deployment'=>'deployment','check'=>'check'] as $key=>$icon): ?><span data-phase-icon="<?= $key ?>"><?= \App\Services\Recruitment\PortalIcons::portalIcon($icon) ?></span><?php endforeach; ?></template>
  </div>
 </section>
+<dialog id="privacy-dialog" class="privacy-dialog" aria-labelledby="privacy-title" data-version="<?= \App\Services\Recruitment\ApplicantPrivacy::version() ?>">
+ <div class="privacy-dialog-header"><h2 id="privacy-title" tabindex="-1">APPLICANT DATA PRIVACY NOTICE AND CONSENT FORM</h2><button class="btn sec" id="close-privacy" type="button" aria-label="Close data privacy notice">Close</button></div>
+ <div class="privacy-dialog-body" tabindex="0" role="region" aria-label="Full applicant data privacy notice"><?= \App\Services\Recruitment\ApplicantPrivacy::notice() ?></div>
+ <div class="privacy-dialog-footer">
+  <p id="privacy-read-hint" role="status">Scroll to the bottom of the notice to enable the checkboxes and Continue.</p>
+  <p id="privacy-error" role="alert" hidden></p>
+  <button class="btn pri" id="accept-privacy" type="button" aria-describedby="privacy-read-hint" disabled>Continue</button>
+ </div>
+</dialog>
 <script src="<?= htmlspecialchars(\App\Services\Recruitment\Assets::cifAssetUrl('js/access.js'), ENT_QUOTES, 'UTF-8') ?>"></script><script src="<?= htmlspecialchars(\App\Services\Recruitment\Assets::cifAssetUrl('js/cif-photo.js'), ENT_QUOTES, 'UTF-8') ?>"></script><script src="<?= htmlspecialchars(\App\Services\Recruitment\Assets::cifAssetUrl('js/position-picker.js'), ENT_QUOTES, 'UTF-8') ?>"></script><script src="<?= htmlspecialchars(\App\Services\Recruitment\Assets::cifAssetUrl('js/candidate-tracking.js'), ENT_QUOTES, 'UTF-8') ?>"></script><script src="<?= htmlspecialchars(\App\Services\Recruitment\Assets::cifAssetUrl('js/candidate.js'), ENT_QUOTES, 'UTF-8') ?>"></script></body></html>

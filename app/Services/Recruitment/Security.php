@@ -105,7 +105,7 @@ final class Security
         } elseif ((in_array($endpoint, ['mrf-requestor.php', 'department.php'], true) || in_array(request()->query()['portal'] ?? '', ['requestor', 'department'], true)) && ! empty(session()->get('department'))) {
             $a = session()->get('department');
             Security::cifAuditContext($pdo, 'MRF Requestor', (int) $a['id'], $a['name']);
-        } elseif (! empty(session()->get('invitation_id')) && ($endpoint === 'access.php' && in_array($action, ['candidate_draft', 'submit', 'candidate_progress', 'candidate_logout', 'verify'], true) || empty(session()->get('admin')))) {
+        } elseif (! empty(session()->get('invitation_id')) && ($endpoint === 'access.php' && in_array($action, ['candidate_draft', 'candidate_privacy_accept', 'submit', 'candidate_progress', 'candidate_logout', 'verify'], true) || empty(session()->get('admin')))) {
             Security::cifAuditContext($pdo, 'Candidate', (int) session()->get('invitation_id'), 'Candidate access #'.(int) session()->get('invitation_id'));
         } elseif (! empty(session()->get('admin'))) {
             $a = session()->get('admin');

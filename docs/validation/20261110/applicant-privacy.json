@@ -1,0 +1,51 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "unchecked and disabled by default",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "draft and acceptance survive reload",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-10",
+  "php_suite": {
+    "tests": 46,
+    "assertions": 389,
+    "passed": true
+  },
+  "policy": {
+    "company": "APEC Homes",
+    "unsuccessful_retention_years": 2,
+    "dpo_email_confirmed": false,
+    "contact_fallback": "APEC Homes HR recruitment team"
+  },
+  "consent_storage": "Existing invitation draft JSON and original candidate JSON; UTC timestamp, content hash and full notice snapshot",
+  "schema_changes": false,
+  "deployment_performed": false,
+  "mail_sent": false,
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-1440.png",
+      "sha256": "228beef172a6f3f15db748684ede900710e94aeaca4339823b2b6351d76345c3"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-390.png",
+      "sha256": "9d9681ef9c525cf4b8cfd8206a7851a34c4ca45baedb83b006103416757beaa1"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-1440.png",
+      "sha256": "3b2f5ccb31d8f02c462623910168ee07dc134b01ab6e665e114dae4f7901d014"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-390.png",
+      "sha256": "0be1c649576305f4f9aa9592752d55a166b96aed82413e2eff69109e797f4dbe"
+    }
+  ]
+}

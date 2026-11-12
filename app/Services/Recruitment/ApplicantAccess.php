@@ -167,7 +167,7 @@ final class ApplicantAccess
                 $form[$group][] = $record;
             }
         }
-        foreach (['consent', 'background_consent'] as $name) {
+        foreach (['consent', 'background_consent', 'data_privacy_consent'] as $name) {
             if (isset($input[$name]) && ! is_bool($input[$name])) {
                 throw new \InvalidArgumentException('Invalid consent value.');
             }

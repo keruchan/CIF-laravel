@@ -113,7 +113,16 @@ function difference(a,b) {
           if(!await auditButton.isVisible())await page.locator('#burger').click();
           await auditButton.click();
         }
-        if(name==='candidate-form'&&await page.locator('#start-cif').isVisible())await page.locator('#start-cif').click();
+        if(name==='candidate-form'&&await page.locator('#start-cif').isVisible()){
+          if(await page.locator('#start-cif').isDisabled()){
+            await page.locator('#read-privacy').click();
+            await page.locator('.privacy-dialog-body').evaluate(el=>{el.scrollTop=el.scrollHeight;el.dispatchEvent(new Event('scroll'));});
+            await page.locator('#privacy-agree').check();
+            await page.locator('#privacy-background-agree').check();
+            await page.locator('#accept-privacy').click();await page.locator('#privacy-dialog').waitFor({state:'hidden'});
+          }
+          await page.locator('#start-cif').click();
+        }
         await page.locator(ready).first().waitFor({state:'visible'});
         await page.waitForLoadState('networkidle');
         await page.waitForFunction(()=>![...document.querySelectorAll('[aria-busy="true"]')].some(el=>el.getClientRects().length));

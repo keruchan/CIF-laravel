@@ -1,0 +1,45 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "checkbox and Continue disabled until bottom; Start requires acceptance",
+    "partial scroll stays locked; keyboard scroll to end unlocks",
+    "read gate resets on every reopening",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "Continue without agreement keeps Start disabled",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "reload after acceptance stays on welcome until Start",
+    "uncheck and Continue revokes acceptance across reload",
+    "reaccept enables Start",
+    "draft and acceptance survive reload",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-10",
+  "scope": "Scroll to the bottom on each dialog opening before checkbox or Continue can be used. Continue may then save either agreement state.",
+  "backend_changed": false,
+  "hosted_changes": false,
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-1440.png",
+      "sha256": "82d3ff8e05d722faff9788ed6b16b4fc620b31b1b970615fafc73c0231b32d69"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/dialog-390.png",
+      "sha256": "13f17ab30d5f89104ad2a0da25922abc0a586920c7959de4c70fab5dedad9e69"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-1440.png",
+      "sha256": "3b2f5ccb31d8f02c462623910168ee07dc134b01ab6e665e114dae4f7901d014"
+    },
+    {
+      "file": "storage/app/migration-validation/20261110-applicant-privacy/intro-390.png",
+      "sha256": "0be1c649576305f4f9aa9592752d55a166b96aed82413e2eff69109e797f4dbe"
+    }
+  ]
+}

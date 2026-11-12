@@ -158,6 +158,12 @@ final class CandidateStorage
     // Internal legacy/demo imports can still use validateCif with the original fields.
     public static function validateCandidateCif(array $input): array
     {
+        if (($input['data_privacy_consent'] ?? null) !== true) {
+            throw new \InvalidArgumentException('Accept the Data Privacy Consent before submitting your CIF.');
+        }
+        if (($input['background_consent'] ?? null) !== true) {
+            throw new \InvalidArgumentException('Accept the Background and Reference Check Authorization before submitting your CIF.');
+        }
         $input['desired_position'] = HiringPositions::validateCifAppliedPosition($input['desired_position'] ?? '');
         $addresses = CandidateAddress::cifCandidateAddresses($input);
         $input['adr'] = CandidateAddress::cifCandidateAddressLine($addresses['present']);
@@ -170,7 +176,9 @@ final class CandidateStorage
         // Preserve the individual answers in the submission's database JSON snapshot;
         // existing admin, analytics and print views consume the combined fields above.
         $form['residential_addresses'] = $addresses;
-        $form['form_version'] = 'REC-REV-24-03 SBR:web-v3';
+        $form['form_version'] = 'REC-REV-24-03 SBR:web-v5';
+        $form['data_privacy_consent'] = true;
+        $form['applicant_declarations'] = ApplicantPrivacy::declarations();
 
         return $form;
     }

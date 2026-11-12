@@ -37,7 +37,7 @@ $input = array_replace($input, [
     'sch' => 'Bulacan State University', 'crs' => 'Business Administration',
     'education_years' => '2016-2020', 'emp' => 'Unemployed',
     'certification_name' => 'Maria Santos', 'background_check_name' => 'Maria Santos',
-    'consent' => true, 'background_consent' => true,
+    'consent' => true, 'background_consent' => true, 'data_privacy_consent' => true,
 ]);
 foreach (['present', 'permanent', 'emergency'] as $group) {
     foreach (['barangay' => 'San Pablo', 'municipality' => 'Malolos', 'province' => 'Bulacan'] as $key => $value) {

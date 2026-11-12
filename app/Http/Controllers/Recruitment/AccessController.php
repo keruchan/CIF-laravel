@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Recruitment;
 use App\Http\Controllers\Controller;
 use App\Services\Recruitment\AccessLimiter;
 use App\Services\Recruitment\ApplicantAccess;
+use App\Services\Recruitment\ApplicantPrivacy;
 use App\Services\Recruitment\CandidateAnalytics;
 use App\Services\Recruitment\CandidateDeployment;
 use App\Services\Recruitment\CandidateInterviews;
@@ -732,7 +733,7 @@ final class AccessController extends Controller
 
                 return response()->json(['candidate' => $candidate]);
             }
-            if ($action === 'candidate_draft') {
+            if (in_array($action, ['candidate_draft', 'candidate_privacy_accept'], true)) {
                 $candidate = CandidatePortal::candidateState();
                 if (! $candidate) {
                     return response()->json(['error' => 'Your form session ended. Re-enter your email and code to continue. Your last saved progress is retained.'], 401);
@@ -742,8 +743,12 @@ final class AccessController extends Controller
                 }
                 $revision = $input['revision'] ?? null;
                 $step = $input['step'] ?? null;
-                if (! is_array($input['form'] ?? null) || ! is_int($revision) || $revision < 0 || ! is_int($step) || $step < 0 || $step >= count(CifFields::cifDefinition()['sections']) || (isset($input['preserve_photo']) && ! is_bool($input['preserve_photo']))) {
+                $acceptingPrivacy = $action === 'candidate_privacy_accept';
+                if (! is_int($revision) || $revision < 0 || (! $acceptingPrivacy && (! is_array($input['form'] ?? null) || ! is_int($step) || $step < 0 || $step >= count(CifFields::cifDefinition()['sections']) || (isset($input['preserve_photo']) && ! is_bool($input['preserve_photo']))))) {
                     return response()->json(['error' => 'Invalid progress save. Refresh before trying again.'], 422);
+                }
+                if ($acceptingPrivacy && (! is_bool($input['accepted'] ?? null) || ! is_bool($input['background_authorized'] ?? null) || ! is_string($input['version'] ?? null) || ! hash_equals(ApplicantPrivacy::version(), $input['version']))) {
+                    return response()->json(['error' => 'Read and accept the current data privacy notice. Refresh if the notice has changed.'], 422);
                 }
                 $pdo = RecruitmentDatabase::pdo();
                 $pdo->beginTransaction();
@@ -765,6 +770,28 @@ final class AccessController extends Controller
 
                     return response()->json(['error' => 'Your progress was updated in another tab or device. Reload the saved draft before continuing to avoid overwriting it.'], 409);
                 }
+                $privacy = ApplicantPrivacy::fromDraft($invitation['draft_form']);
+                if ($acceptingPrivacy) {
+                    $previous = $invitation['draft_form'] === null ? [] : json_decode($invitation['draft_form'], true, 32, JSON_THROW_ON_ERROR);
+                    $bothAccepted = $input['accepted'] && $input['background_authorized'];
+                    $now = gmdate('Y-m-d H:i:s');
+                    $privacy = ['version' => ApplicantPrivacy::version(),
+                        'accepted_at' => $bothAccepted ? (ApplicantPrivacy::accepted($privacy) ? $privacy['accepted_at'] : $now) : null,
+                        'data_privacy_accepted' => $input['accepted'], 'background_authorized' => $input['background_authorized'],
+                        'recorded_at' => $now, 'notice_html' => ApplicantPrivacy::notice()];
+                    $previous['privacy_notice'] = $privacy;
+                    $query = $pdo->prepare('UPDATE invitations SET draft_form = ?, draft_revision = draft_revision + 1 WHERE id = ?');
+                    $query->execute([json_encode($previous, JSON_THROW_ON_ERROR), session()->get('invitation_id')]);
+                    Security::cifAuditWrite($pdo, 'Access', $bothAccepted ? 'Applicant privacy notice accepted' : 'Applicant privacy consent choices updated', 'Invitation', (string) session()->get('invitation_id'), $candidate['email'], ['notice_version' => ApplicantPrivacy::version(), 'accepted' => $input['accepted'], 'background_authorized' => $input['background_authorized']]);
+                    $pdo->commit();
+
+                    return response()->json(['ok' => true, 'revision' => $revision + 1]);
+                }
+                if (! ApplicantPrivacy::accepted($privacy)) {
+                    $pdo->rollBack();
+
+                    return response()->json(['error' => 'Read and accept the data privacy notice before filling out your CIF.'], 403);
+                }
                 $posted = $input['form'];
                 if (($input['preserve_photo'] ?? false) === true) {
                     $previous = $invitation['draft_form'] ? json_decode($invitation['draft_form'], true, 32, JSON_THROW_ON_ERROR) : [];
@@ -777,6 +804,8 @@ final class AccessController extends Controller
 
                     return response()->json(['error' => $e->getMessage()], 422);
                 }
+                // Never accept client-provided consent timestamps or notice snapshots.
+                $form['privacy_notice'] = $privacy;
                 $query = $pdo->prepare('UPDATE invitations SET draft_form = ?, draft_step = ?, draft_revision = draft_revision + 1, draft_saved_at = UTC_TIMESTAMP() WHERE id = ?');
                 $query->execute([json_encode($form, JSON_THROW_ON_ERROR), $step, session()->get('invitation_id')]);
                 $query = $pdo->prepare('SELECT draft_saved_at FROM invitations WHERE id = ?');
@@ -828,6 +857,13 @@ final class AccessController extends Controller
                 if ($candidate['mode'] !== 'form') {
                     return response()->json(['error' => 'Your CIF is already submitted. It is read-only; use application tracking to view progress.'], 409);
                 }
+                if (! $candidate['privacy_accepted']) {
+                    return response()->json(['error' => 'Read and accept the data privacy notice before submitting your CIF.'], 403);
+                }
+                // These acknowledgements come from the saved opening notice, not
+                // editable or forged final-form fields.
+                $input['data_privacy_consent'] = $candidate['privacy_choices']['data_privacy'];
+                $input['background_consent'] = $candidate['privacy_choices']['background'];
                 if (! is_int($input['draft_revision'] ?? null) || $input['draft_revision'] < 0) {
                     return response()->json(['error' => 'Refresh your saved CIF before submitting.'], 422);
                 }
@@ -846,7 +882,7 @@ final class AccessController extends Controller
                 }
                 $pdo = RecruitmentDatabase::pdo();
                 $pdo->beginTransaction();
-                $query = $pdo->prepare('SELECT email, position, applicant_id, submitted_at, redeemed_at, code_hash,access_enabled,access_version, draft_revision, '.ApplicantAccess::cifInvitationCodeValidSql().' AS valid_code FROM invitations WHERE id = ? FOR UPDATE');
+                $query = $pdo->prepare('SELECT email, position, applicant_id, submitted_at, redeemed_at, code_hash,access_enabled,access_version, draft_revision, draft_form, '.ApplicantAccess::cifInvitationCodeValidSql().' AS valid_code FROM invitations WHERE id = ? FOR UPDATE');
                 $query->execute([session()->get('invitation_id')]);
                 $invitation = $query->fetch();
                 if (! $invitation || $invitation['submitted_at'] !== null) {
@@ -864,6 +900,13 @@ final class AccessController extends Controller
 
                     return response()->json(['error' => 'Saved progress changed in another tab or device. Reload before submitting to avoid replacing newer answers.'], 409);
                 }
+                $privacy = ApplicantPrivacy::fromDraft($invitation['draft_form']);
+                if (! ApplicantPrivacy::accepted($privacy)) {
+                    $pdo->rollBack();
+
+                    return response()->json(['error' => 'Read and accept the current data privacy notice before submitting your CIF.'], 403);
+                }
+                $form['privacy_notice'] = $privacy;
                 $form['email'] = $invitation['email'];
                 $form['position'] = $form['desired_position'];
                 $number = $invitation['applicant_id'] ?: ApplicantAccess::assignCifApplicantId($pdo, (int) session()->get('invitation_id'), $form['fn'], $form['ln']);

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Services\Recruitment\AuditSetup;
+use App\Services\Recruitment\ApplicantPrivacy;
 use App\Services\Recruitment\CandidateInterviews;
 use App\Services\Recruitment\CandidatePortal;
 use App\Services\Recruitment\CandidatePublication;
@@ -171,25 +172,110 @@ class RecruitmentWorkflowTest extends TestCase
             $this->postJson('/ajax/access.php?action=invitations', ['status' => 'Pending', 'search' => 'new@example.test'])->assertOk()->assertJsonPath('total', 1);
         }
         $this->postJson('/ajax/access.php?action=verify', ['email' => 'new@example.test', 'code' => $invitation['code']])->assertOk()->assertJsonPath('candidate.mode', 'form');
-        $draft = ['revision' => 0, 'step' => 0, 'form' => ['fn' => 'Draft', 'ln' => 'Candidate']];
+        $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 0, 'step' => 0, 'form' => ['fn' => 'Blocked']])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=submit', ['draft_revision' => 0])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => 0, 'background_authorized' => true, 'accepted' => 'false', 'version' => ApplicantPrivacy::version()])->assertUnprocessable();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => 0, 'background_authorized' => true, 'accepted' => true, 'version' => 'old-notice'])->assertUnprocessable();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => 0, 'background_authorized' => true, 'accepted' => true, 'version' => ApplicantPrivacy::version()])->assertOk()->assertJsonPath('revision', 1);
+        $audit = DB::table('audit_events')->where('action', 'Applicant privacy notice accepted')->first();
+        $this->assertSame('Candidate', $audit->actor_role);
+        $this->assertSame((string) $invitation['id'], (string) $audit->actor_id);
+        $privacy = json_decode(DB::table('invitations')->where('id', $invitation['id'])->value('draft_form'), true)['privacy_notice'];
+        $this->assertSame(ApplicantPrivacy::version(), $privacy['version']);
+        $this->assertStringContainsString('two (2) years', $privacy['notice_html']);
+        $this->postJson('/ajax/access.php?action=verify', ['email' => 'new@example.test', 'code' => $invitation['code']])->assertOk()->assertJsonPath('candidate.privacy_accepted', true);
+        $draft = ['revision' => 1, 'step' => 0, 'form' => ['fn' => 'Draft', 'ln' => 'Candidate', 'privacy_notice' => ['accepted_at' => 'forged']]];
         $saved = $this->postJson('/ajax/access.php?action=candidate_draft', $draft)->assertOk()->json();
         $this->postJson('/ajax/access.php?action=candidate_draft', $draft)->assertConflict();
         [, $form] = $this->candidate();
-        $form += ['draft_revision' => $saved['revision'], 'consent' => true, 'background_consent' => true, 'same_as_present_address' => true];
+        $form += ['draft_revision' => $saved['revision'], 'consent' => true, 'background_consent' => true, 'data_privacy_consent' => true, 'same_as_present_address' => true];
         foreach (['present', 'emergency'] as $group) {
             foreach (['barangay', 'municipality', 'province'] as $part) {
                 $form[$group.'_'.$part] = 'Fictional place';
             }
         }
+        // The saved opening notice is authoritative, regardless of final-form fields.
+        $form['data_privacy_consent'] = false;
+        $form['background_consent'] = false;
+        $form['future_opportunities_consent'] = true;
         $submitted = $this->postJson('/ajax/access.php?action=submit', $form)->assertOk()->assertJsonPath('candidate.mode', 'tracking')->json();
         $number = $submitted['candidate_number'];
         $candidate = DB::table('candidates')->where('candidate_number', $number)->first();
         $original = $candidate->form_data;
+        $this->assertSame($privacy, json_decode($original, true)['privacy_notice']);
+        $this->assertTrue(json_decode($original, true)['data_privacy_consent']);
+        $this->assertArrayNotHasKey('future_opportunities_consent', json_decode($original, true));
+        $this->assertTrue(json_decode($original, true)['background_consent']);
+        $this->assertSame(\App\Services\Recruitment\ApplicantPrivacy::declarations(), json_decode($original, true)['applicant_declarations']);
+        $this->get('/pages/admin/record.php?id='.$candidate->id)->assertOk()->assertSee('Data Privacy Consent')->assertDontSee('Future Career Opportunities');
         $this->postJson('/ajax/access.php?action=submit', $form)->assertConflict();
         $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 1, 'step' => 0, 'form' => ['fn' => 'Changed']])->assertConflict();
         $this->postJson('/ajax/access.php?action=candidate_progress')->assertOk()->assertDontSee('hr_notes')->assertDontSee('abstract_reasoning_score');
         $this->assertSame($original, DB::table('candidates')->where('id', $candidate->id)->value('form_data'));
         $this->assertSame($number, DB::table('invitations')->where('id', $candidate->invitation_id)->value('applicant_id'));
+        $printCandidate = CandidateView::loadCifCandidate(RecruitmentDatabase::pdo(), (int) $candidate->id);
+        ob_start();
+        \App\Services\Recruitment\CifPrint::renderCifPrint($printCandidate);
+        $withWebConsent = ob_get_clean();
+        unset($printCandidate['form']['privacy_notice'], $printCandidate['form']['applicant_declarations'], $printCandidate['form']['data_privacy_consent']);
+        ob_start();
+        \App\Services\Recruitment\CifPrint::renderCifPrint($printCandidate);
+        $this->assertSame($withWebConsent, ob_get_clean(), 'The web privacy additions must not change the printable CIF.');
+
+    }
+
+    public function test_privacy_acceptance_can_be_unchecked_and_saved_before_starting(): void
+    {
+        $this->hr();
+        $invite = $this->postJson('/ajax/access.php?action=generate', ['email' => 'change-consent@example.test', 'position' => 'Engineering Support Staff'])->assertOk()->json();
+        $this->postJson('/ajax/access.php?action=verify', ['email' => 'change-consent@example.test', 'code' => $invite['code']])->assertOk();
+        $input = ['revision' => 0, 'background_authorized' => true, 'accepted' => true, 'version' => ApplicantPrivacy::version()];
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', $input)->assertOk();
+        $this->getJson('/ajax/access.php?action=state')->assertOk()->assertJsonPath('candidate.privacy_accepted', true)->assertJsonPath('candidate.draft.saved_at', null);
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', array_replace($input, ['revision' => 1, 'background_authorized' => true, 'accepted' => false]))->assertOk();
+        $this->getJson('/ajax/access.php?action=state')->assertOk()->assertJsonPath('candidate.privacy_accepted', false);
+        $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 2, 'step' => 0, 'form' => []])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=submit', ['draft_revision' => 2])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', array_replace($input, ['revision' => 2]))->assertOk();
+        $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 3, 'step' => 0, 'form' => []])->assertOk();
+    }
+
+    public function test_privacy_notice_changes_require_reacceptance_and_preserve_existing_drafts(): void
+    {
+        $this->hr();
+        $invite = $this->postJson('/ajax/access.php?action=generate', ['email' => 'privacy@example.test', 'position' => 'Engineering Support Staff'])->assertOk()->json();
+        DB::table('invitations')->where('id', $invite['id'])->update(['draft_form' => json_encode(['fn' => 'Existing answer']), 'draft_step' => 2]);
+        $this->postJson('/ajax/access.php?action=verify', ['email' => 'privacy@example.test', 'code' => $invite['code']])->assertOk()->assertJsonPath('candidate.privacy_accepted', false);
+        $accept = ['revision' => 0, 'background_authorized' => true, 'accepted' => true, 'version' => ApplicantPrivacy::version()];
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', $accept)->assertOk();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', $accept)->assertConflict();
+        $row = DB::table('invitations')->where('id', $invite['id'])->first();
+        $this->assertSame('Existing answer', json_decode($row->draft_form, true)['fn']);
+        $this->assertSame(2, $row->draft_step);
+        config(['recruitment.privacy_dpo_email' => 'privacy@example.test']);
+        $this->getJson('/ajax/access.php?action=state')->assertOk()->assertJsonPath('candidate.privacy_accepted', false);
+        $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => 1, 'step' => 2, 'form' => ['fn' => 'Overwrite']])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=submit', ['draft_revision' => 1])->assertForbidden();
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => 1, 'background_authorized' => true, 'accepted' => true, 'version' => ApplicantPrivacy::version()])->assertOk();
+        $this->assertSame('Existing answer', json_decode(DB::table('invitations')->where('id', $invite['id'])->value('draft_form'), true)['fn']);
+    }
+
+    public function test_both_opening_authorizations_are_required_and_partial_choices_are_preserved(): void
+    {
+        $this->hr();
+        $invite = $this->postJson('/ajax/access.php?action=generate', ['email' => 'partial-consent@example.test', 'position' => 'Engineering Support Staff'])->assertOk()->json();
+        $this->postJson('/ajax/access.php?action=verify', ['email' => 'partial-consent@example.test', 'code' => $invite['code']])->assertOk();
+        foreach ([[true, false], [false, true]] as $revision => [$privacy, $background]) {
+            $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => $revision, 'accepted' => $privacy, 'background_authorized' => $background, 'version' => ApplicantPrivacy::version()])->assertOk();
+            $this->getJson('/ajax/access.php?action=state')->assertOk()->assertJsonPath('candidate.privacy_accepted', false)
+                ->assertJsonPath('candidate.privacy_choices.data_privacy', $privacy)->assertJsonPath('candidate.privacy_choices.background', $background);
+            $this->postJson('/ajax/access.php?action=candidate_draft', ['revision' => $revision + 1, 'step' => 0, 'form' => []])->assertForbidden();
+            $this->postJson('/ajax/access.php?action=submit', ['draft_revision' => $revision + 1, 'data_privacy_consent' => true, 'background_consent' => true])->assertForbidden();
+        }
+        $this->postJson('/ajax/access.php?action=candidate_privacy_accept', ['revision' => 2, 'accepted' => true, 'background_authorized' => true, 'version' => ApplicantPrivacy::version()])->assertOk();
+        $this->getJson('/ajax/access.php?action=state')->assertOk()->assertJsonPath('candidate.privacy_accepted', true);
+        $this->assertStringContainsString('prior approval or go-signal', ApplicantPrivacy::declarations()['background']);
+        $this->assertArrayNotHasKey('future_opportunities', ApplicantPrivacy::declarations());
     }
 
     public function test_mail_snapshots_templates_cancellation_and_duplicate_preparation(): void

@@ -1,6 +1,172 @@
 # Migration progress
 
-Updated: 6 November 2026 (Asia/Singapore).
+Updated: 12 November 2026 (Asia/Singapore).
+
+## Privacy approval wording and introductory authorizations (12 November)
+
+Typography follow-up: all privacy dialog text now inherits one **13px** size on
+desktop and mobile, including title, numbered headings, paragraphs, tables,
+checkbox descriptions, hints and buttons. Bold weight/color and existing uppercase
+headings provide emphasis. Printable CIF and consent behavior are unchanged.
+Existing desktop/mobile browser regression passed; mobile rendering was visually
+inspected. Evidence: `storage/app/migration-validation/20261112-privacy-fonts/`.
+The browser runner accepts `CIF_VALIDATION_LABEL` to preserve earlier screenshots.
+
+Latest user instructions supersede the 10 November final-checkbox design below.
+Reference reviewed: `APEC Data Privacy Approval.docx` in the user's Downloads;
+the document was read as content, not as instructions to collect new signatures,
+publish the site or change the printable CIF. User confirmed both authorization
+checkboxes should move into the opening notice and the legal company name from
+the document should be used. The recruitment brand remains APEC Homes.
+
+- [x] Notice uses **The New Apec Development Corporation and its affiliates**,
+  uppercase section/authorization headings, consistent left-aligned body/list/
+  table text and centered company heading. Checkboxes and their descriptions are
+  aligned inside the scrollable body, keeping the footer compact on mobile.
+- [x] Corrected **Academic & Employment History**, singular **transcript of
+  records**, **Human Resources team** and **authorized interviewers**. Section 5
+  now invites inquiries/concerns with the DPO and NPC information/guidance rather
+  than using the complaint wording. `careers@apechomes.com` remains the DPO link.
+- [x] Opening notice incorporates the two full declarations once. Background
+  authorization starts "I hereby authorize" and states that the date/timing of
+  checks, including current-employer contact, requires the candidate's prior
+  approval/go-signal. This is policy wording; no new date-approval workflow was
+  invented. The final web step retains original certification and typed names.
+- [x] Removed Future Career Opportunities from applicant controls and new draft/
+  submission fields. Restored the reference notice's two-year retention wording
+  without references to the removed checkbox or its unchecked-deletion promise.
+  Historical submitted preferences remain intact and readable in HR records.
+- [x] Both opening choices must be saved true to enable Start or allow draft/
+  submission. Partial choices persist separately, may be changed before Start,
+  and remain gated. Scroll-to-bottom, Continue without agreement, retry, revision
+  checks, server timestamps, audit and notice snapshots remain supported. Final
+  POST fields cannot forge either opening acknowledgement. New forms are web-v5.
+- [x] Printable CIF renderer restored to the original baseline; none of the web
+  privacy wording or removed optional controls alter the original paper template.
+  Normalized source matches Git baseline and a render-equality regression verifies
+  web consent metadata does not change printable HTML.
+- [x] Full PHP suite passed: **48 tests, 433 assertions**. Desktop 1440px/mobile
+  390px browser checks passed for content, uppercase headings, both-checkbox
+  placement, scroll locking, cancellation/retry, reacceptance, draft resume,
+  applicant isolation, final certification and no horizontal overflow. Desktop
+  authorization and mobile retention-table screenshots were visually inspected.
+- [x] PHP/JavaScript syntax and diff checks passed; disposable databases removed.
+  No existing applicant data or private environment values were changed, no real
+  email was sent, and no GitHub push or hosted deployment was performed.
+
+Evidence: `docs/validation/20261112/privacy-approval.json`; screenshots and browser
+results: `storage/app/migration-validation/20261112-privacy-revision/`. Repeat with
+`node tests/Browser/check-applicant-privacy.cjs`. Notice content changed, so
+unfinished applications will require the updated authorizations on their next
+visit; existing submitted applications keep their original evidence/tracker.
+Next: user review of wording/layout, then a separately requested hosted update.
+
+## Applicant privacy notice and consent gate (10 November)
+
+DPO contact confirmed by the user: **careers@apechomes.com**. Config default,
+environment example and local private `CIF_PRIVACY_DPO_EMAIL` now use this address.
+Rendered notice/mailto link verified and local configuration cache cleared. Other
+environment settings, including Gmail credentials, are preserved. This changes
+the notice content hash, so unfinished applicants must accept the updated notice.
+Hostinger is unchanged; set the same variable in its private `.env` and run
+`/opt/alt/php84/usr/bin/php artisan config:clear` when deploying this update.
+
+Final CIF declarations update: the final section now contains required **Data
+Privacy Consent**, required **Background and Reference Check Authorization** and
+optional **Future Career Opportunities**, using APEC Homes and two (2) years.
+The optional checkbox defaults unchecked and never blocks submission. Its boolean
+choice, the required privacy consent and exact declaration wording are preserved
+in draft/final JSON and shown read-only in HR records and print evidence. Original
+certification text/typed acknowledgement and existing legacy submissions remain
+readable; a historical certification checkbox is not treated as the new privacy
+consent when restoring a draft. Public submissions use form version web-v4.
+The opening notice now makes talent-pool retention conditional on separate opt-in;
+changed notice content requires acceptance again. This records the applicant's
+retention preference; automatic deletion of unsuccessful applications is **not
+implemented** by this interface change. HR must honor the declared policy through
+its retention process; automated deletion needs a separate audited design.
+Desktop/mobile checks cover all three checkbox labels/requiredness and saved
+opt-in/opt-out after reload. Final validation evidence is recorded in
+`docs/validation/20261110/applicant-final-consents.json`.
+Validation passed: **47 PHP tests, 413 assertions**, desktop/mobile privacy and
+final-consent browser checks, optional-ID reference regression, syntax and diff
+checks. Six fictional-fixture screenshots include the final declarations at both
+widths; the mobile final section was visually inspected. No real records or
+private environment settings changed, no email was sent, and nothing was deployed.
+
+Follow-up refinement: the notice button is now **Continue**. Applicants must
+scroll to the bottom of the notice before the checkbox and Continue become
+enabled. A visible hint explains this, and the read gate resets on each reopening.
+If the full notice fits without scrolling, the controls unlock immediately.
+After reaching the end, Continue is enabled whether or not "I Agree" is checked.
+Continue saves the chosen state and returns to the
+welcome page. Applicants can reopen, uncheck and Continue to withdraw acceptance;
+Start then stays disabled across reload until they accept again. Closing/Escape
+without Continue does not commit an edited checkbox. Acceptance alone no longer
+counts as a started draft on reload: only an actual saved CIF resumes the form.
+Withdrawal is version/revision checked and audited; draft/submission protection
+remains enforced. Desktop/mobile browser checks cover unchecked Continue,
+accept/uncheck/reaccept, reload before Start, and draft persistence after Start.
+Updated validation: `docs/validation/20261110/applicant-privacy-reversible.json`.
+Focused workflow suite passed **13 tests, 215 assertions**; desktop/mobile browser
+checks passed with no page errors. PHP/JavaScript syntax and diff checks passed.
+The subsequent scroll-gate browser run passed at 1440px and 390px, including
+disabled controls after partial scroll, keyboard Ctrl+End unlocking, reset on
+reopening, and all existing reversible-consent/reload checks. Evidence:
+`docs/validation/20261110/applicant-privacy-scroll-gate.json`. This is a browser
+reading affordance; server-side explicit consent enforcement remains unchanged.
+
+User-requested Laravel enhancement, intentionally beyond the vanilla welcome
+page. The current vanilla candidate page/JavaScript and Laravel draft, submission
+and tracking flows were reviewed before implementation.
+
+- [x] Keep the welcome page compact with a "Read data privacy notice and consent
+  form" link. Open the full supplied APEC Homes notice in a responsive scrollable
+  native dialog, with keyboard focus containment, Escape/Close and an unchecked
+  agreement checkbox. Start stays disabled until server acceptance succeeds.
+- [x] Use the user's confirmed two (2) years for unsuccessful applicant retention.
+  DPO mailbox remains unconfirmed after explaining its purpose. Optional private
+  `CIF_PRIVACY_DPO_EMAIL` config renders that contact; until supplied, the notice
+  directs requests to the APEC Homes HR recruitment team to reach the DPO. No
+  invented mailbox or policy placeholders appear in the notice.
+- [x] Store consent timestamp (UTC), exact rendered notice snapshot and SHA-256
+  content version in the existing invitation draft JSON, then in the original
+  submitted candidate JSON. The server preserves these values across draft saves
+  and ignores client-forged consent metadata. Record an acceptance audit event.
+  No migration or hosted database change is required.
+- [x] Require current acceptance for every unsubmitted applicant, including legacy
+  drafts. Existing answers/step remain intact. Changed notice content requires
+  acceptance again; submitted applications retain their existing tracking flow.
+  Existing certification and background-check acknowledgements remain separate.
+- [x] Server validates session/access, explicit true acceptance, current notice
+  version and optimistic draft revision. Draft/submit requests cannot bypass the
+  gate by enabling a button or supplying forged timestamps. Acceptance failure
+  leaves the form gated and supports retry.
+- [x] Focused workflow suite: 12 tests, 199 assertions. New coverage checks denied
+  draft/submission, malformed/outdated acceptance, stale revisions, notice changes,
+  legacy draft preservation, forged metadata and original submission evidence.
+- [x] Playwright desktop 1440px/mobile 390px passed: disabled/unchecked defaults,
+  scrollable full notice, Escape and focus return, failed acceptance/retry, saved
+  acceptance/answers after reload, applicant isolation and no horizontal overflow.
+  Desktop/mobile notice and welcome screenshots were visually inspected.
+- [x] Final full PHP suite passed: **46 tests, 389 assertions**, including correct
+  Candidate audit attribution even when HR shares the browser session. PHP/JS
+  syntax checks and `git diff --check` passed.
+
+Evidence: `storage/app/migration-validation/20261110-applicant-privacy/` contains
+four screenshots and `results.json`; durable summary and image hashes are in
+`docs/validation/20261110/applicant-privacy.json`. Repeat with
+`node tests/Browser/check-applicant-privacy.cjs`. Fixtures are disposable,
+fictional, and use disabled/in-memory mail. Initial validation attempts failed
+because local MySQL was stopped; it was started normally without data repairs
+or resets, then checks were rerun. Private environment settings were not edited.
+Root SQL exports are now ignored by Git so the user's private export stays local.
+
+Next: confirm the DPO mailbox, then set it privately and clear configuration.
+The notice describes retention policy; this enhancement does not implement
+automatic record deletion. Changes are local only; no GitHub push or hosting
+deployment was performed. When deploying, update both private application files
+and copied public CSS/JS, preserving the host's entry-file path and PHP rule.
 
 ## Local performance fixes (6 November)
 

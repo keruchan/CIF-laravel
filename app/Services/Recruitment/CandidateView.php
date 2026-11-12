@@ -160,6 +160,12 @@ final class CandidateView
                 echo '<dl class="cif-grid">';
                 $entry('Certification of information', ! empty($form['consent']) ? 'Accepted' : 'Not recorded');
                 $entry('Background check consent', ! empty($form['background_consent']) ? 'Accepted' : 'Not recorded');
+                if (array_key_exists('data_privacy_consent', $form)) {
+                    $entry('Data Privacy Consent', $form['data_privacy_consent'] ? 'Accepted' : 'Not accepted');
+                    if (array_key_exists('future_opportunities_consent', $form)) {
+                        $entry('Future Career Opportunities (historical)', $form['future_opportunities_consent'] ? 'Agreed — up to two (2) years' : 'Not agreed');
+                    }
+                }
                 $entry('Acceptance time', CandidateView::cifLocalDate($form['accepted_at'] ?? null));
                 $entry('Form version', $form['form_version'] ?? 'Legacy submission');
                 echo '</dl><p class="cif-muted">Typed acknowledgements are recorded above; handwritten signature images were not collected. HR-only assessments are not part of the candidate submission.</p>';

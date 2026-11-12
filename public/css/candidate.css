@@ -65,3 +65,32 @@ input[readonly]{background:#eef2f9;color:var(--mu)}
 @keyframes pop{from{transform:scale(.4);opacity:0}}
 @media(max-width:860px){.lcard{padding:28px 24px}.grid{grid-template-columns:1fr}.panel{padding:22px}.st span{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.intro-privacy{margin-top:22px;padding-top:20px;border-top:1px solid var(--bd)}
+.privacy-link{border:0;padding:0;background:none;color:var(--navy);font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;text-align:left;line-height:1.7}
+.intro-panel .intro-privacy p{margin:8px 0 0;color:var(--mu);font-size:12px;line-height:1.7}
+.intro-panel .intro-privacy p.accepted{color:#08766c}
+body:has(.privacy-dialog[open]){overflow:hidden}
+.privacy-dialog{font-size:13px;position:fixed;inset:0;margin:auto;width:min(800px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:0;border:0;border-top:5px solid var(--navy);border-radius:18px;color:var(--tx);box-shadow:0 24px 80px rgba(8,46,130,.25);overflow:hidden}
+.privacy-dialog[open]{display:flex;flex-direction:column}
+.privacy-dialog::backdrop{background:rgba(8,24,58,.55)}
+.privacy-dialog-header{display:flex;align-items:flex-start;gap:16px;justify-content:space-between;padding:22px 26px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.privacy-dialog-header h2{color:var(--navy);font-size:inherit;line-height:1.5}
+.privacy-dialog-header .btn{padding:9px 14px;flex-shrink:0}
+.privacy-dialog-body{overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:22px 26px;font-size:inherit;line-height:1.8;overflow-wrap:anywhere}
+.privacy-dialog-body p,.privacy-dialog-body ul{margin-bottom:16px}
+.privacy-dialog-body ul{padding-left:22px}.privacy-dialog-body li+li{margin-top:8px}
+.privacy-dialog-body h3{font-size:inherit;color:var(--navy);margin:22px 0 12px}.privacy-company{font-weight:800;color:var(--navy);letter-spacing:.06em}
+.privacy-table-wrap{overflow-x:auto;margin-bottom:16px}.privacy-table-wrap table{width:100%;border-collapse:collapse;font-size:inherit;text-align:left}.privacy-table-wrap th,.privacy-table-wrap td{border:1px solid var(--bd);padding:10px;vertical-align:top}.privacy-table-wrap thead{background:#f1f7fc}
+.privacy-dialog-footer{padding:18px 26px;border-top:1px solid var(--bd);display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex-shrink:0;background:#f8fafc}
+.privacy-dialog-footer .chk{width:100%;font-size:inherit}.privacy-dialog-footer input{flex-shrink:0;accent-color:var(--teal)}
+#privacy-error{color:#b32d3a;font-size:inherit;line-height:1.6;width:100%}
+#privacy-read-hint{font-size:inherit;line-height:1.6;color:var(--mu);width:100%}
+.consent-choice{margin:22px 0;padding:18px;border:1px solid var(--bd);border-radius:12px;color:var(--tx)!important;background:#f8fafc}
+.consent-choice>input{flex-shrink:0;accent-color:var(--teal)}.consent-choice>span{min-width:0}.consent-choice strong,.consent-choice>span>span,.consent-choice small{display:block}
+.consent-choice strong{color:var(--navy);margin-bottom:8px}.consent-choice small{font-size:12px;color:var(--mu);margin-top:10px}.consent-choice strong .optional-label{display:inline}
+.privacy-dialog-body{text-align:left;line-height:1.85}.privacy-dialog-header h2{text-align:left;letter-spacing:.02em}.privacy-company{text-align:center}
+.privacy-dialog-body ul{padding-left:24px;list-style-position:outside}.privacy-dialog-body li{padding-left:4px}.privacy-dialog-body li>strong{display:block;margin-bottom:3px;text-transform:uppercase}
+.privacy-dialog-body .consent-choice{font-size:inherit;font-weight:400;line-height:1.8;align-items:flex-start}.privacy-dialog-body .consent-choice strong{font-size:inherit;letter-spacing:.02em}
+.privacy-dialog-body .consent-choice input{margin-top:5px}.privacy-table-wrap table{table-layout:fixed}.privacy-table-wrap th,.privacy-table-wrap td{text-align:left;line-height:1.7}
+.privacy-table-wrap thead th{text-transform:uppercase}
+@media(max-width:560px){.privacy-dialog-header,.privacy-dialog-body,.privacy-dialog-footer{padding:16px}.privacy-dialog-footer>.btn{width:100%}}

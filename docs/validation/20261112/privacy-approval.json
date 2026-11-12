@@ -1,0 +1,89 @@
+{
+  "widths": [
+    1440,
+    390
+  ],
+  "checks": [
+    "checkbox and Continue disabled until bottom; Start requires acceptance",
+    "partial scroll stays locked; keyboard scroll to end unlocks",
+    "read gate resets on every reopening",
+    "full notice scrolls within viewport",
+    "Escape cancels and restores focus",
+    "Continue without agreement keeps Start disabled",
+    "failed acceptance stays gated",
+    "retry saves acceptance",
+    "reload after acceptance stays on welcome until Start",
+    "uncheck and Continue revokes acceptance across reload",
+    "reaccept enables Start",
+    "draft and acceptance survive reload",
+    "both authorizations in opening notice; final step only original certification",
+    "future opportunities removed",
+    "no cross-applicant consent",
+    "no horizontal overflow"
+  ],
+  "errors": [],
+  "date": "2026-11-12",
+  "reference_document": {
+    "name": "APEC Data Privacy Approval.docx",
+    "sha256": "7e018135724482692451aa09116f2702b1b1b572ee3e26f49c135e39e93bb581"
+  },
+  "php_suite": {
+    "tests": 48,
+    "assertions": 433,
+    "passed": true
+  },
+  "legal_name": "The New Apec Development Corporation and its affiliates",
+  "opening_choices": [
+    "Data Privacy Consent",
+    "Background and Reference Check Authorization"
+  ],
+  "final_step": "Original certification and typed names",
+  "future_opportunity_option_removed": true,
+  "print_template_matches_original_baseline": true,
+  "print_metadata_render_equality_test_passed": true,
+  "schema_changes": false,
+  "hosted_changes": false,
+  "mail_sent": false,
+  "screenshots": [
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/dialog-1440.png",
+      "sha256": "7748de9678fed35ae44d7e429c2db08807896dfc25edd80b68e509e8fa62e34d"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/dialog-390.png",
+      "sha256": "e87d802245245f54f965a5f44f4715359a3995b0039c07fcffb84db32835fa88"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/final-certification-1440.png",
+      "sha256": "ff8f5c6ba72abd875022b8428a76003239cf5f205a8e376f981c65775d0197e9"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/final-certification-390.png",
+      "sha256": "2682c35824b20c4328a95a00abfce05918ca7b02ec2f949334cb6b52621fb214"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/intro-1440.png",
+      "sha256": "e547512cb21a0f945f1cc91eb8603a25f95dc3dab763c9e127135c90da200bbc"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/intro-390.png",
+      "sha256": "bba56e4c8816b42fa61cba08e7f3f88561b06ace5b491d34337b388a37d71842"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/notice-middle-1440.png",
+      "sha256": "df0d828e65368d48eb70c9ca3a368d3f8cca233a0a2d285d8c409859eb5dcf94"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/notice-middle-390.png",
+      "sha256": "65b42cf103b51cf243e7d0776a464591c81f072cb9b6d67e023b8de3fbccd1c6"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/opening-authorizations-1440.png",
+      "sha256": "0b3f1e1b7e4eecf0851e50236c4a708d0cd6d865abd68726cbccc2ee197451b3"
+    },
+    {
+      "file": "storage/app/migration-validation/20261112-privacy-revision/opening-authorizations-390.png",
+      "sha256": "8bb06397d2d0e454d6d5c01caea5551dcbcc5352be5b4bd8bbdb40d295dae217"
+    }
+  ]
+}
